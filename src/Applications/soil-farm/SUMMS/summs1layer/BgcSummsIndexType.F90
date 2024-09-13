@@ -17,7 +17,7 @@ implicit none
   end type list_t
 
   type, public :: summsbgc_index_type
-     integer           :: nom_pools                              !not include coarse wood debris
+     integer           :: nom_pools                              !not include coarse wood debris???
 
      integer           :: nom_tot_elms
      integer           :: lit1, lit1_dek_reac
@@ -35,7 +35,7 @@ implicit none
      integer           :: wood_beg, wood_end  !wood group
      integer           :: som_beg,  som_end   !som group
      integer           :: dom_beg,  dom_end   !dom group
-     integer           :: Bm_beg,  Bm_end   !dom group
+     integer           :: Bm_beg,  Bm_end     !microbial biomass group
      integer           :: pom_beg, pom_end    
      integer           :: c_loc
      integer           :: n_loc
@@ -43,7 +43,9 @@ implicit none
      integer           :: c13_loc = 0
      integer           :: c14_loc = 0
      integer           :: nelms                                  !number of chemical elements in an om pool
-                                                                 !reactive primary variables
+     
+     !--------------------reactive primary variables----------------------------------------------------------------
+
      integer           :: lid_nh4, lid_nh4_nit_reac              !local position of nh4 in the state variable vector
      integer           :: lid_no3, lid_no3_den_reac              !local position of no3 in the state variable vector
      integer           :: lid_plant_minn_nh4, lid_plant_minn_nh4_up_reac !local position of plant uptake of mineral nitrogen NH4 in the state variable vector
@@ -56,16 +58,17 @@ implicit none
 
      integer           :: lid_autr_rt, lid_autr_rt_reac             !root autotrophic respiration
 
-                                                                 !non reactive primary variables
+     !--------------------non reactive primary variables-----------------------------------------------------------
      integer           :: lid_ar, lid_ar_aren_reac               !local position of ar in the state variable vector
      integer           :: lid_ch4, lid_ch4_aren_reac             !nonreactive primary variables
 
-                                                                 !secondary variables
+     !--------------------secondary variables----------------------------------------------------------------------
      integer           :: lid_o2,  lid_o2_aren_reac              !local position of o2 in the state variable vector
      integer           :: lid_co2, lid_co2_aren_reac             !local position of co2 in the state variable vector
      integer           :: lid_n2,  lid_n2_aren_reac
      integer           :: lid_n2o, lid_n2o_aren_reac
-                                                                 !diagnostic variables
+
+     !--------------------diagnostic variables---------------------------------------------------------------------
      integer           :: lid_n2o_nit                            !n2o production from nitrification, used to for mass balance book keeping
      integer           :: lid_co2_hr                             !co2 production from heterotrophic respiration
      integer           :: lid_c13_co2, lid_c13_co2_aren_reac
@@ -76,13 +79,13 @@ implicit none
      integer           :: lid_nh4_nit
      integer           :: lid_minp_secondary_trc
      integer           :: lid_minp_occlude_trc
-                                                                 !aerechyma transport, diagnostic efflux
-     integer           :: lid_minp_immob                         !net P immobilization by aerobic decomposer
 
+     !--------------------aerechyma transport, diagnostic efflux--------------------------------------------------
+     integer           :: lid_minp_immob                         !net P immobilization by aerobic decomposer
      integer           :: lid_ar_paere
      integer           :: lid_n2_paere
      integer           :: lid_o2_paere
-     integer           :: lid_decomp                             !decompostion flux          !start adding from rzacplsbetr_cmupdated       -zlyu
+     integer           :: lid_decomp                             !decompostion flux
      integer           :: lid_uptake                             !uptake flux
      integer           :: lid_cue                                !cue
      integer           :: lid_maint                              !maintenance flux
@@ -90,14 +93,14 @@ implicit none
      integer           :: lid_kaffem                             !enzyme mineral affinity
      integer           :: lid_micgrow                            !microbial growth flux
      integer           :: lid_enzprod                            !enzyme production flux
-     integer           :: lid_turnover                           !microbial turnover flux    !end of adding from rzacplsbetr_cmupdated       -zlyu
+     integer           :: lid_turnover                           !microbial turnover flux
      integer           :: lid_co2_paere
      integer           :: lid_c13_co2_paere
      integer           :: lid_c14_co2_paere
      integer           :: lid_ch4_paere
      integer           :: lid_n2o_paere
      integer           :: nprimvars                              !total number of primary variables
-     integer           :: nstvars                                !number of equations for the state variabile vector
+     integer           :: nstvars                                !number of equations for the state variable vector
      integer           :: nreactions                             !seven decomposition pathways plus nitrification, denitrification and plant immobilization
      integer           :: lid_totinput                           !copy from /soil-farm/ecacnp/ecacnp1layer/ecacnpBGCIndexType.F90
      integer           :: lid_totstore                           !copy from /soil-farm/ecacnp/ecacnp1layer/ecacnpBGCIndexType.F90
@@ -110,6 +113,7 @@ implicit none
      integer, pointer :: lid_plant_minn_nh4_pft(:)=> null()
      integer, pointer :: lid_plant_minp_pft(:)=> null()
      logical, pointer :: is_sumpool_som(:) => null()
+
      logical :: debug
      character(len=loc_name_len), allocatable :: varnames(:)
      character(len=loc_name_len), allocatable :: varunits(:)
@@ -124,8 +128,10 @@ implicit none
 
   contains
   !-----------------------------------------------------------------------
-  subroutine list_init(self, name, id)   
+  subroutine list_init(self, name, id)
+
   implicit none
+
   type(list_t), pointer :: self
   character(len=*), intent(in) :: name
   integer, intent(inout) :: id
@@ -135,7 +141,9 @@ implicit none
   id=id+1;
   write(self%name,'(A)')trim(name)
   self%id=id
+
   end subroutine list_init
+
   !-----------------------------------------------------------------------
   subroutine list_insert(self, name, id)
 
@@ -154,6 +162,7 @@ implicit none
 
   end subroutine list_insert
   !-----------------------------------------------------------------------
+
   subroutine list_free(self)
   implicit none
   type(list_t), pointer :: self
@@ -168,6 +177,7 @@ implicit none
   enddo
   end subroutine list_free
   !-----------------------------------------------------------------------
+
   function list_next(self)result(next)
 
   implicit none
@@ -194,7 +204,7 @@ implicit none
   enddo
   end subroutine copy_name
 
-
+  !-------------------------------------------------------------------------------
   subroutine list_disp(list)
   implicit none
   type(list_t), pointer :: list
@@ -208,6 +218,7 @@ implicit none
 
   end subroutine list_disp
   !-------------------------------------------------------------------------------
+
  subroutine add_ompool_name(list_name, list_unit, list_pool,prefix, use_c13, use_c14, do_init, vid,uid,pid)
   implicit none
   type(list_t), pointer :: list_name
@@ -219,6 +230,7 @@ implicit none
   integer, intent(inout) :: vid
   integer, intent(inout) :: uid
   integer, intent(inout) :: pid 
+
   if(do_init)then
     call list_init(list_name, trim(prefix)//'_c',vid)
     call list_init(list_unit, 'mol C m-3',uid)
@@ -228,10 +240,12 @@ implicit none
     call list_insert(list_unit, 'mol C m-3',uid)
     call list_insert(list_pool, trim(prefix),pid)
   endif
+
   call list_insert(list_name, trim(prefix)//'_n',vid)
   call list_insert(list_unit, 'mol N m-3',uid)
   call list_insert(list_name, trim(prefix)//'_p',vid)
   call list_insert(list_unit, 'mol P m-3',uid)
+
   if(use_c13)then
     vid=vid+1;call list_insert(list_name, trim(prefix)//'_c13',vid)
     vid=vid+1;call list_insert(list_unit, 'mol C13 m-3',uid)
@@ -240,10 +254,11 @@ implicit none
     vid=vid+1;call list_insert(list_name, trim(prefix)//'_c14',vid)
     vid=vid+1;call list_insert(list_unit, 'mol C14 m-3',uid)
   endif
+
   end subroutine add_ompool_name
 
   !-------------------------------------------------------------------------------
-  subroutine Init(this, use_c13, use_c14, non_limit, nop_limit, maxpft, use_warm, batch_mode)  !add batch_mode to be used in function of init_summs under dir /SUMMS/summs1layer/BgcSummsType.F90 
+  subroutine Init(this, use_c13, use_c14, non_limit, nop_limit, maxpft, use_warm, batch_mode)
     !
     ! DESCRIPTION:
     ! Initialize summsbgc type
@@ -257,17 +272,18 @@ implicit none
   logical, intent(in) :: nop_limit
   integer, optional, intent(in) :: maxpft
   logical, intent(in) :: use_warm
-  logical, optional, intent(in) :: batch_mode      !added
+  logical, optional, intent(in) :: batch_mode
 
   ! !LOCAL VARIABLES:
   integer :: maxpft_loc
-  logical :: batch_mode_loc       !added
+  logical :: batch_mode_loc
 
   maxpft_loc = 0
   this%dom_beg=0; this%dom_end=-1
-  if(present(maxpft))maxpft_loc=maxpft
-  if(present(batch_mode))batch_mode_loc=batch_mode       !added
-  call this%InitPars(maxpft_loc, use_c14, use_c13, non_limit, nop_limit, use_warm, batch_mode_loc)    !add batch_mode_loc
+  if(present(maxpft)) maxpft_loc=maxpft
+  if(present(batch_mode)) batch_mode_loc=batch_mode
+
+  call this%InitPars(maxpft_loc, use_c14, use_c13, non_limit, nop_limit, use_warm, batch_mode_loc)
 
   call this%InitAllocate()
 
@@ -278,7 +294,7 @@ implicit none
   end subroutine Init
   !-------------------------------------------------------------------------------
 
-  subroutine InitPars(this, maxpft, use_c14, use_c13, non_limit, nop_limit, use_warm, batch_mode)    !added to stay same when used in Init()
+  subroutine InitPars(this, maxpft, use_c14, use_c13, non_limit, nop_limit, use_warm, batch_mode)
     !
     ! !DESCRIPTION:
     !  describe the layout of the stoichiometric matrix for the reactions
@@ -302,7 +318,9 @@ implicit none
     use MathfuncMod   , only : addone, countelm
     use betr_utils    , only : num2str
     use betr_constants, only : betr_string_length_long
+
     implicit none
+
     class(summsbgc_index_type) :: this
     integer, intent(in) :: maxpft
     logical, intent(in) :: use_c13
@@ -310,7 +328,8 @@ implicit none
     logical, intent(in) :: non_limit
     logical, intent(in) :: nop_limit
     logical, intent(in) :: use_warm
-    logical, intent(in) :: batch_mode    !added
+    logical, intent(in) :: batch_mode
+
     ! !LOCAL VARIABLES:
     integer :: itemp
     integer :: ireac   !counter of reactions
@@ -336,7 +355,7 @@ implicit none
     if(use_c14)then
       this%c14_loc = addone(ielem)
     endif
-    this%nelms = ielem   !carbon and nitrogen
+    this%nelms = ielem   !carbon, nitrogen, and phosphorus
 
     !litter group
     this%litr_beg=1
@@ -366,13 +385,13 @@ implicit none
     call add_ompool_name(list_name, list_unit, list_pool,'res', use_c13, use_c14, do_init=.false., vid=vid,uid=uid,pid=pid)
     this%Bm_end=this%Bm_beg-1+2*this%nelms
     
-    !som group
+    !som/polymer group
     this%som_beg=this%Bm_end+1
     this%poly = addone(itemp); this%poly_dek_reac = addone(ireac)
     call add_ompool_name(list_name, list_unit, list_pool,'poly', use_c13, use_c14, do_init=.false., vid=vid,uid=uid,pid=pid)
     this%som_end=this%som_beg-1+this%nelms
 
-    !dom group
+    !dom/monomer group
     this%dom_beg=this%som_end+1
     this%mono = addone(itemp); this%mono_dek_reac = addone(ireac)  !put mono at the end because it is defined as dom
     call add_ompool_name(list_name, list_unit, list_pool,'mono', use_c13, use_c14, do_init=.false., vid=vid,uid=uid,pid=pid)
@@ -385,6 +404,12 @@ implicit none
        countelm(this%Bm_beg,this%Bm_end) + &
        countelm(this%som_beg,this%som_end) + &
        countelm(this%dom_beg,this%dom_end))/this%nelms   !include coarse wood debris
+
+    !write(*,*)'TJ Checking:'
+    !write(*,*)'this%lit1 = ', this%lit1, '; this%lit2 = ', this%lit2, '; this%lit3 = ', this%lit3 
+    !write(*,*)'this%cwd = ', this%cwd, '; this%lwd = ', this%lwd, '; this%fwd = ', this%fwd 
+    !write(*,*)'this%mic = ', this%mic, '; this%res = ', this%res, '; this%poly = ', this%poly, '; this%mono = ', this%mono, '; this%enz = ', this%enz   
+
     allocate(this%is_sumpool_som(this%nom_pools)); this%is_sumpool_som(:)=.false.
     this%is_sumpool_som(this%poly)=.true.
     this%is_sumpool_som(this%mono)=.true.
@@ -393,29 +418,49 @@ implicit none
     this%is_sumpool_som(this%res)=.true.
 
     itemp               = this%nom_pools*this%nelms
+    this%nom_tot_elms   = itemp
 
-    this%nom_tot_elms    = itemp
+    !ielem=3(C/N/P), nom_pools=11, thus nom_tot_elms=33
+    !write(*,*)'this%nom_tot_elms = ', itemp, '; batch_mode=',batch_mode, '; use_c13=',use_c13, '; use_c14=',use_c14
+    !write(*,*)'non_limit=',non_limit, 'nop_limit=', nop_limit, 'use_warm=', use_warm
 
-    this%lid_minp_secondary = addone(itemp); this%lid_minp_secondary_to_sol_occ_reac=addone(ireac)
+    !now itemp=33 
+    !here, starting from 34 ...
+    this%lid_minp_secondary = addone(itemp) !34
+    this%lid_minp_secondary_to_sol_occ_reac=addone(ireac)
     call list_insert(list_name, 'minp_secondary',vid)
     call list_insert(list_unit, 'mol P m-3',uid)
+    !write(*,*)'this%lid_minp_secondary = ', this%lid_minp_secondary
 
-    this%lid_minp_occlude = addone(itemp);
+    this%lid_minp_occlude = addone(itemp) !35
     call list_insert(list_name, 'minp_occlude',vid)
     call list_insert(list_unit, 'mol P m-3',uid)
     this%lid_plant_minn_nh4_up_reac = addone(ireac)
     this%lid_plant_minn_no3_up_reac = addone(ireac)
     this%lid_plant_minp_up_reac = addone(ireac)
     this%lid_autr_rt_reac = addone(ireac)
+    !write(*,*)'this%lid_minp_occlude = ', this%lid_minp_occlude
 
     !non-reactive primary variables
-    this%lid_ch4        = addone(itemp);call list_insert(list_name, 'ch4',vid); call list_insert(list_unit, 'mol C m-3',uid)
-    this%lid_ar         = addone(itemp);call list_insert(list_name, 'ar',vid); call list_insert(list_unit, 'mol m-3',uid)
+    this%lid_ch4        = addone(itemp) !36
+    call list_insert(list_name, 'ch4',vid)
+    call list_insert(list_unit, 'mol C m-3',uid)
+    this%lid_ar         = addone(itemp) !37
+    call list_insert(list_name, 'ar',vid) 
+    call list_insert(list_unit, 'mol m-3',uid)
+    !write(*,*)'non-reactive primary variables: '
+    !write(*,*)'this%lid_ch4 = ', this%lid_ch4, 'this%lid_ar = ', this%lid_ar
 
     !second primary variables
-    this%lid_o2         = addone(itemp);call list_insert(list_name, 'o2',vid); call list_insert(list_unit, 'mol m-3',uid)
-
-    this%lid_co2        = addone(itemp);call list_insert(list_name, 'co2',vid);call list_insert(list_unit,'mol m-3',uid)
+    this%lid_o2         = addone(itemp) !38
+    call list_insert(list_name, 'o2',vid)
+    call list_insert(list_unit, 'mol m-3',uid)
+    !write(*,*)'second primary variables: '
+    
+    this%lid_co2        = addone(itemp)
+    call list_insert(list_name, 'co2',vid) !39
+    call list_insert(list_unit,'mol m-3',uid)
+    !write(*,*)'this%lid_o2 = ', this%lid_o2, 'this%lid_co2 = ', this%lid_co2
 
     if(use_c13)then
       this%lid_c13_co2 = addone(itemp);call list_insert(list_name, 'co2_c13',vid); call list_insert(list_unit, 'mol C13 m-3',uid)
@@ -424,55 +469,74 @@ implicit none
       this%lid_c14_co2 = addone(itemp);call list_insert(list_name, 'co2_c14',vid); call list_insert(list_unit, 'mol C14 m-3',uid)
     endif
 
-    this%lid_n2o        = addone(itemp);call list_insert(list_name, 'n2o',vid); call list_insert(list_unit,'mol N2O m-3',uid)
-    this%lid_n2         = addone(itemp);call list_insert(list_name, 'n2',vid); call list_insert(list_unit, 'mol N2 m-3',uid)
+    this%lid_n2o        = addone(itemp) !40
+    call list_insert(list_name, 'n2o',vid) 
+    call list_insert(list_unit,'mol N2O m-3',uid)
+    this%lid_n2         = addone(itemp) !41
+    call list_insert(list_name, 'n2',vid) 
+    call list_insert(list_unit, 'mol N2 m-3',uid)
+    !write(*,*)'this%lid_n2o = ', this%lid_n2o, 'this%lid_n2 = ', this%lid_n2
 
     this%nprimvars      = itemp     !primary state variables 14 + 6
 
+    !write(*,*)'Done with primary state variables.'
+    !write(*,*)'this%nprimvars = ', this%nprimvars, 'non_limit', non_limit, 'maxpft', maxpft
+
     this%lid_nh4        = addone(itemp)
     this%lid_no3        = addone(itemp)
+    !write(*,*)'this%lid_nh4 = ', this%lid_nh4, 'this%lid_no3 = ', this%lid_no3
+
     if(.not. non_limit)then
       !when N is unlimited, nh4 and no3 are not primary variables
       this%nprimvars = this%nprimvars + 2
     endif
+    
     this%lid_nh4_nit_reac = addone(ireac)       !this is also used to indicate the nitrification reaction
     this%lid_no3_den_reac = addone(ireac)       !this is also used to indicate the denitrification reaction
     call list_insert(list_name, 'nh4',vid); call list_insert(list_unit, 'mol N m-3',uid)
     call list_insert(list_name, 'no3',vid); call list_insert(list_unit, 'mol N m-3',uid)
 
+    this%lid_minp_soluble=addone(itemp) !42
     this%lid_minp_soluble_to_secp_reac = addone(ireac)
-    this%lid_minp_soluble=addone(itemp);
-    call list_insert(list_name, 'minp_soluble',vid); call list_insert(list_unit, 'mol P m-3',uid)
+    call list_insert(list_name, 'minp_soluble',vid)
+    call list_insert(list_unit, 'mol P m-3',uid)
+    !write(*,*)'this%lid_minp_soluble = ', this%lid_minp_soluble
+
     if(.not. nop_limit)then
       !when P is unlimited, P is not a primary variable
       this%nprimvars      = this%nprimvars + 1     !primary state variables 14 + 6
     endif
-
+    
+    !write(*,*) 'Diagnostic variables:'
     !diagnostic variables
-    if(maxpft>0)then
+    if(maxpft>0)then  !maxpft = 0
     this%lid_plant_minn_nh4 = addone(itemp)  !this is used to indicate plant mineral nitrogen uptake
     call list_insert(list_name, 'plant_minn_nh4',vid); call list_insert(list_unit, 'mol P m-3 s-1',uid)
+    !write(*,*)'this%lid_plant_minn_nh4 = ', this%lid_plant_minn_nh4
 
     this%lid_plant_minn_no3 = addone(itemp)  !this is used to indicate plant mineral nitrogen uptake
     call list_insert(list_name, 'plant_minn_no3',vid); call list_insert(list_unit, 'mol N mol-3 s-1',uid)
+    !write(*,*)'this%lid_plant_minn_no3 = ', this%lid_plant_minn_no3
 
     this%lid_plant_minp = addone(itemp)
     call list_insert(list_name, 'plant_minp',vid); call list_insert(list_unit, 'mol P m-3',uid)
+    !write(*,*)'this%lid_plant_minp = ', this%lid_plant_minp
 
     this%lid_autr_rt      = addone(itemp)           !this is used to indicate plant autotrophic root respiration
     call list_insert(list_name, 'autr_rt',vid); call list_insert(list_unit,'mol C m-3 s-1',uid)
+    !write(*,*)'this%lid_autr_rt = ', this%lid_autr_rt
     endif
-
-    this%lid_o2_aren_reac  = addone(ireac)
 
     this%lid_n2o_nit  = addone(itemp);
     call list_insert(list_name, 'n2o_nit',vid); call list_insert(list_unit, 'mol N2O m-3 s-1',uid)
+    !write(*,*)'this%lid_n2o_nit = ', this%lid_n2o_nit
 
     this%lid_co2_hr   = addone(itemp);
     call list_insert(list_name, 'co2_hr',vid); call list_insert(list_unit,'mol C m-3 s-1',uid)
+    !write(*,*)'this%lid_co2_hr = ', this%lid_co2_hr
 
     this%lid_no3_den  = addone(itemp);
-    call list_insert(list_name, 'no3_den',vid); call list_insert(list_unit, 'mol N m-3 s-1',uid)
+    call list_insert(list_name, 'no3_den',vid); call list_insert(list_unit, 'mol N m-3 s-1',uid) 
 
     this%lid_minn_nh4_immob = addone(itemp);
     call list_insert(list_name, 'minn_nh4_immob',vid); call list_insert(list_unit, 'mol N m-3 s-1',uid)
@@ -484,47 +548,59 @@ implicit none
     call list_insert(list_name, 'minp_immob',vid); call list_insert(list_unit, 'mol P m-3 s-1',uid)
 
     this%lid_nh4_nit        = addone(itemp);
-    call list_insert(list_name, 'nh4_nit',vid); call list_insert(list_unit,'mol N m-3 s-1',uid)
+    call list_insert(list_name, 'nh4_nit',vid); call list_insert(list_unit,'mol N m-3 s-1',uid)    
 
-    !decomposition flux              !strat adding from rzacplsbetr_cmupdated      -zlyu
+    !aerechyma transport
+    this%lid_o2_paere   = addone(itemp)
+    this%lid_o2_aren_reac  = addone(ireac)
+    call list_insert(list_name, 'o2_paere',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_o2_paere = ', this%lid_o2_paere
+
+    !decomposition flux
     this%lid_decomp     = addone(itemp);
     call list_insert(list_name, 'decomp',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_decomp = ', this%lid_decomp
 
     !uptake flux
     this%lid_uptake     = addone(itemp);
     call list_insert(list_name, 'uptake',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_uptake = ', this%lid_uptake
 
     !cue
     this%lid_cue     = addone(itemp);
     call list_insert(list_name, 'cue',vid); call list_insert(list_unit,'unitless',uid)
+    !write(*,*)'this%lid_cue = ', this%lid_cue
 
     !maintenance flux
     this%lid_maint     = addone(itemp);
     call list_insert(list_name, 'maint',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_maint = ', this%lid_maint
 
     !monomer mineral affinity
     this%lid_kaffmm     = addone(itemp);
     call list_insert(list_name, 'kaffmm',vid); call list_insert(list_unit,'mol m-3',uid)
+    !write(*,*)'this%lid_kaffmm = ', this%lid_kaffmm
 
     !enzyme mineral affinity
     this%lid_kaffem     = addone(itemp);
     call list_insert(list_name, 'kaffem',vid); call list_insert(list_unit,'mol m-3',uid)
+    !write(*,*)'this%lid_kaffem = ', this%lid_kaffem
 
     !microbial growth flux
     this%lid_micgrow     = addone(itemp);
     call list_insert(list_name, 'micgrow',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_micgrow = ', this%lid_micgrow
 
     !enzyme production flux
     this%lid_enzprod     = addone(itemp);
     call list_insert(list_name, 'enzprod',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_enzprod = ', this%lid_enzprod
 
     !microbial turnover flux
     this%lid_turnover     = addone(itemp);
     call list_insert(list_name, 'turnover',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
-    ! end of adding from rzacplsbetr_cmupdated, corresponding to added fluxes      -zlyu
-    !aerechyma transport
-    this%lid_o2_paere   = addone(itemp);
-    call list_insert(list_name, 'o2_paere',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
+    !write(*,*)'this%lid_turnover = ', this%lid_turnover
+
     if ( spinup_state == 0 ) then
        this%lid_ar_paere   = addone(itemp);  this%lid_ar_aren_reac  = addone(ireac)   !
        call list_insert(list_name, 'ar_paere',vid); call list_insert(list_unit,'mol m-3 s-1',uid)
@@ -577,7 +653,8 @@ implicit none
       this%lid_cum_closs  = addone(itemp);call list_insert(list_name, 'c_loss',vid); call list_insert(list_unit,'mol m-3',uid)
     endif
     ! end of copying
-    this%nstvars          = itemp          !64 state variables
+
+    this%nstvars          = itemp      !64 state variables
     this%nreactions = ireac            !decomposition pathways plus root auto respiration, nitrification, denitrification and plant immobilization
 
     allocate(this%primvarid(ireac)); this%primvarid(:) = -1
@@ -594,6 +671,7 @@ implicit none
     call list_free(list_name)
     call list_free(list_pool)
     call list_free(list_unit)
+
   end subroutine InitPars
   !-------------------------------------------------------------------------------
 
@@ -606,10 +684,9 @@ implicit none
     ! !ARGUMENTS:
   class(summsbgc_index_type), intent(inout) :: this
 
-
-
   end subroutine InitAllocate
   !-------------------------------------------------------------------------------
+
   subroutine set_primvar_reac_ids(this)
 
   implicit none
@@ -709,5 +786,7 @@ implicit none
   !reaction 18, o2 transport through arenchyma
   reac = this%lid_o2_aren_reac; this%primvarid(reac) = lid_o2
   end associate
+
   end subroutine set_primvar_reac_ids
+
 end module BgcSummsIndexType

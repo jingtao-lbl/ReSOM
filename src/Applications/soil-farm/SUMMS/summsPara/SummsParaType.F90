@@ -224,6 +224,7 @@ contains
   !the following will be actually calculated from CNP bgc
   end subroutine InitAllocate
   !--------------------------------------------------------------------
+
   subroutine set_defpar_default(this)
 
   use tracer_varcon      , only : natomw,patomw
@@ -268,7 +269,7 @@ contains
   this%c14decay_dom_const  =this%c14decay_const
   this%c14decay_Bm_const  =this%c14decay_const
 
-  !---------
+  !---------Jing Tao-------
     ! Microbes
     this%decay_mic0 = 0.01314_r8*365._r8/year_sec          ! Reference microbial death rate (1/second)
     this%decay_mic1 = 1.04e-4_r8*365._r8/year_sec          ! Half saturation population for density dependent mortality
@@ -277,24 +278,24 @@ contains
     this%yld_mic    = 0.8_r8                  ! Growth efficiency of microbes (g mic/g res)
     this%yld_enz    = 0.8_r8                  ! Growth efficiency of enzymes (g enz/g res)
     this%yld_res    = 0.5_r8                  ! Assimilation efficiency from monomer uptake (g res/g mono)
-    this%mic_transp = 0.05_r8                 ! Scaling factor between transporter and microbial structural biomass
     this%ref_mr_mic     = 0.0231_r8*365._r8/year_sec       ! Microbial maintenance rate (1/second)
     this%ref_kappa_mic  = 0.0537_r8*365._r8/year_sec       ! Reserve turnover rate (1/second)
     this%ref_vmax_mic   = 10.9343_r8*365._r8/year_sec      ! Maximum rate of monomer assimilation (1/second), V_B,max
+    this%mic_transp = 0.05_r8                 ! Scaling factor between transporter and microbial structural biomass
 
     ! Enzymes
     this%decay_enz    = 0.0061_r8*365._r8/year_sec         ! Enzyme turnover tate (1/second)  
     this%ref_vmax_enz = 2.4133_r8*365._r8/year_sec         ! Maximum rate of polymer degradation (1/second), V_E,max
     this%fenz2poly    = 0.2_r8                             ! Proportion of degraded exoenzyme into polymers (g poly/g enz)
       
-    ! Mineral Surfaces
-    this%minsite = 1000.000_r8               ! Abundance of mineral surface              (g C surface/m3)
-
     ! Affinity 
     this%ref_kaff_enz_poly   = 200._r8       ! Affinity parameter for enzymatic polymer degradation (g enzymes/m3)
     this%ref_kaff_enz_msurf  = 50._r8        ! Affinity parameter for surface adsorption of enzymes (g enzymes/m3)
     this%ref_kaff_mono_msurf = 25._r8        ! Affinity parameter or mineral surface adsorption of monomers (g monomers/m3)
     this%ref_kaff_mono_mic   = 1._r8         ! Affinity parameter for microbial monomer uptake (g monomers/m3)
+
+    ! Mineral Surfaces
+    this%minsite = 1000.000_r8               ! Abundance of mineral surface              (g C surface/m3)
 
   ! Set up parameters for activation energy of different processes
     this%ea_vmax_mic            = 45000._r8/rgas      ! Ea for maximum rate of monomer uptake (K)
@@ -306,17 +307,6 @@ contains
     this%ea_kaff_mono_msurf     = 10000._r8/rgas      ! Ea for monomer-mineral affinity (K)
     this%ea_kaff_enz_msurf      = 10000._r8/rgas      ! Ea for enzyme-mineral affinity (K)
 
-    ! Parameters for moisture effect on mono uptake
-    this%micb_radc              = 1._r8/1000000        ! cell radius (m)
-    this%micb_radp              = 1._r8/1000000000     ! transporter radius (m)
-    this%micb_vdpmaxr           = 300                  ! max substrate processing rate per transporter (1/s)
-    this%micb_Nports            = 3000                 ! # of substrate transporters per cell
-    this%micsite_ncell          = 10                   ! # of cells per microsite
-    this%micsite_rad            = ((80._r8*10)**(1/3))/1000000
-    this%pct_clay               = (/16._r8, 16._r8, 16._r8, 17._r8, 20._r8, 20._r8, 20._r8, 20._r8, 20._r8, 15._r8/)
-    this%pct_sand               = (/60._r8, 60._r8, 60._r8, 70._r8, 65._r8, 65._r8, 62._r8, 55._r8, 55._r8, 55._r8/)
-
-
   ! Parameters for activation energy of different processes
     !this%ea_vmax_mic            = 45000._r8     ! Ea for maximum rate of monomer uptake (K)
     !this%ea_vmax_enz            = 45000._r8     ! Ea for maximum rate of polymer degradation (K)
@@ -326,6 +316,16 @@ contains
     !this%ea_kappa_mic           = 60000._r8     ! Ea for reserve export (K)
     !this%ea_kaff_mono_msurf     = 10000._r8     ! Ea for monomer-mineral affinity (K)
     !this%ea_kaff_enz_msurf      = 10000._r8     ! Ea for enzyme-mineral affinity (K)
+
+    ! Parameters for moisture effect on mono uptake
+    this%micb_radc              = 1._r8/1000000        ! cell radius (m)
+    this%micb_radp              = 1._r8/1000000000     ! transporter radius (m)
+    this%micb_vdpmaxr           = 300                  ! max substrate processing rate per transporter (1/s)
+    this%micb_Nports            = 3000                 ! # of substrate transporters per cell
+    this%micsite_ncell          = 10                   ! # of cells per microsite
+    this%micsite_rad            = ((80._r8*10)**(1/3))/1000000
+    this%pct_clay               = (/16._r8, 16._r8, 16._r8, 17._r8, 20._r8, 20._r8, 20._r8, 20._r8, 20._r8, 15._r8/)
+    this%pct_sand               = (/60._r8, 60._r8, 60._r8, 70._r8, 65._r8, 65._r8, 62._r8, 55._r8, 55._r8, 55._r8/)
     
   !decomposition
   this%Q10                   = 2._r8
@@ -464,86 +464,143 @@ contains
   call this%readPars_bgc(ncid, bstatus)
   if(bstatus%check_status())return
 
-  ! start reading in parameter scalars from nc file                 -zlyu
-  tString='decay_mic_sc'
-  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
-  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
-  if(bstatus%check_status())return
-  this%decay_mic_sc=tempr(1)
-  this%decay_mic0 = this%decay_mic_sc * this%decay_mic0
+  write(*,*) 'Start reading in ReSOM parameters:'
+  write(*,*) '-------Microbe traits--------'
 
-  tString='gmax_mic_sc'
+  !-------Microbe traits--------
+  tString='decay_mic0'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%gmax_mic_sc=tempr(1)
-  this%gmax_mic = this%gmax_mic_sc * this%gmax_mic
+  this%decay_mic0 = tempr(1)*365._r8/year_sec          ! Reference microbial death rate (1/second)
 
-  tString='pmax_enz_sc'
+  tString='decay_mic1'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%pmax_enz_sc=tempr(1)
-  this%pmax_enz = this%pmax_enz_sc * this%pmax_enz
+  this%decay_mic1 = tempr(1)*365._r8/year_sec          ! Half saturation population for density dependent mortality
 
-  tString='ref_vmax_enz_sc'
+  tString='gmax_mic'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_vmax_enz_sc=tempr(1)
-  this%ref_vmax_enz = this%ref_vmax_enz_sc * this%ref_vmax_enz
+  this%gmax_mic = tempr(1)*365._r8/year_sec           ! Maximum microbial growth rate (1/second)
 
-  tString='ref_vmax_mic_sc'
+  tString='pmax_enz'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_vmax_mic_sc=tempr(1)
-  this%ref_vmax_mic = this%ref_vmax_mic_sc * this%ref_vmax_mic
+  this%pmax_enz = tempr(1)*365._r8/year_sec           ! Maximum enzyme production rate (1/second)
 
-  tString='ref_kaff_enz_poly_sc'
+  tString='yld_mic'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_kaff_enz_poly_sc=tempr(1)
-  this%ref_kaff_enz_poly = this%ref_kaff_enz_poly_sc * this%ref_kaff_enz_poly
+  this%yld_mic = tempr(1) ! Growth efficiency of microbes (g mic/g res)
 
-  tString='ref_kaff_enz_msurf_sc'
+  tString='yld_enz'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_kaff_enz_msurf_sc=tempr(1)
-  this%ref_kaff_enz_msurf = this%ref_kaff_enz_msurf_sc * this%ref_kaff_enz_msurf
+  this%yld_enz = tempr(1) ! Growth efficiency of enzymes (g enz/g res)
 
-  tString='ref_kaff_mono_msurf_sc'
+  tString='yld_res'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_kaff_mono_msurf_sc=tempr(1)
-  this%ref_kaff_mono_msurf = this%ref_kaff_mono_msurf_sc * this%ref_kaff_mono_msurf
+  this%yld_res = tempr(1) ! Assimilation efficiency from monomer uptake (g res/g mono)
+
+  tString='ref_mr_mic'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_mr_mic = tempr(1)*365._r8/year_sec   ! Microbial maintenance rate (1/second)
+
+  tString='ref_kappa_mic'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_kappa_mic = tempr(1)*365._r8/year_sec  ! Reserve turnover rate (1/second)
+
+  tString='ref_vmax_mic'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_vmax_mic = tempr(1)*365._r8/year_sec      ! Maximum rate of monomer assimilation (1/second), V_B,max
+ 
+  tString='mic_transp'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%mic_transp = tempr(1) ! Scaling factor between transporter and microbial structural biomass
+
+  write(*,*) '-------Enzyme--------'
+  !-------Enzyme--------
+
+  tString='decay_enz'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%decay_enz = tempr(1)  ! Enzyme turnover rate
+
+  tString='ref_vmax_enz'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_vmax_enz = tempr(1) ! Reference maximum rate of enzymatic polymer degradation
+
+  tString='fenz2poly'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%fenz2poly = tempr(1)   ! Fraction of decayed extracellular enzymes contributing to the polymer pool
+
+  write(*,*) '-------Affinity--------'
+  !-------Affinity--------
+
+  tString='ref_kaff_enz_poly'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_kaff_enz_poly = tempr(1)   !Affinity parameter for enzymatic polymer degradation
+
+  tString='ref_kaff_enz_msurf'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_kaff_enz_msurf = tempr(1) ! Affinity parameter for mineral surface adsorption of enzymes
+
+  tString='ref_kaff_mono_msurf'
+  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  if(bstatus%check_status())return
+  this%ref_kaff_mono_msurf = tempr(1) ! Affinity parameter for mineral surface adsorption of monomers
   
-  tString='ref_kaff_mono_mic_sc'
+  tString='ref_kaff_mono_mic'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%ref_kaff_mono_mic_sc=tempr(1)
-  this%ref_kaff_mono_mic = this%ref_kaff_mono_mic_sc * this%ref_kaff_mono_mic
+  this%ref_kaff_mono_mic = tempr(1) ! Affinity parameter for microbial monomer uptake
   
-  tString='minsite_sc'
+  !-------Mineral Surface--------
+
+  tString='minsite'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
-  this%minsite_sc=tempr(1)
-  this%minsite = this%minsite_sc * this%minsite
+  this%minsite = tempr(1) ! Abundance of mineral surface, indicating sorption capacity
+  
+  !------------------------------
 
   !tString='k_decay_lit_sc'
-  tString='rf_lit_bgc_sc'
-  call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
-  if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
-  if(bstatus%check_status())return
-  this%rf_lit_bgc_sc=tempr(1)
-  this%k_decay_lit1(1:2)  = this%k_decay_lit1(1:2) * this%rf_lit_bgc_sc
-  this%k_decay_lit2(1:2)  = this%k_decay_lit2(1:2) * this%rf_lit_bgc_sc
-  this%k_decay_lit3(1:2)  = this%k_decay_lit3(1:2) * this%rf_lit_bgc_sc
+  !tString='rf_lit_bgc_sc'
+  !call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)
+  !if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
+  !if(bstatus%check_status())return
+  !this%rf_lit_bgc_sc=tempr(1)
+  !this%k_decay_lit1(1:2)  = this%k_decay_lit1(1:2) * this%rf_lit_bgc_sc
+  !this%k_decay_lit2(1:2)  = this%k_decay_lit2(1:2) * this%rf_lit_bgc_sc
+  !this%k_decay_lit3(1:2)  = this%k_decay_lit3(1:2) * this%rf_lit_bgc_sc
 
   !write(stdout, *) 'decay_mic_sc=', this%decay_mic_sc,',    gmax_mic_sc= ', this%gmax_mic_sc, ',      pmax_enz_sc=', this%pmax_enz_sc
   !write(stdout, *) 'ref_vmax_mic_sc=', this%ref_vmax_mic_sc,',       reg_vmax_enz_sc=', this%ref_vmax_enz_sc, ',       minsite=', this%minsite_sc
@@ -766,7 +823,6 @@ contains
   if ( .not. readv ) call bstatus%set_msg(msg=trim(errCode)//trim(tString)//errMsg(__FILE__, __LINE__), err=-1)
   if(bstatus%check_status())return
   !this%vmax_nit=tempr(1)
-
 
   ! need update for summs pools
   ! comment out because these are already divied by year_sec when setting in default                 -zlyu

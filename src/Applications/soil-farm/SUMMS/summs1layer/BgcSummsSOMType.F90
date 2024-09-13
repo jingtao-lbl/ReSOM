@@ -25,33 +25,33 @@ implicit none
     real(r8), pointer :: def_cp(:)=> null()
     real(r8), pointer :: def_cc13(:)=> null()
     real(r8), pointer :: def_cc14(:)=> null()
-    real(r8) :: kaff_mono_mic_sm           !add new affinity paramter after considering soil moisture limitation, getting from bgcreactionsummstype    -zlyu
-    real(r8) :: phys_hydr                  !add normalized physiological hydration funtion (equation 35)          -zlyu
+    real(r8) :: kaff_mono_mic_sm           !new affinity paramter after considering soil moisture limitation, getting from bgcreactionsummstype    -zlyu
+    real(r8) :: phys_hydr                  !normalized physiological hydration funtion (equation 35 in Tang & Riley, 2019)
     integer :: record                      !-zlyu 
 
     !private parameters
-    real(r8) :: gmax_mic !constants
+    real(r8) :: gmax_mic
     real(r8) :: yld_mic
     real(r8) :: yld_enz
     real(r8) :: pmax_enz
     real(r8) :: minsite
     real(r8) :: mic_transp
     real(r8) :: decay_mic0
-    real(r8) :: decay_mic1             !added from rzacplsbetr_cmupdated      -zlyu
+    real(r8) :: decay_mic1
     real(r8) :: decay_enz
     real(r8) :: yld_res 
     real(r8) :: fenz2poly
-    real(r8) :: part_mic2poly          !partitioning added from rzacplsbetr_cmupdated      -zlyu
+    real(r8) :: part_mic2poly !partitioning
     real(r8) :: part_mic2enz
     real(r8) :: part_res2mono
-    real(r8) :: part_mic               !partitioning, old three, may be deleted later      -zlyu
+    real(r8) :: part_mic  !partitioning, old three, may be deleted later      -zlyu
     real(r8) :: part_enz 
     real(r8) :: part_mono
     real(r8) :: rate_co2
-    real(r8) :: cue                    !added from rzacplsbetr_cmupdated      -zlyu
+    real(r8) :: cue
     real(r8) :: rf_l1s1_bgc(2)    !co2 production when metabolic carbon is decomposed
     real(r8) :: rf_l2s1_bgc(2)    !co2 production when cellulose is decomposed
-    real(r8) :: rf_l3s2_bgc    !co2 production when lignin is decomposed
+    real(r8) :: rf_l3s2_bgc       !co2 production when lignin is decomposed
     real(r8) :: cwd_fcel
     real(r8) :: cwd_flig
     real(r8) :: lwd_fcel
@@ -65,7 +65,7 @@ implicit none
     real(r8) :: k_decay_cwd  !coarse root
     real(r8) :: k_decay_lwd  !large wood
     real(r8) :: k_decay_fwd  !fine branch wood
-    real(r8) :: actgB                  !start adding from rzacplsbetr_cmupdated      -zlyu
+    real(r8) :: actgB
     real(r8) :: actpE
     real(r8) :: actmr
     real(r8) :: decay_mic
@@ -144,7 +144,7 @@ contains
   this%minsite      =biogeo_con%minsite
   this%mic_transp   =biogeo_con%mic_transp
   this%decay_mic0   =biogeo_con%decay_mic0
-  this%decay_mic1   =biogeo_con%decay_mic1                !added from rzacplsbetr_cmupdated      -zlyu  
+  this%decay_mic1   =biogeo_con%decay_mic1 
   this%decay_enz    =biogeo_con%decay_enz
   this%pmax_enz     =biogeo_con%pmax_enz
 
@@ -227,7 +227,7 @@ contains
   end subroutine UpdateParas
 !------------------------------------------
 
-  subroutine run_decomp(this, is_surflit, summsbgc_index,  dtime, ystates,&         ! bgc_reaction_summs, add for using new affinity     -zlyu
+  subroutine run_decomp(this, is_surflit, summsbgc_index, dtime, ystates,&
       decompkf_eca, alpha_n, alpha_p, cascade_matrix, &
       k_decay, pot_co2_hr, bstatus)
   !
@@ -235,7 +235,6 @@ contains
   !
   use BgcSummsIndexType     , only : summsbgc_index_type
   use BgcSummsDecompType    , only : DecompSumms_type
-  !use BgcReactionsSummsType , only : bgc_reaction_summs_type                !add       -zlyu
   use BetrStatusType        , only : betr_status_type
   use betr_ctrl           , only : betr_spinup_state
   implicit none
@@ -244,7 +243,6 @@ contains
   real(r8)                    , intent(in) :: dtime
   real(r8)                    , intent(inout) :: ystates(1:summsbgc_index%nom_tot_elms)
   type(DecompSumms_type)      , intent(in) :: decompkf_eca
-  !type(bgc_reaction_summs_type),intent(in) :: bgc_reaction_summs            !add      -zlyu
   logical                     , intent(in) :: is_surflit
   !real(r8)                    , intent(in) :: pct_sand
   !real(r8)                    , intent(in) :: pct_clay
@@ -275,7 +273,7 @@ contains
   if (bstatus%check_status())return
   !calculate potential decay coefficients (1/s)
   !call this%calc_som_decay_k(lay, summsbgc_index, decompkf_eca, k_decay, ystates, bstatus)
-  call this%calc_som_decay_k(lay, summsbgc_index, decompkf_eca, k_decay(1:nsummspools), ystates, bstatus)            !bgc_reaction_summs, add bgc_reaction_summs,  -zlyu
+  call this%calc_som_decay_k(lay, summsbgc_index, decompkf_eca, k_decay(1:nsummspools), ystates, bstatus)
 
   !scale potential decay coefficients by temp (1/s)
   call this%calc_som_scale_k(lay, summsbgc_index, decompkf_eca, k_decay(1:nsummspools))
@@ -284,7 +282,7 @@ contains
   call this%calc_som_decay_r(summsbgc_index, dtime, k_decay(1:nsummspools), &
       ystates(1:nom_tot_elms), pot_om_decay_rates)
 
-  !calculate custom fluxes                                           !added from rzacplsbetr_cmupdated      -zlyu  
+  !calculate custom fluxes  
   ystates(summsbgc_index%lid_decomp) = pot_om_decay_rates(summsbgc_index%poly)
   ystates(summsbgc_index%lid_uptake) = pot_om_decay_rates(summsbgc_index%mono)*(1._r8-this%yld_res)
   ystates(summsbgc_index%lid_cue)    = this%cue
@@ -294,8 +292,7 @@ contains
   ystates(summsbgc_index%lid_micgrow)= ystates((summsbgc_index%mic-1) * nelms + c_loc)*this%actgB
   ystates(summsbgc_index%lid_enzprod)= ystates((summsbgc_index%mic-1) * nelms + c_loc)*this%actpE
   ystates(summsbgc_index%lid_turnover)= ystates((summsbgc_index%mic-1) * nelms + c_loc)*this%decay_mic
-  !end of adding from rzacplsbetr_cmupdated      -zlyu
-  
+      
   do jj = 1, nsummspools
     kc = (jj-1) * nelms + c_loc
     !the following avoids over-estimation of potential hr which is used for nitri-denit estimation
@@ -392,7 +389,7 @@ contains
     part_mic     => this%part_mic                            , &
     part_enz     => this%part_enz                            , &
     part_mono    => this%part_mono                           , &
-    part_mic2poly => this%part_mic2poly                      , &         !added from rzacplsbetr_cmupdated      -zlyu            
+    part_mic2poly => this%part_mic2poly                      , &         
     part_mic2enz  => this%part_mic2enz                       , &
     part_res2mono => this%part_res2mono                      , &
     rate_co2     => this%rate_co2                            , &
@@ -545,7 +542,7 @@ contains
 
     reac = poly_dek_reac
 
-    cascade_matrix((poly-1)*nelms+c_loc   ,reac)  = -1._r8
+    cascade_matrix((poly-1)*nelms+c_loc   ,reac)  = -1._r8   
     cascade_matrix((poly-1)*nelms+n_loc   ,reac)  = -this%icn_ratios(poly)
     cascade_matrix((poly-1)*nelms+p_loc   ,reac)  = -this%icp_ratios(poly)
 
@@ -633,87 +630,83 @@ contains
          cascade_matrix(lid_minp_soluble       ,reac)
     endif
     !---------------------------------------------------------------------------------
-    !reaction 6, mic -> poly        
-    !microbial death and structural turnover       -zlyu
+    !!reaction 6, mic -> poly        
+    !!microbial death and structural turnover       -zlyu
+
+    ! USE ROSE's version
+    !reaction 6, mic -> poly + enz + co2
+    !microbial death, enzyme production, and structural turnover
+    
     reac = mic_dek_reac
 
     cascade_matrix((mic-1)*nelms+c_loc   ,reac)  = -1._r8
     cascade_matrix((mic-1)*nelms+n_loc   ,reac)  = -this%icn_ratios(mic)
     cascade_matrix((mic-1)*nelms+p_loc   ,reac)  = -this%icp_ratios(mic)
-    !poly replaced the old one, enz is added, both from rzacplsbetr_cmupdated      -zlyu 
-    !cascade_matrix((poly-1)*nelms+c_loc   ,reac) = part_mic2poly
-    !cascade_matrix((poly-1)*nelms+n_loc   ,reac) = part_mic2poly*this%icn_ratios(poly)
-    !cascade_matrix((poly-1)*nelms+p_loc   ,reac) = part_mic2poly*this%icp_ratios(poly)
-
-    !cascade_matrix((enz-1)*nelms+c_loc   ,reac) = part_mic2enz
-    !cascade_matrix((enz-1)*nelms+n_loc   ,reac) = part_mic2enz*this%icn_ratios(enz)
-    !cascade_matrix((enz-1)*nelms+p_loc   ,reac) = part_mic2enz*this%icp_ratios(enz)
-    ! use newer version from rzacplsbetr_cmupdated      -zlyu 
-    !cascade_matrix(lid_co2                ,reac) = 1._r8-part_mic2poly-part_mic2enz
-    !cascade_matrix(lid_o2                 ,reac) = -cascade_matrix(lid_co2   ,reac)
-    !cascade_matrix(lid_nh4                ,reac) = -cascade_matrix((mic-1)*nelms+n_loc   ,reac) - &
-    !                                                cascade_matrix((poly-1)*nelms+n_loc  ,reac) - &
-    !                                                cascade_matrix((enz-1)*nelms+n_loc   ,reac)
-    !cascade_matrix(lid_minp_soluble       ,reac) = -cascade_matrix((mic-1)*nelms+p_loc   ,reac) - &
-    !                                                cascade_matrix((poly-1)*nelms+p_loc  ,reac) - &
-    !                                                cascade_matrix((enz-1)*nelms+p_loc   ,reac)
-    !cascade_matrix(lid_minn_nh4_immob     ,reac) = -cascade_matrix(lid_nh4         ,reac)
-    !cascade_matrix(lid_minp_immob         ,reac) = -cascade_matrix(lid_minp_soluble  ,reac)
-    !cascade_matrix(lid_co2_hr             ,reac) = cascade_matrix(lid_co2        ,reac) 
 
     ! for traction of mic --> poly only, no other c pool    -zlyu
-    cascade_matrix((poly-1)*nelms+c_loc   ,reac) = 1._r8
-    cascade_matrix((poly-1)*nelms+n_loc   ,reac) = 1._r8*this%icn_ratios(poly)
-    cascade_matrix((poly-1)*nelms+p_loc   ,reac) = 1._r8*this%icp_ratios(poly)
+    !cascade_matrix((poly-1)*nelms+c_loc   ,reac) = 1._r8
+    !cascade_matrix((poly-1)*nelms+n_loc   ,reac) = 1._r8*this%icn_ratios(poly)
+    !cascade_matrix((poly-1)*nelms+p_loc   ,reac) = 1._r8*this%icp_ratios(poly)
 
-    cascade_matrix(lid_co2                ,reac) = 0._r8
-    cascade_matrix(lid_o2                 ,reac) = 0._r8
+    !cascade_matrix(lid_co2                ,reac) = 0._r8
+    !cascade_matrix(lid_o2                 ,reac) = 0._r8
+    !cascade_matrix(lid_nh4                ,reac) = -cascade_matrix((mic-1)*nelms+n_loc   ,reac) - &
+    !                                                cascade_matrix((poly-1)*nelms+n_loc  ,reac)
+    !cascade_matrix(lid_minp_soluble       ,reac) = -cascade_matrix((mic-1)*nelms+p_loc   ,reac) - &
+    !                                                cascade_matrix((poly-1)*nelms+p_loc  ,reac)
+    !cascade_matrix(lid_minn_nh4_immob     ,reac) = 0._r8
+    !cascade_matrix(lid_minp_immob         ,reac) = 0._r8
+    !cascade_matrix(lid_co2_hr             ,reac) = 0._r8   
+
+    !---rzacplsbetr_cmupdated--- 
+    cascade_matrix((poly-1)*nelms+c_loc   ,reac) = part_mic2poly
+    cascade_matrix((poly-1)*nelms+n_loc   ,reac) = part_mic2poly*this%icn_ratios(poly)
+    cascade_matrix((poly-1)*nelms+p_loc   ,reac) = part_mic2poly*this%icp_ratios(poly)
+
+    cascade_matrix((enz-1)*nelms+c_loc   ,reac) = part_mic2enz
+    cascade_matrix((enz-1)*nelms+n_loc   ,reac) = part_mic2enz*this%icn_ratios(enz)
+    cascade_matrix((enz-1)*nelms+p_loc   ,reac) = part_mic2enz*this%icp_ratios(enz)
+    !---rzacplsbetr_cmupdated---
+    
+    cascade_matrix(lid_co2                ,reac) = 1._r8-part_mic2poly-part_mic2enz
+    cascade_matrix(lid_o2                 ,reac) = -cascade_matrix(lid_co2   ,reac)
     cascade_matrix(lid_nh4                ,reac) = -cascade_matrix((mic-1)*nelms+n_loc   ,reac) - &
-        cascade_matrix((poly-1)*nelms+n_loc   ,reac)
+                                                    cascade_matrix((poly-1)*nelms+n_loc  ,reac) - &
+                                                    cascade_matrix((enz-1)*nelms+n_loc   ,reac)
     cascade_matrix(lid_minp_soluble       ,reac) = -cascade_matrix((mic-1)*nelms+p_loc   ,reac) - &
-        cascade_matrix((poly-1)*nelms+p_loc   ,reac)
-    cascade_matrix(lid_minn_nh4_immob     ,reac) = 0._r8
-    cascade_matrix(lid_minp_immob         ,reac) = 0._r8
-    cascade_matrix(lid_co2_hr             ,reac) = 0._r8   
-    ! use newer version from rzacplsbetr_cmupdated              -zlyu 
-    !if(this%use_c14)then
-     ! cascade_matrix((mic-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(mic)
-      !cascade_matrix(lid_c14_co2              , reac) = (1._r8-part_mic2poly-part_mic2enz)*this%icc14_ratios(mic)
-      !cascade_matrix((poly-1)*nelms+c14_loc   , reac) = 1._r8*this%icc14_ratios(mic)
-      !cascade_matrix((enz-1)*nelms+c14_loc   , reac) = 1._r8*this%icc14_ratios(mic)
-    !endif
+                                                    cascade_matrix((poly-1)*nelms+p_loc  ,reac) - &
+                                                    cascade_matrix((enz-1)*nelms+p_loc   ,reac)
+    cascade_matrix(lid_minn_nh4_immob     ,reac) = -cascade_matrix(lid_nh4         ,reac)
+    cascade_matrix(lid_minp_immob         ,reac) = -cascade_matrix(lid_minp_soluble  ,reac)
+    cascade_matrix(lid_co2_hr             ,reac) = cascade_matrix(lid_co2        ,reac) 
 
-    !if(this%use_c13)then
-     ! cascade_matrix((mic-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(mic)
-      !cascade_matrix(lid_c13_co2              , reac) = (1._r8-part_mic2poly-part_mic2enz)*this%icc13_ratios(mic)
-      !cascade_matrix((poly-1)*nelms+c13_loc   , reac) = 1._r8*this%icc13_ratios(mic)
-      !cascade_matrix((enz-1)*nelms+c13_loc   , reac) = 1._r8*this%icc13_ratios(mic)
-   !endif
-   
     if(this%use_c14)then
       cascade_matrix((mic-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(mic)
-      cascade_matrix(lid_c14_co2              , reac) =  0._r8
+      cascade_matrix(lid_c14_co2              , reac) = (1._r8-part_mic2poly-part_mic2enz)*this%icc14_ratios(mic)
       cascade_matrix((poly-1)*nelms+c14_loc   , reac) = 1._r8*this%icc14_ratios(mic)
+      cascade_matrix((enz-1)*nelms+c14_loc   , reac) = 1._r8*this%icc14_ratios(mic)
     endif
 
     if(this%use_c13)then
       cascade_matrix((mic-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(mic)
-      cascade_matrix(lid_c13_co2              , reac) = 0._r8
+      cascade_matrix(lid_c13_co2              , reac) = (1._r8-part_mic2poly-part_mic2enz)*this%icc13_ratios(mic)
       cascade_matrix((poly-1)*nelms+c13_loc   , reac) = 1._r8*this%icc13_ratios(mic)
+      cascade_matrix((enz-1)*nelms+c13_loc   , reac) = 1._r8*this%icc13_ratios(mic)
     endif
-   ! use newer version from rzacplsbetr_cmupdated              -zlyu 
-   !if(debug)then
-    !  write(*,*)'mic carbon',cascade_matrix((mic-1)*nelms+c_loc   ,reac) +cascade_matrix((poly-1)*nelms+c_loc   ,reac)+&
-     ! cascade_matrix((enz-1)*nelms+c_loc   ,reac)+&
-      !   cascade_matrix(lid_co2                ,reac)
-      !write(*,*)'mic nitrogen',cascade_matrix((mic-1)*nelms+n_loc   ,reac) +cascade_matrix((poly-1)*nelms+n_loc   ,reac)+&
-      !cascade_matrix((enz-1)*nelms+n_loc   ,reac)+&
-       !  cascade_matrix(lid_nh4                ,reac)
-      !write(*,*)'mic phosp',cascade_matrix((mic-1)*nelms+p_loc   ,reac) +cascade_matrix((poly-1)*nelms+p_loc   ,reac)+&
-      !cascade_matrix((enz-1)*nelms+p_loc   ,reac)+&
-       !  cascade_matrix(lid_minp_soluble       ,reac)
-   !endif
    
+    !---zlyu--- 
+    !if(this%use_c14)then
+    !  cascade_matrix((mic-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(mic)
+    !  cascade_matrix(lid_c14_co2              , reac) =  0._r8
+    !  cascade_matrix((poly-1)*nelms+c14_loc   , reac) = 1._r8*this%icc14_ratios(mic)
+    !endif
+
+    !if(this%use_c13)then
+    !  cascade_matrix((mic-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(mic)
+    !  cascade_matrix(lid_c13_co2              , reac) = 0._r8
+    !  cascade_matrix((poly-1)*nelms+c13_loc   , reac) = 1._r8*this%icc13_ratios(mic)
+    !endif
+
     if(debug)then
       write(*,*)'mic carbon',cascade_matrix((mic-1)*nelms+c_loc   ,reac) +cascade_matrix((poly-1)*nelms+c_loc   ,reac)+&
          cascade_matrix(lid_co2                ,reac)
@@ -731,13 +724,13 @@ contains
     cascade_matrix((enz-1)*nelms+n_loc   ,reac)  = -this%icn_ratios(enz)
     cascade_matrix((enz-1)*nelms+p_loc   ,reac)  = -this%icp_ratios(enz)
 
-    cascade_matrix((poly-1)*nelms+c_loc   ,reac) = fenz2poly
+    cascade_matrix((poly-1)*nelms+c_loc   ,reac) = fenz2poly !f_E
     cascade_matrix((poly-1)*nelms+n_loc   ,reac) = fenz2poly*this%icn_ratios(poly)
     cascade_matrix((poly-1)*nelms+p_loc   ,reac) = fenz2poly*this%icp_ratios(poly)
 
-    cascade_matrix((mono-1)*nelms+c_loc   ,reac)  = 1-fenz2poly
-    cascade_matrix((mono-1)*nelms+n_loc   ,reac)  = (1-fenz2poly)*this%icn_ratios(mono)
-    cascade_matrix((mono-1)*nelms+p_loc   ,reac)  = (1-fenz2poly)*this%icp_ratios(mono)
+    cascade_matrix((mono-1)*nelms+c_loc   ,reac)  = 1._r8-fenz2poly
+    cascade_matrix((mono-1)*nelms+n_loc   ,reac)  = (1._r8-fenz2poly)*this%icn_ratios(mono)
+    cascade_matrix((mono-1)*nelms+p_loc   ,reac)  = (1._r8-fenz2poly)*this%icp_ratios(mono)
 
     cascade_matrix(lid_co2                ,reac) = 0._r8
     cascade_matrix(lid_o2                 ,reac) = 0._r8
@@ -752,15 +745,19 @@ contains
     if(this%use_c14)then
       cascade_matrix((enz-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(enz)
       cascade_matrix(lid_c14_co2              , reac) =  0._r8
-      cascade_matrix((poly-1)*nelms+c14_loc   , reac) =  fenz2poly*this%icc14_ratios(poly)
-      cascade_matrix((mono-1)*nelms+c14_loc   , reac) =  (1-fenz2poly)*this%icc14_ratios(mono)
+      !cascade_matrix((poly-1)*nelms+c14_loc   , reac) =  fenz2poly*this%icc14_ratios(poly)
+      !cascade_matrix((mono-1)*nelms+c14_loc   , reac) =  (1._r8-fenz2poly)*this%icc14_ratios(mono)
+      cascade_matrix((poly-1)*nelms+c14_loc   , reac) =  fenz2poly*this%icc14_ratios(enz)
+      cascade_matrix((mono-1)*nelms+c14_loc   , reac) =  (1._r8-fenz2poly)*this%icc14_ratios(enz)
     endif
 
     if(this%use_c13)then
       cascade_matrix((enz-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(enz)
       cascade_matrix(lid_c13_co2              , reac) = 0._r8
-      cascade_matrix((poly-1)*nelms+c13_loc   , reac) = fenz2poly*this%icc13_ratios(poly)
-      cascade_matrix((mono-1)*nelms+c13_loc   , reac) = (1-fenz2poly)*this%icc13_ratios(mono)
+      !cascade_matrix((poly-1)*nelms+c13_loc   , reac) = fenz2poly*this%icc13_ratios(poly)
+      !cascade_matrix((mono-1)*nelms+c13_loc   , reac) = (1._r8-fenz2poly)*this%icc13_ratios(mono)
+      cascade_matrix((poly-1)*nelms+c13_loc   , reac) = fenz2poly*this%icc13_ratios(enz)
+      cascade_matrix((mono-1)*nelms+c13_loc   , reac) = (1._r8-fenz2poly)*this%icc13_ratios(enz)
     endif
 
     if(debug)then
@@ -774,34 +771,48 @@ contains
     !---------------------------------------------------------------------------------
     !reaction 8, res -> mono + mic + enz + co2
     !reserve allocation and microbial growth                  -zlyu
+
+    ! USE ROSE's version
+    !reaction 8, res -> mono + co2
+    !reserve allocation and microbial growth
     reac = res_dek_reac
 
     cascade_matrix((res-1)*nelms+c_loc   ,reac)  = -1._r8
     cascade_matrix((res-1)*nelms+n_loc   ,reac)  = -this%icn_ratios(res)
     cascade_matrix((res-1)*nelms+p_loc   ,reac)  = -this%icp_ratios(res)
     
-    !version of reaction 8 that enz comes from res pool instead of from reaction 6 from mic pool            -zlyu
-    cascade_matrix((mic-1)*nelms+c_loc   ,reac) = part_mic 
-    cascade_matrix((mic-1)*nelms+n_loc   ,reac) = part_mic*this%icn_ratios(mic)
-    cascade_matrix((mic-1)*nelms+p_loc   ,reac) = part_mic*this%icp_ratios(mic)
+    cascade_matrix((mono-1)*nelms+c_loc   ,reac) = part_res2mono
+    cascade_matrix((mono-1)*nelms+n_loc   ,reac) = part_res2mono*this%icn_ratios(mono)
+    cascade_matrix((mono-1)*nelms+p_loc   ,reac) = part_res2mono*this%icp_ratios(mono)
 
-    cascade_matrix((enz-1)*nelms+c_loc   ,reac) = part_enz
-    cascade_matrix((enz-1)*nelms+n_loc   ,reac) = part_enz*this%icn_ratios(enz)
-    cascade_matrix((enz-1)*nelms+p_loc   ,reac) = part_enz*this%icp_ratios(enz)
-
-    cascade_matrix((mono-1)*nelms+c_loc   ,reac) = part_mono
-    cascade_matrix((mono-1)*nelms+n_loc   ,reac) = part_mono*this%icn_ratios(mono)
-    cascade_matrix((mono-1)*nelms+p_loc   ,reac) = part_mono*this%icp_ratios(mono)
-
-    cascade_matrix(lid_co2                ,reac) = 1._r8 - part_mic - part_enz - part_mono
-
+    cascade_matrix(lid_co2                ,reac) = 1._r8 - part_res2mono
     cascade_matrix(lid_o2                 ,reac) = -cascade_matrix(lid_co2   ,reac)
+
+
+
+    !-----NO-----!!!
+    !version of reaction 8 that enz comes from res pool instead of from reaction 6 from mic pool            -zlyu
+    !cascade_matrix((mic-1)*nelms+c_loc   ,reac) = part_mic 
+    !cascade_matrix((mic-1)*nelms+n_loc   ,reac) = part_mic*this%icn_ratios(mic)
+    !cascade_matrix((mic-1)*nelms+p_loc   ,reac) = part_mic*this%icp_ratios(mic)
+
+    !cascade_matrix((enz-1)*nelms+c_loc   ,reac) = part_enz
+    !cascade_matrix((enz-1)*nelms+n_loc   ,reac) = part_enz*this%icn_ratios(enz)
+    !cascade_matrix((enz-1)*nelms+p_loc   ,reac) = part_enz*this%icp_ratios(enz)
+
+    !cascade_matrix((mono-1)*nelms+c_loc   ,reac) = part_mono
+    !cascade_matrix((mono-1)*nelms+n_loc   ,reac) = part_mono*this%icn_ratios(mono)
+    !cascade_matrix((mono-1)*nelms+p_loc   ,reac) = part_mono*this%icp_ratios(mono)
+
+    !cascade_matrix(lid_co2                ,reac) = 1._r8 - part_mic - part_enz - part_mono
+
+    !cascade_matrix(lid_o2                 ,reac) = -cascade_matrix(lid_co2   ,reac)
     !adding from rzacplsbetr_cmupdated      -zlyu
     !cascade_matrix(lid_nh4                ,reac) = -cascade_matrix((res-1)*nelms+n_loc   ,reac) - &
      !                                               cascade_matrix((mono-1)*nelms+n_loc  ,reac)
 
     !cascade_matrix(lid_minp_soluble      ,reac) = -cascade_matrix((res-1)*nelms+p_loc   ,reac) - &
-     !                                              cascade_matrix((mono-1)*nelms+p_loc  ,reac)
+    !                                              cascade_matrix((mono-1)*nelms+p_loc  ,reac)
 
     cascade_matrix(lid_nh4                ,reac) = -cascade_matrix((res-1)*nelms+n_loc   ,reac) - &
                                                     cascade_matrix((mic-1)*nelms+n_loc   ,reac) - &
@@ -819,18 +830,18 @@ contains
 
     if (cascade_matrix(lid_nh4, reac) < 0._r8)alpha_n(reac)=1._r8
     if (cascade_matrix(lid_minp_soluble,reac) < 0._r8)alpha_p(reac)=1._r8 
-    !adding from rzacplsbetr_cmupdated      -zlyu
-    !if(this%use_c14)then
-     ! cascade_matrix((res-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(res)
-     ! cascade_matrix(lid_c14_co2             , reac) = (1._r8 - part_res2mono)*this%icc14_ratios(res)
-     ! cascade_matrix((mono-1)*nelms+c14_loc  , reac) =  part_res2mono*this%icc14_ratios(res)
-    !endif
 
-    !if(this%use_c13)then
-     ! cascade_matrix((res-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(res)
-     ! cascade_matrix(lid_c13_co2             , reac) = (1._r8 - part_res2mono)*this%icc13_ratios(res)
-     ! cascade_matrix((mono-1)*nelms+c13_loc   , reac) = part_res2mono*this%icc13_ratios(res)
-    !endif
+    if(this%use_c14)then
+      cascade_matrix((res-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(res)
+      cascade_matrix(lid_c14_co2             , reac) = (1._r8 - part_res2mono)*this%icc14_ratios(res)
+      cascade_matrix((mono-1)*nelms+c14_loc  , reac) =  part_res2mono*this%icc14_ratios(res)
+    endif
+
+    if(this%use_c13)then
+      cascade_matrix((res-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(res)
+      cascade_matrix(lid_c13_co2             , reac) = (1._r8 - part_res2mono)*this%icc13_ratios(res)
+      cascade_matrix((mono-1)*nelms+c13_loc   , reac) = part_res2mono*this%icc13_ratios(res)
+    endif
 
     !if(debug)then
      ! write(*,*)'res carbon',cascade_matrix((res-1)*nelms+c_loc ,reac) +&
@@ -844,21 +855,21 @@ contains
       !   cascade_matrix(lid_minp_soluble,  reac)
    !endif
    
-    if(this%use_c14)then
-      cascade_matrix((res-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(res)
-      cascade_matrix(lid_c14_co2             , reac) = (1._r8 - part_mic - part_enz - part_mono)*this%icc14_ratios(res)
-      cascade_matrix((mic-1)*nelms+c14_loc   , reac) =  part_mic*this%icc14_ratios(mic) 
-      cascade_matrix((enz-1)*nelms+c14_loc   , reac) =  part_enz*this%icc14_ratios(enz)
-      cascade_matrix((mono-1)*nelms+c14_loc  , reac) =  part_mono*this%icc14_ratios(mono)
-    endif
+    !if(this%use_c14)then
+    !  cascade_matrix((res-1)*nelms+c14_loc   , reac) = -this%icc14_ratios(res)
+    !  cascade_matrix(lid_c14_co2             , reac) = (1._r8 - part_mic - part_enz - part_mono)*this%icc14_ratios(res)
+    !  cascade_matrix((mic-1)*nelms+c14_loc   , reac) =  part_mic*this%icc14_ratios(mic) 
+    !  cascade_matrix((enz-1)*nelms+c14_loc   , reac) =  part_enz*this%icc14_ratios(enz)
+    !  cascade_matrix((mono-1)*nelms+c14_loc  , reac) =  part_mono*this%icc14_ratios(mono)
+    !endif
 
-    if(this%use_c13)then
-      cascade_matrix((res-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(res)
-      cascade_matrix(lid_c13_co2             , reac) = (1._r8 - part_mic - part_enz - part_mono)*this%icc13_ratios(res)
-      cascade_matrix((mic-1)*nelms+c13_loc   , reac) = part_mic*this%icc13_ratios(mic) 
-      cascade_matrix((enz-1)*nelms+c13_loc   , reac) = part_enz*this%icc13_ratios(enz)
-      cascade_matrix((mono-1)*nelms+c13_loc   , reac) = part_mono*this%icc13_ratios(mono)
-    endif
+    !if(this%use_c13)then
+    !  cascade_matrix((res-1)*nelms+c13_loc   , reac) = -this%icc13_ratios(res)
+    !  cascade_matrix(lid_c13_co2             , reac) = (1._r8 - part_mic - part_enz - part_mono)*this%icc13_ratios(res)
+    !  cascade_matrix((mic-1)*nelms+c13_loc   , reac) = part_mic*this%icc13_ratios(mic) 
+    !  cascade_matrix((enz-1)*nelms+c13_loc   , reac) = part_enz*this%icc13_ratios(enz)
+    !  cascade_matrix((mono-1)*nelms+c13_loc   , reac) = part_mono*this%icc13_ratios(mono)
+    !endif
 
     if(debug)then
       write(*,*)'res carbon',cascade_matrix((res-1)*nelms+c_loc ,reac) +cascade_matrix((mic-1)*nelms+c_loc   ,reac)+&
@@ -881,11 +892,6 @@ contains
     f2 = (1._r8-cwd_fcel)*(1._r8-rf_l3s2_bgc)
 
     call wood_decomp_cascade(cwd, reac, f1, f2)           !  -zlyu
-    !if(lay==1)then
-     !  write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'        !-zlyu
-      ! write(stdout, *) 'In cascade matrix where lid_co2_hr= ', lid_co2_hr,',    lid_co2= ',lid_co2
-       !write(stdout, *) '##########################################################################'
-    !endif
     
     !---------------------------------------------------------------------------------
     !reaction 8, the partition lwd into som1 and som2
@@ -1296,7 +1302,6 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
 
   use BgcSummsIndexType       , only : summsbgc_index_type
   use BgcSummsDecompType      , only : DecompSumms_type
-  use betr_constants          , only : stdout                            !-zlyu
 
   implicit none
   class(SummsSom_type)        , intent(inout) :: this
@@ -1324,54 +1329,46 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
    fwd            => summsbgc_index%fwd                  & !
    )
 
-   !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'      !-zlyu
-   !write(stdout, *) 'k_decay(lit1)= ', k_decay(lit1),',    k_decay(poly)= ',k_decay(poly), ',    k_decay(mic)= ',k_decay(mic)
-   !write(stdout, *) 'k_decay(res)= ', k_decay(res),',    k_decay(enz)= ',k_decay(enz), ',    k_decay(mono)= ',k_decay(mono)
-   !write(stdout, *) '##########################################################################'
   k_decay(lit1) = k_decay(lit1) * t_scalar *  w_scalar * o_scalar * depth_scalar
   k_decay(lit2) = k_decay(lit2) * t_scalar *  w_scalar * o_scalar * depth_scalar
   k_decay(lit3) = k_decay(lit3) * t_scalar *  w_scalar * o_scalar * depth_scalar
 
-  k_decay(poly) = k_decay(poly)  * w_scalar
-  if (w_scalar==1._r8) then
-       k_decay(mic)  = k_decay(mic)   * o_scalar * 0.000000001                !zlyu for w_scalar
-       k_decay(res)  = k_decay(res)   * o_scalar * 0.000000001                 ! zlyu for w_scalar
-       k_decay(enz)  = k_decay(enz)   * 0.000000001                ! zlyu for w_scalar
-    else
-       k_decay(mic)  = k_decay(mic)   * o_scalar * (1._r8-w_scalar)                 !zlyu for w_scalar
-       k_decay(res)  = k_decay(res)   * o_scalar * (1._r8-w_scalar)                 ! zlyu for w_scalar
-       k_decay(enz)  = k_decay(enz)   * (1._r8-w_scalar)                 ! zlyu for w_scalar
-  end if
+  !if (w_scalar==1._r8) then
+  !     k_decay(mic)  = k_decay(mic)   * o_scalar * 0.000000001                !zlyu for w_scalar
+  !     k_decay(res)  = k_decay(res)   * o_scalar * 0.000000001                 ! zlyu for w_scalar
+  !     k_decay(enz)  = k_decay(enz)   * 0.000000001                ! zlyu for w_scalar
+  !  else
+  !     k_decay(mic)  = k_decay(mic)   * o_scalar * (1._r8-w_scalar)                 !zlyu for w_scalar
+  !     k_decay(res)  = k_decay(res)   * o_scalar * (1._r8-w_scalar)                 ! zlyu for w_scalar
+  !     k_decay(enz)  = k_decay(enz)   * (1._r8-w_scalar)                 ! zlyu for w_scalar
+  !end if
   !k_decay(mono) = k_decay(mono)  * o_scalar                              !* w_scalar, no longer need this scalar, kaff_mono_mic_sm and phys_hydr has already include the effect      -zlyu
-  !Jing Tao: previous monomer uptake
+  
+  !Jing Tao: change these back to Rose's version
+  k_decay(poly) = k_decay(poly)  * w_scalar
+  k_decay(mic)  = k_decay(mic)   * o_scalar * w_scalar
+  k_decay(res)  = k_decay(res)   * o_scalar * w_scalar  
+  k_decay(enz)  = k_decay(enz)   * w_scalar            
   k_decay(mono) = k_decay(mono)  * o_scalar * w_scalar 
 
   k_decay(cwd)  = k_decay(cwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
   k_decay(lwd)  = k_decay(lwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
   k_decay(fwd)  = k_decay(fwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
-  !impose the ligin effect
+
+  !impose the ligin effect - what is this? fraction of ligin out of the decayed pools?
   k_decay(cwd)  = k_decay(cwd) * exp(-3._r8*this%cwd_flig)
   k_decay(lwd)  = k_decay(lwd) * exp(-3._r8*this%lwd_flig)
   k_decay(fwd)  = k_decay(fwd) * exp(-3._r8*this%fwd_flig)
   k_decay(lit2) = k_decay(lit2)* exp(-3._r8*this%lit_flig)
   k_decay(lit3) = k_decay(lit3)* exp(-3._r8*this%lit_flig)
-    ! testing only, check variable                        !-zlyu
-    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-    !write(stdout, *) 'calc_som_scale_k -->  w_scalar= ', w_scalar,',    new k_decay(mic)= ',k_decay(mic),',    new k_decay(poly)= ', k_decay(poly)
-    !write(stdout, *) 'new k_decay(res)= ', k_decay(res),',    new k_decay(enz)= ',k_decay(enz)
-    !write(stdout, *) 'new k_decay(mono)= ',k_decay(mono)
-    !write(stdout, *) 'o_scalar= ', o_scalar,',    t_sclar= ',t_scalar, ',    depth_scalar= ',depth_scalar
-    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-    ! end of the testing                                  !-zlyu
-  
+
   end associate
   end subroutine calc_som_scale_k
   !-------------------------------------------------------------------------------
-   subroutine calc_som_decay_k(this, lay, summsbgc_index, decompkf_eca, k_decay, ystates, bstatus)          !add and delete    -zlyu
+   subroutine calc_som_decay_k(this, lay, summsbgc_index, decompkf_eca, k_decay, ystates, bstatus)
 
   use BgcSummsIndexType       , only : summsbgc_index_type
   use BgcSummsDecompType      , only : DecompSumms_type
-  !use BgcReactionsSummsType   , only : bgc_reaction_summs_type             !add  --zlyu
   use MathfuncMod             , only : safe_div
   !use FindRootMod             , only : brent
   !use func_data_type_mod      , only : func_data_type
@@ -1379,14 +1376,12 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   use BgcSummsDebType         , only : debs
   use DebGrowMod              , only : deb_grow
   use BetrStatusType      , only : betr_status_type
-  use betr_constants          , only : stdout                            !-zlyu
 
   implicit none
   class(SummsSom_type)        , intent(inout)   :: this !this will update the relevant values for cascade_matrix
   integer                     , intent(in) :: lay
   type(DecompSumms_type)      , intent(in)    :: decompkf_eca
   type(summsbgc_index_type)   , intent(in)    :: summsbgc_index
-  !type(bgc_reaction_summs_type), intent(in)   :: bgc_reaction_summs                   !add   -zlyu
   real(r8)                    , intent(in)    :: ystates(1:summsbgc_index%nom_tot_elms)
   !real(r8)                    , intent(out)   :: k_decay(nsummspools)
   real(r8)                    , intent(out)   :: k_decay(1:nsummspools)
@@ -1394,7 +1389,7 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
 
   !type(func_data_type) :: deb
   integer    :: jj
-    real(r8) :: residual           !added from rzacplsbetr_cmupdated              -zlyu           
+    real(r8) :: residual       
     real(r8) :: actgB
     real(r8) :: actpE
     real(r8) :: actmr
@@ -1419,10 +1414,9 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
     real(r8), parameter :: macheps = 1.e-8_r8
     real(r8), parameter :: tol = 1.e-8_r8
     real(r8), parameter :: tiny_val=1.e-35_r8
-    real(r8) :: tester_k_decay_mono                  !-zlyu, testing purpose, old decay rate in comparison with after moisture limitation
-    real(r8) :: kaff_mono_mic_sm          !add for new mono uptake               -zlyu
-    real(r8) :: phys_hydr                 !add for new mono uptake               -zlyu
-    integer  :: record                    !-zlyu
+    real(r8) :: tester_k_decay_mono       !old decay rate in comparison with the updated rate with moisture limitation
+    real(r8) :: kaff_mono_mic_sm          !Affinity parameter for mono uptake with consideration of soil moisture effect
+    real(r8) :: phys_hydr                 !Normalized Physiological Hydration Function 
 
   type(debs) :: deb
   allocate(deb%gB)
@@ -1451,7 +1445,7 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
    vmax_enz         => decompkf_eca%vmax_enz           , &
    kaff_mono_mic    => decompkf_eca%kaff_mono_mic      , &
    kaff_enz_poly    => decompkf_eca%kaff_enz_poly      , &
-   kappa_mic        => decompkf_eca%kappa_mic          , &
+   kappa_mic        => decompkf_eca%kappa_mic          , & !microbial metabolic (reserve) turnover rate
    kaff_mono_msurf  => decompkf_eca%kaff_mono_msurf    , &
    kaff_enz_msurf   => decompkf_eca%kaff_enz_msurf     , &
    lit1           => summsbgc_index%lit1               , & !
@@ -1470,14 +1464,13 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
    minsite        => this%minsite                      , & !
    mic_transp     => this%mic_transp                   , & !
    decay_mic0     => this%decay_mic0                   , & !
-   decay_mic1     => this%decay_mic1                   , &  !start adding from rzacplsbetr_cmupdated              -zlyu   
+   decay_mic1     => this%decay_mic1                   , & !   
    decay_enz      => this%decay_enz                    , & !
-   actgB          => this%actgB                        , &  !start adding from rzacplsbetr_cmupdated              -zlyu  
+   actgB          => this%actgB                        , & 
    actpE          => this%actpE                        , &
    actmr          => this%actmr                        , &
    kaff_mono_mic_sm => this%kaff_mono_mic_sm           , &   !add for new affinity of mono uptake                  -zlyu
    phys_hydr      => this%phys_hydr                    , &   !add for new affinity of mono uptake                  -zlyu
-   record         => this%record                       , &   !-zlyu
    decay_mic      => this%decay_mic                      & 
   )
   call bstatus%reset()
@@ -1490,8 +1483,8 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
       y_enz=ystates((enz-1) * nelms + c_loc)
 
   !define  gB, kappa, pE, mr, residual, decay_mic
-      !ec = safe_div(y_res,y_mic)
-  ec = safe_div(y_res*y_mic , y_mic**(2._r8+1.e-20_r8))    ! revise from rzacplsbetr_cmupdated              -zlyu  
+  !ec = safe_div(y_res,y_mic)
+  ec = safe_div(y_res*y_mic , y_mic**(2._r8+1.e-20_r8)) 
   je = kappa_mic*ec
 
         ! Determine if there is enough C for growth after maintenance
@@ -1503,15 +1496,15 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
             ! Compute the actual carbon flux to support growth, the yield rate < 1, 
             ! indicating the fraction of carbon being turned into
             ! the required structure after taking off the overhead
-                   ! Maximum carbon export
-                   scal_c=safe_div( dc-gmax_mic*ec , safe_div(gmax_mic,yld_mic) + safe_div(pmax_enz,yld_enz) )
-                   if (scal_c>=1) then
-                       ! Maximum growth
-                       isgrw=1
-                   else
-                       ! Less than maximum growth
-                       isgrw=0
-                   end if
+            ! Maximum carbon export
+            scal_c=safe_div( dc-gmax_mic*ec , safe_div(gmax_mic,yld_mic) + safe_div(pmax_enz,yld_enz) )
+            if (scal_c>=1) then
+              ! Maximum growth
+              isgrw=1
+            else
+              ! Less than maximum growth
+              isgrw=0
+            end if
         end if
 
 
@@ -1529,40 +1522,38 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
 
                 ! Solve for the growth rate
                 ! Actual DEB calculation
-                    gB=0._r8
-                    pE=0._r8
-                    
-                    m0=safe_div(mr_mic,gmax_mic)
-                    jeg=safe_div(je,gmax_mic)
-                    g0=safe_div(pmax_enz,gmax_mic)
-                    ev=ec
+                gB=0._r8
+                pE=0._r8
+                
+                m0=safe_div(mr_mic,gmax_mic)
+                jeg=safe_div(je,gmax_mic)
+                g0=safe_div(pmax_enz,gmax_mic)
+                ev=ec
 
-                    !call deb_grow ( gb0, deb, fb1 )
-                    !call deb_grow ( gb1, deb, fb2 )
-                    !call brent(gbtemp, gb0, gb1, fb1, fb2, macheps, tol, deb, deb_grow, bstatus)
-
-                    !aa= yld_mic*yld_enz + safe_div(1._r8,ev)*(yld_enz + yld_mic*g0)
-                    !bb= safe_div((yld_mic*g0 - (jeg - m0)),ev) * (yld_enz + yld_mic*g0) +2._r8*safe_div(g0,ev) 
-                    !cc= -(jeg - m0) * safe_div(2._r8,ev) * g0
-                    !delta= bb*bb - 4._r8*aa*cc
-                    !jxx=safe_div((-bb + sqrt(delta)),(2._r8*aa))
-                    !gB=safe_div((jeg - m0 - jxx),ev)
-                    !pE=(jxx - safe_div(gB,yld_mic))*yld_enz
-                    
-                    !start adding from rzacplsbetr_cmupdated              -zlyu 
-                    aa= yld_mic*yld_enz + safe_div(1._r8,ev)*(yld_enz + yld_mic*g0)
-                    bb= yld_mic*g0 - safe_div(jeg - m0 , ev) * (yld_enz + yld_mic*g0) +2._r8*safe_div(g0,ev) 
-                    cc= -(jeg - m0) * safe_div(2._r8,ev) * g0
-                    delta= bb*bb - 4._r8*aa*cc
-                    jxx=safe_div(-bb + sqrt(delta) , 2._r8*aa)
-                    gB=safe_div(jeg - m0 - jxx , ev)
-                    pE=(jxx - safe_div(gB,yld_mic))*yld_enz
-
+                !call deb_grow ( gb0, deb, fb1 )
+                !call deb_grow ( gb1, deb, fb2 )
+                !call brent(gbtemp, gb0, gb1, fb1, fb2, macheps, tol, deb, deb_grow, bstatus)
+                !aa= yld_mic*yld_enz + safe_div(1._r8,ev)*(yld_enz + yld_mic*g0)
+                !bb= safe_div((yld_mic*g0 - (jeg - m0)),ev) * (yld_enz + yld_mic*g0) +2._r8*safe_div(g0,ev) 
+                !cc= -(jeg - m0) * safe_div(2._r8,ev) * g0
+                !delta= bb*bb - 4._r8*aa*cc
+                !jxx=safe_div((-bb + sqrt(delta)),(2._r8*aa))
+                !gB=safe_div((jeg - m0 - jxx),ev)
+                !pE=(jxx - safe_div(gB,yld_mic))*yld_enz
+ 
+                aa= yld_mic*yld_enz + safe_div(1._r8,ev)*(yld_enz + yld_mic*g0)
+                bb= yld_mic*g0 - safe_div(jeg - m0 , ev) * (yld_enz + yld_mic*g0) +2._r8*safe_div(g0,ev) 
+                cc= -(jeg - m0) * safe_div(2._r8,ev) * g0
+                delta= bb*bb - 4._r8*aa*cc
+                jxx=safe_div(-bb + sqrt(delta) , 2._r8*aa)
+                gB=safe_div(jeg - m0 - jxx , ev)
+                pE=(jxx - safe_div(gB,yld_mic))*yld_enz
 
                 ! Population growth        
                 actgB=gB*gmax_mic   !deb%gB
                 ! Enzyme production        
-                actpE=pE*pmax_enz   !deb%pE
+                actpE=pE*pmax_enz   !deb%pE !-zlyu ---USE THIS!
+                !actpE=pE*gmax_mic   !deb%pE
                 ! Maintenance
                 actmr=mr_mic                      
 
@@ -1577,10 +1568,14 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
         end select
 
         ! Compute density-dependent specific microbial mortality [mol c/ut]   
-              decay_mic=decay_mic0*y_mic**0.5_r8
+         decay_mic=decay_mic0*y_mic**0.5_r8
+         
+         !Rose's:  
+         !decay_mic=decay_mic0*y_mic!**0.5_r8
+         !decay_mic=safe_div(decay_mic0*y_mic , decay_mic1+y_mic )
 
         ! Compute residual
-              residual = (kappa_mic-actgB)*y_res-(actmr + safe_div(actpE,yld_enz) + safe_div(actgB,yld_mic) )*y_mic
+        residual = (kappa_mic-actgB)*y_res-(actmr + safe_div(actpE,yld_enz) + safe_div(actgB,yld_mic) )*y_mic
 
   !k_decay(poly) = safe_div( y_enz*vmax_enz , kaff_enz_poly+y_poly+y_enz+minsite*safe_div( kaff_enz_poly , kaff_enz_msurf ))
   !k_decay(mic) = safe_div( y_mic*vmax_mic*mic_transp , kaff_mono_mic+y_mono+y_mic+minsite*safe_div( kaff_mono_mic ,&
@@ -1588,30 +1583,17 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   !start adding from rzacplsbetr_cmupdated                   -zlyu
   k_decay(poly) = safe_div( y_enz*vmax_enz , kaff_enz_poly+y_poly+y_enz+minsite*safe_div( kaff_enz_poly , kaff_enz_msurf ))
   !old version as comparison test                            -zlyu
-  tester_k_decay_mono  = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+mic_transp*y_mic+minsite*safe_div( kaff_mono_mic ,&
-       kaff_mono_msurf ))                                   !-zlyu
+  !tester_k_decay_mono  = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+mic_transp*y_mic+minsite*safe_div( kaff_mono_mic ,&
+  !     kaff_mono_msurf ))                                   !-zlyu
   !k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp ,kaff_mono_mic_sm+y_mono+ mic_transp*y_mic +minsite*safe_div( kaff_mono_mic_sm, kaff_mono_msurf ))*phys_hydr
   ! use new affinity parameter and hydraulic equation for aqueous diffusivity of mono uptaken by microbes               -zlyu
 
-    ! Jing Tao - previous monomer uptake scheme:
-   k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+mic_transp*y_mic+minsite*safe_div( kaff_mono_mic, kaff_mono_msurf ))
-  
-  !if(record ==0)then
-     !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'         !-zlyu
-     !write(stdout, *) 'k_decay(lit1)= ', k_decay(lit1),',    k_decay(poly)= ',k_decay(poly), ',    k_decay(mic)= ',k_decay(mic)
-   !  write(stdout, *) 'k_decay(mono)= ',k_decay(mono)
-    ! write(stdout, *) 'tester_k_decay_mono= ', tester_k_decay_mono
-     !write(stdout, *) 'kaff_mono_mic_sm= ', kaff_mono_mic_sm, ',     phys_hydr= ', phys_hydr
-     !write(stdout, *) '##########################################################################'         !-zlyu
- ! endif
+    ! Rose's:  
+   k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+ mic_transp*y_mic+minsite*safe_div( kaff_mono_mic, kaff_mono_msurf ))
   
   k_decay(mic) = decay_mic-actgB
   k_decay(res) = kappa_mic-actgB+decay_mic
   k_decay(enz) = decay_enz
-  
-  !k_decay(res) = decay_mic
-  !k_decay(enz) = decay_enz
-  !k_decay(mono) = kappa_mic - actgB + decay_mic
   k_decay(lit1) = this%k_decay_lit1(lay)
   k_decay(lit2) = this%k_decay_lit2(lay)
   k_decay(lit3) = this%k_decay_lit3(lay)
@@ -1620,23 +1602,26 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   k_decay(fwd) = this%k_decay_fwd
 
   !partitioning for cascade_matrix
-  !this%part_mic2poly = safe_div(decay_mic , (decay_mic-actgB))
+      this%part_mic2poly = safe_div(decay_mic , (decay_mic-actgB))
 
-      !this%part_mic2enz = safe_div(pmax_enz , (decay_mic-actgB))
+      this%part_mic2enz = safe_div(pmax_enz , (decay_mic-actgB))
 
-      !this%part_res2mono = safe_div(decay_mic , (kappa_mic-actgB+decay_mic))
+      this%part_res2mono = safe_div(decay_mic , (kappa_mic-actgB+decay_mic))
 
       !this%rate_co2 = k_decay(mono)*y_mono*(1-yld_res) + y_res*(kappa_mic-actgB) - y_mic*(actpE+actgB)
+      !this%cue = 1 - safe_div(this%rate_co2,k_decay(mono)*y_mono)
+
+      !Do not use zlyu's version:
+      !this%part_mic = safe_div(y_mic*actgB , y_res*(kappa_mic-actgB+decay_mic))
+      !this%part_enz = safe_div(y_mic*actpE  , y_res*(kappa_mic-actgB+decay_mic))
+      !this%part_mono = safe_div(decay_mic , (kappa_mic-actgB+decay_mic))
+      !this%rate_co2 =  (y_mic*(actmr+actpE*(safe_div(1._r8,yld_enz)-1._r8)+actgB*&
+      !  (safe_div(1._r8,yld_res)-1._r8))+residual, y_res*(kappa_mic-actgB+decay_mic))
+
+      !Jing Tao: 
+      this%rate_co2 = k_decay(mono)*y_mono*(1-yld_res) + y_mic*(actmr+actpE*(safe_div(1._r8,yld_enz)-1._r8)+actgB*&
+        (safe_div(1._r8,yld_res)-1._r8))+residual
       this%cue = 1 - safe_div(this%rate_co2,k_decay(mono)*y_mono)
-
-      this%part_mic = safe_div(y_mic*actgB , y_res*(kappa_mic-actgB+decay_mic))
-
-      this%part_enz = safe_div(y_mic*actpE  , y_res*(kappa_mic-actgB+decay_mic))
-
-      this%part_mono = safe_div(decay_mic , (kappa_mic-actgB+decay_mic))
-
-      this%rate_co2 = safe_div(y_mic*(actmr+actpE*(safe_div(1._r8,yld_enz)-1._r8)+actgB*&
-        (safe_div(1._r8,yld_res)-1._r8))+residual, y_res*(kappa_mic-actgB+decay_mic))
 
   end associate
   end subroutine calc_som_decay_k
