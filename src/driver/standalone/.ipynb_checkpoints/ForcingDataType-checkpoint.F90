@@ -1,0 +1,1501 @@
+module ForcingDataType
+
+  use bshr_kind_mod  , only : r8 => shr_kind_r8
+  use bshr_const_mod , only : rhoice => SHR_CONST_RHOICE
+  use bshr_const_mod , only : rhoh2o => SHR_CONST_RHOFW
+  use betr_constants , only : betr_filename_length
+  use betr_constants , only : betr_string_length, betr_string_length_long
+  use betr_constants , only : betr_namelist_buffer_size
+
+  implicit none
+
+  private
+
+  character(len=*), private, parameter :: mod_filename = &
+       __FILE__
+
+  character(len=*), parameter          :: steady_state_name = 'steady state'
+  character(len=*), parameter          :: transient_name = 'transient'
+  integer, parameter                   :: transient = 1
+  integer, parameter                   :: steady_state = 2
+
+  type, public :: ForcingData_type
+     character(len=betr_filename_length) :: forcing_filename
+     character(len=betr_filename_length) :: disturb_forc_filename        ! add disturbance forcing data file   -zlyu
+     character(len=betr_string_length)   :: forcing_format ! file format: netcdf, namelist, csv, etc.
+     character(len=betr_string_length)   :: forcing_type_name ! steady state, transient
+     integer                             :: forcing_type
+     integer                             :: num_levels
+     integer                             :: num_time
+     integer                             :: num_disturb_time         ! time of the disturbance foricng data  -zlyu
+     integer                             :: num_columns
+     real(r8), allocatable               :: t_soi(:,:)
+     real(r8), allocatable               :: h2osoi_liqvol(:,:)
+     real(r8), allocatable               :: h2osoi_icevol(:,:)
+     real(r8), allocatable               :: h2osoi_liq(:,:)
+     real(r8), allocatable               :: h2osoi_ice(:,:)
+     real(r8), allocatable               :: qflx_infl(:)       !surface infiltration, mm/s
+     real(r8), allocatable               :: qflx_rootsoi(:,:)   !transpiration at depth, m/s
+     real(r8), allocatable               :: pbot(:)            !amtospheric pressure, Pa
+     real(r8), allocatable               :: tbot(:)            !atmoshperic temperature, kelvin
+     real(r8), allocatable               :: qbot(:)            !water flux at bottom boundary, mm/s
+     real(r8), allocatable               :: finundated(:)
+     real(r8), allocatable               :: nflx_nh4_vr(:,:)
+     real(r8), allocatable               :: nflx_no3_vr(:,:)
+     real(r8), allocatable               :: pflx_po4_vr(:,:)
+     real(r8), allocatable               :: cflx_met_vr(:,:)
+     real(r8), allocatable               :: cflx_cel_vr(:,:)
+     real(r8), allocatable               :: cflx_lig_vr(:,:)
+     real(r8), allocatable               :: cflx_cwd_vr(:,:)
+     real(r8), allocatable               :: nflx_met_vr(:,:)
+     real(r8), allocatable               :: nflx_cel_vr(:,:)
+     real(r8), allocatable               :: nflx_lig_vr(:,:)
+     real(r8), allocatable               :: nflx_cwd_vr(:,:)
+     real(r8), allocatable               :: pflx_met_vr(:,:)
+     real(r8), allocatable               :: pflx_cel_vr(:,:)
+     real(r8), allocatable               :: pflx_lig_vr(:,:)
+     real(r8), allocatable               :: pflx_cwd_vr(:,:)
+     real(r8), allocatable               :: qflx_runoff_col(:)
+     real(r8), allocatable               :: rr_vr(:,:)
+     !------------ adding disturbance forcing data -------------------   !-zlyu
+     real(r8), allocatable               :: t_soi_disturb(:,:)
+     real(r8), allocatable               :: h2osoi_liqvol_disturb(:,:)
+     real(r8), allocatable               :: h2osoi_icevol_disturb(:,:)
+     real(r8), allocatable               :: h2osoi_liq_disturb(:,:)
+     real(r8), allocatable               :: h2osoi_ice_disturb(:,:)
+     real(r8), allocatable               :: qflx_infl_disturb(:)       !surface infiltration, mm/s
+     real(r8), allocatable               :: qflx_rootsoi_disturb(:,:)   !transpiration at depth, m/s
+     real(r8), allocatable               :: pbot_disturb(:)            !amtospheric pressure, Pa
+     real(r8), allocatable               :: tbot_disturb(:)            !atmoshperic temperature, kelvin
+     real(r8), allocatable               :: qbot_disturb(:)            !water flux at bottom boundary, mm/s
+     real(r8), allocatable               :: finundated_disturb(:)
+     real(r8), allocatable               :: nflx_nh4_vr_disturb(:,:)
+     real(r8), allocatable               :: nflx_no3_vr_disturb(:,:)
+     real(r8), allocatable               :: pflx_po4_vr_disturb(:,:)
+     real(r8), allocatable               :: cflx_met_vr_disturb(:,:)
+     real(r8), allocatable               :: cflx_cel_vr_disturb(:,:)
+     real(r8), allocatable               :: cflx_lig_vr_disturb(:,:)
+     real(r8), allocatable               :: cflx_cwd_vr_disturb(:,:)
+     real(r8), allocatable               :: nflx_met_vr_disturb(:,:)
+     real(r8), allocatable               :: nflx_cel_vr_disturb(:,:)
+     real(r8), allocatable               :: nflx_lig_vr_disturb(:,:)
+     real(r8), allocatable               :: nflx_cwd_vr_disturb(:,:)
+     real(r8), allocatable               :: pflx_met_vr_disturb(:,:)
+     real(r8), allocatable               :: pflx_cel_vr_disturb(:,:)
+     real(r8), allocatable               :: pflx_lig_vr_disturb(:,:)
+     real(r8), allocatable               :: pflx_cwd_vr_disturb(:,:)
+     real(r8), allocatable               :: qflx_runoff_col_disturb(:)
+     real(r8), allocatable               :: rr_vr_disturb(:,:)
+     !------------ end of disturbance forcing data -------------------   !-zlyu
+     logical                             :: use_rootsoit
+     logical                             :: is_disturbance        ! add a flag to show whether this simulation will use disturbance foricng data or not. -zlyu
+   contains
+     procedure, public :: Init
+     procedure, public :: Init_disturb                 ! add to initial disturbance file time, and types   -zlyu
+     procedure, public :: ReadData
+     procedure, public :: ReadForcingData
+     procedure, public :: ReadCNPData
+     procedure, public :: UpdateForcing
+     procedure, public :: UpdateCNPForcing
+     procedure, public :: discharge
+     procedure, public :: infiltration
+     procedure, private :: InitAllocate
+     procedure, private ::  InitDisturbAllocate        ! add, for disturbance forcing file    -zlyu
+     procedure, private :: InitAllocate_CNP
+     procedure, private :: InitAllocate_Disturb_CNP    ! add, for RR_vr of the disturbance period         -zlyu
+     procedure, private :: ReadNameList
+     procedure, public  :: Destroy
+     procedure, public  :: Destroy_disturb             ! add                -zlyu
+     procedure, public  :: ReadDisturbForcData         ! add to read disturbance climate forcing data     -zlyu
+     procedure, public  :: ReadDisturbCNPData          ! add to read disturbance CNP forcing data         -zlyu
+     procedure, private :: ReadDisturbNameList         ! add to read new file namelist                    -zlyu
+     procedure, public :: discharge_disturb            ! add             -zlyu
+     
+  end type ForcingData_type
+
+contains
+
+  subroutine Init(this, dim_levels, dim_time)
+    !DESCRIPTION
+    !initialize
+    implicit none
+    !ARGUMENTS
+    class(ForcingData_type), intent(inout) :: this
+    integer, intent(in)     :: dim_levels, dim_time
+
+    this%num_columns = 1
+    this%num_levels  =dim_levels
+    this%num_time    =dim_time
+
+    select case (trim(this%forcing_type_name))
+       case (transient_name)
+          this%forcing_type = transient
+       case (steady_state_name)
+          this%forcing_type = steady_state
+          ! ignore the values scraped from netcdf and just use one time level.
+          this%num_time = 1
+       case default
+          this%forcing_type = transient
+          write(*, *) 'WARNING: no forcing data type specified, using transient.'
+       end select
+
+    call this%InitAllocate()
+
+  end subroutine Init
+
+
+  !------------------------------------------------------------------------
+    ! init for disturbance foricng data               -zlyu
+    subroutine Init_disturb(this, dim_levels, dim_disturb_time)
+    !DESCRIPTION
+    !initialize
+    implicit none
+    !ARGUMENTS
+    class(ForcingData_type), intent(inout) :: this
+    integer, intent(in)     :: dim_levels, dim_disturb_time
+
+    this%num_columns         = 1
+    this%num_levels          = dim_levels
+    this%num_disturb_time    = dim_disturb_time       ! need to get this one, should be different than original forcing length     -zlyu
+
+    select case (trim(this%forcing_type_name))
+       case (transient_name)
+          this%forcing_type = transient
+       case (steady_state_name)
+          this%forcing_type = steady_state
+          ! ignore the values scraped from netcdf and just use one time level.
+          this%num_disturb_time = 1
+       case default
+          this%forcing_type = transient
+          write(*, *) 'WARNING: no disturb forcing data type specified, using transient.'
+       end select
+
+    call this%InitDisturbAllocate()        ! call corresponding subroutine         -zlyu
+
+  end subroutine Init_disturb
+  ! end of adding new subroutine            -zlyu
+  !---------------------------------------------------------------------------
+  subroutine Destroy(this)
+  !DESCRIPTION
+  !allocate memory
+  implicit none
+  class(ForcingData_type), intent(inout) :: this
+  !at this moment the variable size is fixed
+
+  if(allocated(this%t_soi))deallocate(this%t_soi)
+  if(allocated(this%h2osoi_liqvol))deallocate(this%h2osoi_liqvol)
+  if(allocated(this%h2osoi_icevol))deallocate(this%h2osoi_icevol)
+  if(allocated(this%h2osoi_liq))deallocate(this%h2osoi_liq)
+  if(allocated(this%h2osoi_ice))deallocate(this%h2osoi_ice)
+  if(allocated(this%qflx_infl))deallocate(this%qflx_infl)
+  if(allocated(this%qflx_rootsoi))deallocate(this%qflx_rootsoi)
+  if(allocated(this%pbot))deallocate(this%pbot)
+  if(allocated(this%qbot))deallocate(this%qbot)
+  if(allocated(this%tbot))deallocate(this%tbot)
+  if(allocated(this%finundated))deallocate(this%finundated)
+  if(allocated(this%nflx_nh4_vr))deallocate(this%nflx_nh4_vr)
+  if(allocated(this%nflx_no3_vr))deallocate(this%nflx_no3_vr)
+  if(allocated(this%pflx_po4_vr))deallocate(this%pflx_po4_vr)
+  if(allocated(this%cflx_met_vr))deallocate(this%cflx_met_vr)
+  if(allocated(this%cflx_cel_vr))deallocate(this%cflx_cel_vr)
+  if(allocated(this%cflx_lig_vr))deallocate(this%cflx_lig_vr)
+  if(allocated(this%cflx_cwd_vr))deallocate(this%cflx_cwd_vr)
+  if(allocated(this%rr_vr))deallocate(this%rr_vr)
+  if(allocated(this%nflx_met_vr))deallocate(this%nflx_met_vr)
+  if(allocated(this%nflx_cel_vr))deallocate(this%nflx_cel_vr)
+  if(allocated(this%nflx_lig_vr))deallocate(this%nflx_lig_vr)
+  if(allocated(this%nflx_cwd_vr))deallocate(this%nflx_cwd_vr)
+  if(allocated(this%pflx_met_vr))deallocate(this%pflx_met_vr)
+  if(allocated(this%pflx_cel_vr))deallocate(this%pflx_cel_vr)
+  if(allocated(this%pflx_lig_vr))deallocate(this%pflx_lig_vr)
+  if(allocated(this%pflx_cwd_vr))deallocate(this%pflx_cwd_vr)
+  end subroutine Destroy
+
+  !---------------------------------------------------------------------------
+  ! dellocate space for disturbance data      -zlyu
+  subroutine Destroy_disturb(this)
+  !DESCRIPTION
+  !allocate memory
+  implicit none
+  class(ForcingData_type), intent(inout) :: this
+  !at this moment the variable size is fixed
+
+  if(allocated(this%t_soi_disturb))deallocate(this%t_soi_disturb)
+  if(allocated(this%h2osoi_liqvol_disturb))deallocate(this%h2osoi_liqvol_disturb)
+  if(allocated(this%h2osoi_icevol_disturb))deallocate(this%h2osoi_icevol_disturb)
+  if(allocated(this%h2osoi_liq_disturb))deallocate(this%h2osoi_liq_disturb)
+  if(allocated(this%h2osoi_ice_disturb))deallocate(this%h2osoi_ice_disturb)
+  if(allocated(this%qflx_infl_disturb))deallocate(this%qflx_infl_disturb)
+  if(allocated(this%qflx_rootsoi_disturb))deallocate(this%qflx_rootsoi_disturb)
+  if(allocated(this%pbot_disturb))deallocate(this%pbot_disturb)
+  if(allocated(this%qbot_disturb))deallocate(this%qbot_disturb)
+  if(allocated(this%tbot_disturb))deallocate(this%tbot_disturb)
+  if(allocated(this%finundated_disturb))deallocate(this%finundated_disturb)
+  if(allocated(this%nflx_nh4_vr_disturb))deallocate(this%nflx_nh4_vr_disturb)
+  if(allocated(this%nflx_no3_vr_disturb))deallocate(this%nflx_no3_vr_disturb)
+  if(allocated(this%pflx_po4_vr_disturb))deallocate(this%pflx_po4_vr_disturb)
+  if(allocated(this%cflx_met_vr_disturb))deallocate(this%cflx_met_vr_disturb)
+  if(allocated(this%cflx_cel_vr_disturb))deallocate(this%cflx_cel_vr_disturb)
+  if(allocated(this%cflx_lig_vr_disturb))deallocate(this%cflx_lig_vr_disturb)
+  if(allocated(this%cflx_cwd_vr_disturb))deallocate(this%cflx_cwd_vr_disturb)
+  if(allocated(this%rr_vr_disturb))deallocate(this%rr_vr_disturb)
+  if(allocated(this%nflx_met_vr_disturb))deallocate(this%nflx_met_vr_disturb)
+  if(allocated(this%nflx_cel_vr_disturb))deallocate(this%nflx_cel_vr_disturb)
+  if(allocated(this%nflx_lig_vr_disturb))deallocate(this%nflx_lig_vr_disturb)
+  if(allocated(this%nflx_cwd_vr_disturb))deallocate(this%nflx_cwd_vr_disturb)
+  if(allocated(this%pflx_met_vr_disturb))deallocate(this%pflx_met_vr_disturb)
+  if(allocated(this%pflx_cel_vr_disturb))deallocate(this%pflx_cel_vr_disturb)
+  if(allocated(this%pflx_lig_vr_disturb))deallocate(this%pflx_lig_vr_disturb)
+  if(allocated(this%pflx_cwd_vr_disturb))deallocate(this%pflx_cwd_vr_disturb)
+  
+  end subroutine Destroy_disturb
+
+  !------------------------------------------------------------------------
+  subroutine InitAllocate(this)
+    !DESCRIPTION
+    !allocate memory
+    implicit none
+    class(ForcingData_type), intent(inout) :: this
+    !at this moment the variable size is fixed
+
+    allocate(this%t_soi(this%num_time, this%num_levels))
+    allocate(this%h2osoi_liqvol(this%num_time, this%num_levels))
+    allocate(this%h2osoi_icevol(this%num_time, this%num_levels))
+    allocate(this%h2osoi_liq(this%num_time, this%num_levels))
+    allocate(this%h2osoi_ice(this%num_time, this%num_levels))
+    allocate(this%qflx_infl(this%num_time))
+    allocate(this%qflx_rootsoi(this%num_time, this%num_levels))
+    allocate(this%pbot(this%num_time))
+    allocate(this%qbot(this%num_time))
+    allocate(this%tbot(this%num_time))
+    allocate(this%finundated(this%num_time)); this%finundated(:)=0._r8
+    allocate(this%qflx_runoff_col(this%num_time)); this%qflx_runoff_col(:)=0._r8
+  end subroutine InitAllocate
+  !------------------------------------------------------------------------
+    ! disturbance forcing data, has different length of time, re-inital space for those    -zlyu
+    subroutine InitDisturbAllocate(this)
+    !DESCRIPTION
+    !allocate memory
+    implicit none
+    class(ForcingData_type), intent(inout) :: this
+    !at this moment the variable size is fixed
+    ! note the length of the disturbance file is different, is num_disturb_time       -zlyu
+    
+    allocate(this%t_soi_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%h2osoi_liqvol_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%h2osoi_icevol_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%h2osoi_liq_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%h2osoi_ice_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%qflx_infl_disturb(this%num_disturb_time))
+    allocate(this%qflx_rootsoi_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pbot_disturb(this%num_disturb_time))
+    allocate(this%qbot_disturb(this%num_disturb_time))
+    allocate(this%tbot_disturb(this%num_disturb_time))
+    allocate(this%finundated_disturb(this%num_disturb_time)); this%finundated_disturb(:)=0._r8
+    allocate(this%qflx_runoff_col_disturb(this%num_disturb_time)); this%qflx_runoff_col_disturb(:)=0._r8
+  end subroutine InitDisturbAllocate
+  ! end of new subroutine           -zlyu
+  !------------------------------------------------------------------------
+  
+  subroutine InitAllocate_CNP(this)
+    !DESCRIPTION
+    !allocate memory
+    implicit none
+    class(ForcingData_type), intent(inout) :: this
+    !at this moment the variable size is fixed
+
+    allocate(this%cflx_met_vr(this%num_time, this%num_levels))
+    allocate(this%cflx_cel_vr(this%num_time, this%num_levels))
+    allocate(this%cflx_lig_vr(this%num_time, this%num_levels))
+    allocate(this%cflx_cwd_vr(this%num_time, this%num_levels))
+    allocate(this%rr_vr(this%num_time, this%num_levels)); this%rr_vr(:,:) = 0._r8
+    allocate(this%nflx_met_vr(this%num_time, this%num_levels))
+    allocate(this%nflx_cel_vr(this%num_time, this%num_levels))
+    allocate(this%nflx_lig_vr(this%num_time, this%num_levels))
+    allocate(this%nflx_cwd_vr(this%num_time, this%num_levels))
+    allocate(this%pflx_met_vr(this%num_time, this%num_levels))
+    allocate(this%pflx_cel_vr(this%num_time, this%num_levels))
+    allocate(this%pflx_lig_vr(this%num_time, this%num_levels))
+    allocate(this%pflx_cwd_vr(this%num_time, this%num_levels))
+    allocate(this%nflx_nh4_vr(this%num_time, this%num_levels))
+    allocate(this%nflx_no3_vr(this%num_time, this%num_levels))
+    allocate(this%pflx_po4_vr(this%num_time, this%num_levels))
+
+  end subroutine InitAllocate_CNP
+
+  !------------------------------------------------------------------------
+  ! this is for disturbance period different RR_vr reading     -zlyu
+  subroutine InitAllocate_Disturb_CNP(this)
+    !DESCRIPTION
+    !allocate memory
+    implicit none
+    class(ForcingData_type), intent(inout) :: this
+    !at this moment the variable size is fixed
+
+    allocate(this%cflx_met_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%cflx_cel_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%cflx_lig_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%cflx_cwd_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_met_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_cel_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_lig_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_cwd_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pflx_met_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pflx_cel_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pflx_lig_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pflx_cwd_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_nh4_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%nflx_no3_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%pflx_po4_vr_disturb(this%num_disturb_time, this%num_levels))
+    allocate(this%rr_vr_disturb(this%num_disturb_time, this%num_levels))     !-zlyu
+
+  end subroutine InitAllocate_Disturb_CNP
+
+  !------------------------------------------------------------------------
+  subroutine ReadCNPData(this)
+    !read infomration about forcing data
+    !USES
+    use ncdio_pio    , only : file_desc_t
+    use ncdio_pio    , only : ncd_nowrite
+    use ncdio_pio    , only : ncd_pio_openfile
+    use ncdio_pio    , only : get_dim_len
+    use ncdio_pio    , only : ncd_getvar, Var_desc_t
+    use ncdio_pio    , only : ncd_pio_closefile, check_var
+    use babortutils  , only : endrun
+    use bshr_log_mod , only : errMsg => shr_log_errMsg
+    use BeTR_GridMod , only : betr_grid_type
+  implicit none
+    class(ForcingData_type), intent(inout)  :: this
+
+    character(len=250)    :: ncf_in_filename_forc
+    type(file_desc_t)     :: ncf_in_forc
+    real(r8), allocatable :: data_2d(:,:,:)
+    integer :: j1, j2
+    type(Var_desc_t)  :: vardesc
+    logical :: readvar
+
+    call this%InitAllocate_CNP()
+
+    ncf_in_filename_forc=trim(this%forcing_filename)
+    call ncd_pio_openfile(ncf_in_forc, ncf_in_filename_forc, mode=ncd_nowrite)
+
+    allocate(data_2d(this%num_columns, this%num_levels, 1:this%num_time))
+
+    call ncd_getvar(ncf_in_forc, 'CFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%cflx_met_vr(j1, j2) = data_2d(this%num_columns, j2, j1)         !*0.75_r8 ! cut input lit C  for test        -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'CFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%cflx_cel_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'CFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%cflx_lig_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'CFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%cflx_cwd_vr(j1, j2) = data_2d(this%num_columns, j2, j1)           ! cut input lit C     -zlyu
+       enddo
+    enddo
+
+    call check_var(ncf_in_forc, 'RR_vr', vardesc, readvar)
+    if(readvar)then
+      call ncd_getvar(ncf_in_forc, 'RR_vr', data_2d)
+      do j2 = 1, this%num_levels
+         do j1 = 1, this%num_time
+           !this%rr_vr(j1, j2) = data_2d(this%num_columns, j2, j1)* 0.25_r8              ! cut lit input    -zlyu
+           this%rr_vr(j1, j2) = data_2d(this%num_columns, j2, j1)* 0.5_r8     !Jing Tao Test
+         enddo
+      enddo
+    endif
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_met_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_cel_vr(j1, j2) = data_2d(this%num_columns, j2, j1)             ! cut input lit N       -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_lig_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_cwd_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'PFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%pflx_met_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'PFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%pflx_cel_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'PFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%pflx_lig_vr(j1, j2) = data_2d(this%num_columns, j2, j1)                  ! cut input lit P by half for test        -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'PFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%pflx_cwd_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_MINN_INPUT_NH4_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_nh4_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'NFLX_MINN_INPUT_NO3_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%nflx_no3_vr(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_forc, 'PFLX_MINP_INPUT_PO4_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%pflx_po4_vr(j1, j2) = data_2d(this%num_columns, j2, j1)                ! cut input lit P         -zlyu
+       enddo
+    enddo
+
+    call ncd_pio_closefile(ncf_in_forc)
+
+    deallocate(data_2d)
+  end subroutine ReadCNPData
+  !------------------------------------------------------------------------
+
+  ! read CNP disturbance data if there are          -zlyu
+  subroutine ReadDisturbCNPData(this)
+    !read infomration about forcing data
+    !USES
+    use ncdio_pio    , only : file_desc_t
+    use ncdio_pio    , only : ncd_nowrite
+    use ncdio_pio    , only : ncd_pio_openfile
+    use ncdio_pio    , only : get_dim_len
+    use ncdio_pio    , only : ncd_getvar, Var_desc_t
+    use ncdio_pio    , only : ncd_pio_closefile, check_var
+    use babortutils  , only : endrun
+    use bshr_log_mod , only : errMsg => shr_log_errMsg
+    use BeTR_GridMod , only : betr_grid_type
+    use betr_constants , only : stdout                       !-zlyu
+  implicit none
+    class(ForcingData_type), intent(inout)  :: this
+
+    character(len=250)    :: ncf_in_filename_disturb_forc
+    type(file_desc_t)     :: ncf_in_disturb_forc
+    real(r8), allocatable :: data_2d(:,:,:)
+    integer :: j1, j2
+    type(Var_desc_t)  :: vardesc
+    logical :: readvar
+
+    call this%InitAllocate_Disturb_CNP()
+
+    ncf_in_filename_disturb_forc=trim(this%disturb_forc_filename)
+    call ncd_pio_openfile(ncf_in_disturb_forc, ncf_in_filename_disturb_forc, mode=ncd_nowrite)
+
+    allocate(data_2d(this%num_columns, this%num_levels, 1:this%num_disturb_time))
+
+    call ncd_getvar(ncf_in_disturb_forc, 'CFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%cflx_met_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)        ! cut lit input      -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'CFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%cflx_cel_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)    !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'CFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%cflx_lig_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)         !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'CFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%cflx_cwd_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)           !* 0.75_r8              ! cut lit input   -zlyu
+       enddo
+    enddo
+
+    call check_var(ncf_in_disturb_forc, 'RR_vr', vardesc, readvar)
+    if(readvar)then
+      call ncd_getvar(ncf_in_disturb_forc, 'RR_vr', data_2d)
+      do j2 = 1, this%num_levels
+         do j1 = 1, this%num_disturb_time
+           this%rr_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)* 0.25_r8              !  -zlyu
+         enddo
+      enddo
+    endif
+
+    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'             !-zlyu
+    !write(stdout, *) 'In Dis readCNPdata  --> rr_vr_disturb(1, 1)=', this%rr_vr_disturb(1, 1), ',     rr_vr_disturb(50, 8)=', this%rr_vr_disturb(50, 1)
+    !write(stdout, *) 'num_disturb_time=', this%num_disturb_time                                          !-zlyu
+    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'             !-zlyu
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_met_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)            ! * 0.75_r8              ! cut lit input      -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_cel_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)       ! * 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_lig_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)         !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_cwd_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)           !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'PFLX_INPUT_LITR_MET_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%pflx_met_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)            !* 0.75_r8             ! cut lit input    -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'PFLX_INPUT_LITR_CEL_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%pflx_cel_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)               !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'PFLX_INPUT_LITR_LIG_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%pflx_lig_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)            !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'PFLX_INPUT_LITR_CWD_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%pflx_cwd_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)            !* 0.75_r8                 ! cut lit input    -zlyu
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_MINN_INPUT_NH4_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_nh4_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)                  !* 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'NFLX_MINN_INPUT_NO3_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%nflx_no3_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)                ! * 0.75_r8
+       enddo
+    enddo
+
+    call ncd_getvar(ncf_in_disturb_forc, 'PFLX_MINP_INPUT_PO4_vr', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%pflx_po4_vr_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)             !* 0.75_r8               ! cut lit input    -zlyu
+       enddo
+    enddo
+
+    call ncd_pio_closefile(ncf_in_disturb_forc)
+
+    deallocate(data_2d)
+  end subroutine ReadDisturbCNPData
+  ! end of CNP data reading for disturbance data            -zlyu
+  !---------------------------------------------------------------------------------
+  
+  subroutine ReadData(this, namelist_buffer, grid)
+    !DESCRIPTION
+    !read infomration about forcing data
+    !USES
+    use ncdio_pio    , only : file_desc_t
+    use ncdio_pio    , only : ncd_nowrite
+    use ncdio_pio    , only : ncd_pio_openfile
+    use ncdio_pio    , only : get_dim_len
+    use ncdio_pio    , only : ncd_getvar
+    use ncdio_pio    , only : ncd_pio_closefile
+    use babortutils  , only : endrun
+    use bshr_log_mod , only : errMsg => shr_log_errMsg
+    use BeTR_GridMod , only : betr_grid_type
+    implicit none
+    !ARGUMENTS
+    class(ForcingData_type), intent(inout)  :: this
+    character(len=betr_namelist_buffer_size), intent(in) :: namelist_buffer
+    ! you only have one namelist file, you have multiple forcing files, but one nl file           -zlyu
+    !character(len=betr_namelist_buffer_size), intent(in) :: namelist_buffer_disturb      ! add   -zlyu
+    class(betr_grid_type), intent(in)                    :: grid
+    !TEMPORARY VARIABLES
+    character(len=250) :: ncf_in_filename_forc
+    type(file_desc_t)  :: ncf_in_forc
+    character(len=250) :: ncf_in_filename_disturb_forc                                   ! add  -zlyu
+    type(file_desc_t)  :: ncf_in_disturb_forc                                            ! add  -zlyu
+
+    integer :: num_levels, num_time, num_disturb_time                                    ! add num_disturb_time, levels are always the same so need to add that      -zlyu
+
+    call this%ReadNameList(namelist_buffer)
+
+    ! FIXME(bja, 201603) Ugh, have to crack open the netcdf file to
+    ! retreive dimensions.... should we read from the namelist?
+    ncf_in_filename_forc=trim(this%forcing_filename)
+    call ncd_pio_openfile(ncf_in_forc, ncf_in_filename_forc, mode=ncd_nowrite)
+    num_levels = get_dim_len(ncf_in_forc, 'levgrnd')
+    num_time = get_dim_len(ncf_in_forc, 'time')
+    call ncd_pio_closefile(ncf_in_forc)
+
+    if (grid%nlevgrnd /= num_levels) then
+       call endrun(msg="ERROR inconsistent vertical levels between "//&
+            "grid and forcing. "//errmsg(mod_filename, __LINE__))
+
+    end if
+
+    !write(*,*) 'In ForcingDataType, subroutine ReadData, check levels and time:', num_levels, num_time
+    call this%Init(num_levels, num_time)
+    call this%ReadForcingData(grid)
+    !x print*,'read data tsoi',this%t_soi(1,:)
+
+    if (this%is_disturbance) then                                             ! if is_disturbance is .true. then read in file name   -zlyu
+       ! add new file from here           -zlyu
+       call this%ReadDisturbNameList(namelist_buffer)
+       !call this%ReadDisturbNameList(namelist_buffer_disturb)                               ! add  -zlyu
+       ncf_in_filename_disturb_forc=trim(this%disturb_forc_filename)
+       call ncd_pio_openfile(ncf_in_disturb_forc, ncf_in_filename_disturb_forc, mode=ncd_nowrite)
+       num_levels = get_dim_len(ncf_in_disturb_forc, 'levgrnd')
+       num_disturb_time = get_dim_len(ncf_in_disturb_forc, 'time')
+       call this%Init_disturb(num_levels, num_disturb_time)
+       call this%ReadDisturbForcData(grid)
+       call ncd_pio_closefile(ncf_in_disturb_forc)
+    endif 
+    ! end of getting the new file      -zlyu
+    
+  end subroutine ReadData
+
+  !------------------------------------------------------------------------
+  subroutine ReadForcingData(this, grid)
+    !DESCRIPTION
+    !read forcing data
+    !USES
+    use ncdio_pio    , only : file_desc_t
+    use ncdio_pio    , only : ncd_nowrite
+    use ncdio_pio    , only : ncd_pio_openfile
+    use ncdio_pio    , only : ncd_getvar, ncd_getatt
+    use ncdio_pio    , only : ncd_pio_closefile
+    use BeTR_GridMod , only : betr_grid_type
+    implicit none
+    !ARGUMENTS
+    class(ForcingData_type), intent(inout)  :: this
+    class(betr_grid_type), intent(in) :: grid
+    !TEMPORARY VARIABLES
+    character(len=250)    :: ncf_in_filename_forc
+    type(file_desc_t)     :: ncf_in_forc
+    real(r8), allocatable :: data_2d(:,:,:)
+    real(r8), allocatable :: data_1d(:,:)
+    integer               :: j1, j2
+    real(r8) :: tommps
+    character(len=9) :: units
+
+    ncf_in_filename_forc=trim(this%forcing_filename)
+    call ncd_pio_openfile(ncf_in_forc, ncf_in_filename_forc, mode=ncd_nowrite)
+
+    allocate(data_2d(this%num_columns, this%num_levels, 1:this%num_time))
+    allocate(data_1d(this%num_columns, this%num_time))
+
+    !X!write(*, *) 'Reading TSOI'
+    call ncd_getvar(ncf_in_forc, 'TSOI', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%t_soi(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    !X!write(*, *) 'Reading H2OSOI'
+    call ncd_getvar(ncf_in_forc, 'H2OSOI', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%h2osoi_liqvol(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+
+    !X!write(*, *) 'Reading SOILICE'
+    call ncd_getvar(ncf_in_forc, 'SOILICE', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_time
+          this%h2osoi_icevol(j1, j2) = data_2d(this%num_columns, j2, j1)/rhoice/grid%dzsoi(j2)
+          this%h2osoi_liqvol(j1, j2) = this%h2osoi_liqvol(j1, j2) - this%h2osoi_icevol(j1, j2)
+          this%h2osoi_ice(j1, j2) = data_2d(this%num_columns, j2, j1)
+          this%h2osoi_liq(j1, j2) = this%h2osoi_liqvol(j1, j2)*grid%dzsoi(j2)*rhoh2o
+       enddo
+    enddo
+
+    !X!write(*, *) 'Reading QINFL'
+    call ncd_getvar(ncf_in_forc, 'QINFL', data_1d)
+    do j1 =1, this%num_time
+       this%qflx_infl(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading PBOT'
+    call ncd_getvar(ncf_in_forc, 'PBOT', data_1d)
+    do j1 =1, this%num_time
+       this%pbot(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading TBOT'
+    call ncd_getvar(ncf_in_forc, 'TBOT', data_1d)
+    do j1 =1, this%num_time
+       this%tbot(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading QCHARGE'
+    call ncd_getvar(ncf_in_forc, 'QCHARGE', data_1d)
+    do j1 =1, this%num_time
+       this%qbot(j1) = data_1d(this%num_columns, j1)  ! mm/s
+    enddo
+
+    if(this%use_rootsoit)then
+      !X!write(*, *) 'Reading QFLX_ROOTSOI'
+      call ncd_getvar(ncf_in_forc, 'QFLX_ROOTSOI', data_2d)
+      call ncd_getatt(ncf_in_forc,'QFLX_ROOTSOI','units',units)
+
+      if(trim(units)=='m/s')then
+        tommps=1.e3_r8
+      else
+        tommps=1._r8
+      endif
+      do j2 = 1, this%num_levels
+        do j1 = 1, this%num_time
+          this%qflx_rootsoi(j1, j2) = data_2d(this%num_columns, j2, j1)*1.e3_r8
+        enddo
+      enddo
+    else
+      do j2 = 1, this%num_levels
+        do j1 = 1, this%num_time
+          this%qflx_rootsoi(j1, j2)  = 0._r8
+        enddo
+      enddo
+    endif
+    call ncd_pio_closefile(ncf_in_forc)
+
+    deallocate(data_2d)
+    deallocate(data_1d)
+
+  end subroutine ReadForcingData
+
+  ! ----------------------------------------------------------------------
+  !-----------------------------------------------------------------------
+  ! read disturbance climate forcing data when is_disturbance is .true.      -zlyu
+  subroutine ReadDisturbForcData(this, grid)
+    !DESCRIPTION
+    !read forcing data
+    !USES
+    use ncdio_pio    , only : file_desc_t
+    use ncdio_pio    , only : ncd_nowrite
+    use ncdio_pio    , only : ncd_pio_openfile
+    use ncdio_pio    , only : ncd_getvar, ncd_getatt
+    use ncdio_pio    , only : ncd_pio_closefile
+    use BeTR_GridMod , only : betr_grid_type
+    use betr_constants , only : stdout            !-zlyu
+    implicit none
+    !ARGUMENTS
+    class(ForcingData_type), intent(inout)  :: this
+    class(betr_grid_type), intent(in) :: grid
+    !TEMPORARY VARIABLES
+    character(len=250)    :: ncf_in_filename_disturb_forc
+    type(file_desc_t)     :: ncf_in_disturb_forc
+    real(r8), allocatable :: data_2d(:,:,:)
+    real(r8), allocatable :: data_1d(:,:)
+    integer               :: j1, j2
+    real(r8) :: tommps
+    character(len=9) :: units
+
+    ncf_in_filename_disturb_forc=trim(this%disturb_forc_filename)
+    call ncd_pio_openfile(ncf_in_disturb_forc, ncf_in_filename_disturb_forc, mode=ncd_nowrite)
+
+    allocate(data_2d(this%num_columns, this%num_levels, 1:this%num_disturb_time))
+    allocate(data_1d(this%num_columns, this%num_disturb_time))
+
+    !X!write(*, *) 'Reading TSOI'
+    call ncd_getvar(ncf_in_disturb_forc, 'TSOI', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%t_soi_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+    
+    !X!write(*, *) 'Reading H2OSOI'
+    call ncd_getvar(ncf_in_disturb_forc, 'H2OSOI', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%h2osoi_liqvol_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)
+       enddo
+    enddo
+    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'             !-zlyu
+    !write(stdout, *) 'In readDisdata after h2osoi_liqvol_disturb(1,1)=', this%h2osoi_liqvol_disturb(1, 1), ',     h2osoi_liqvol_disturb(50, 8)=', this%h2osoi_liqvol_disturb(50, 1)
+    !write(stdout, *) 'num_disturb_time=', this%num_disturb_time                                          !-zlyu
+    !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+    
+    !X!write(*, *) 'Reading SOILICE'
+    call ncd_getvar(ncf_in_disturb_forc, 'SOILICE', data_2d)
+    do j2 = 1, this%num_levels
+       do j1 = 1, this%num_disturb_time
+          this%h2osoi_icevol_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)/rhoice/grid%dzsoi(j2)
+          this%h2osoi_liqvol_disturb(j1, j2) = this%h2osoi_liqvol_disturb(j1, j2) - this%h2osoi_icevol_disturb(j1, j2)
+          this%h2osoi_ice_disturb(j1, j2) = data_2d(this%num_columns, j2, j1)
+          this%h2osoi_liq_disturb(j1, j2) = this%h2osoi_liqvol_disturb(j1, j2)*grid%dzsoi(j2)*rhoh2o
+       enddo
+    enddo
+
+    !X!write(*, *) 'Reading QINFL'
+    call ncd_getvar(ncf_in_disturb_forc, 'QINFL', data_1d)
+    do j1 =1, this%num_disturb_time
+       this%qflx_infl_disturb(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading PBOT'
+    call ncd_getvar(ncf_in_disturb_forc, 'PBOT', data_1d)
+    do j1 =1, this%num_disturb_time
+       this%pbot_disturb(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading TBOT'
+    call ncd_getvar(ncf_in_disturb_forc, 'TBOT', data_1d)
+    do j1 =1, this%num_disturb_time
+       this%tbot_disturb(j1) = data_1d(this%num_columns, j1)
+    enddo
+
+    !X!write(*, *) 'Reading QCHARGE'
+    call ncd_getvar(ncf_in_disturb_forc, 'QCHARGE', data_1d)
+    do j1 =1, this%num_disturb_time
+       this%qbot_disturb(j1) = data_1d(this%num_columns, j1)  ! mm/s
+    enddo
+
+    call ncd_pio_closefile(ncf_in_disturb_forc)
+
+    deallocate(data_2d)
+    deallocate(data_1d)
+
+  end subroutine ReadDisturbForcData
+ !---------------------------------------------------------------------------
+  
+  subroutine ReadNameList(this, namelist_buffer)
+    !
+    ! !DESCRIPTION:
+    ! read namelist for betr configuration
+    ! !USES:
+
+    use bshr_nl_mod    , only : shr_nl_find_group_name
+    use betr_ctrl      , only : iulog => biulog
+    use babortutils    , only : endrun
+    use bshr_log_mod   , only : errMsg => shr_log_errMsg
+    use betr_constants , only : stdout
+    implicit none
+    ! !ARGUMENTS:
+    class(ForcingData_type), intent(inout)  :: this
+    character(len=betr_namelist_buffer_size), intent(in) :: namelist_buffer
+    !
+    ! !LOCAL VARIABLES:
+    integer                                :: nml_error
+    character(len=*), parameter            :: subname = 'ReadNameList'
+    character(len=betr_filename_length)    :: forcing_format, forcing_type_name, forcing_filename
+    character(len=betr_string_length_long) :: ioerror_msg
+    logical                                :: use_rootsoit
+    logical                                :: is_disturbance                    ! add flag for whether use disturbance forcing data    -zlyu
+    !character(len=betr_filename_length)    :: disturb_forc_filename             ! add disturbance forcing data file   -zlyu
+    !-----------------------------------------------------------------------
+
+    namelist / forcing_inparm / &
+         forcing_type_name, forcing_filename, forcing_format, use_rootsoit, &
+         is_disturbance                                                        !, disturb_forc_filename             ! add flag and new file name    -zlyu
+
+    forcing_format    = ''
+    forcing_type_name = transient_name
+    forcing_filename  = ''
+    use_rootsoit =.true.
+    is_disturbance = .false.                                                    ! add flag, default is we don't use disturbance    -zlyu
+    !disturb_forc_filename = ''                                                  ! add new file name                                -zlyu
+    ! ----------------------------------------------------------------------
+    ! Read namelist from standard input.
+    ! ----------------------------------------------------------------------
+
+    if ( .true. )then
+       ioerror_msg=''
+       read(namelist_buffer, nml=forcing_inparm, iostat=nml_error, iomsg=ioerror_msg)
+       if (nml_error /= 0) then
+          call endrun(msg="ERROR reading forcing_inparm namelist "//errmsg(mod_filename, __LINE__))
+       end if
+    end if
+
+    if (.true.) then
+       write(stdout, *)
+       write(stdout, *) '--------------------'
+       write(stdout, *)
+       write(stdout, *) ' betr climate forcing :'
+       write(stdout, *)
+       write(stdout, *) ' forcing_inparm namelist settings :'
+       write(stdout, *)
+       write(stdout, forcing_inparm)
+       write(stdout, *)
+       write(stdout, *) '--------------------'
+    endif
+
+    this%forcing_type_name = trim(forcing_type_name)
+    this%forcing_format    = trim(forcing_format)
+    this%forcing_filename  = trim(forcing_filename)
+    this%use_rootsoit      = use_rootsoit
+    this%is_disturbance    = is_disturbance                        ! add -zlyu
+    !this%disturb_forc_filename  = trim(disturb_forc_filename)      ! add -zlyu
+  end subroutine ReadNameList
+
+  ! ----------------------------------------------------------------------
+
+  ! ----------------------------------------------------------------------
+  ! add namelist file to read in separate disturbance file      -zlyu
+  subroutine ReadDisturbNameList(this, namelist_buffer)
+    !
+    ! !DESCRIPTION:
+    ! read namelist for betr configuration
+    ! !USES:
+
+    use bshr_nl_mod    , only : shr_nl_find_group_name
+    use betr_ctrl      , only : iulog => biulog
+    use babortutils    , only : endrun
+    use bshr_log_mod   , only : errMsg => shr_log_errMsg
+    use betr_constants , only : stdout
+    implicit none
+    ! !ARGUMENTS:
+    class(ForcingData_type), intent(inout)  :: this
+    character(len=betr_namelist_buffer_size), intent(in) :: namelist_buffer
+    !
+    ! !LOCAL VARIABLES:
+    integer                                :: nml_error
+    character(len=*), parameter            :: subname = 'ReadNameList'
+    character(len=betr_filename_length)    :: forcing_format, forcing_type_name, disturb_forc_filename         ! disturb_forc_filename     -zlyu
+    character(len=betr_string_length_long) :: ioerror_msg
+    !-----------------------------------------------------------------------
+
+    namelist / disturb_forc_inparm / &
+         forcing_type_name, disturb_forc_filename, forcing_format               !    -zlyu
+
+    forcing_format    = ''
+    forcing_type_name = transient_name                                               ! add flag, default is we don't use disturbance    -zlyu
+    disturb_forc_filename = ''                                                  ! add new file name                                -zlyu
+    ! ----------------------------------------------------------------------
+    ! Read namelist from standard input.
+    ! ----------------------------------------------------------------------
+
+    if ( .true. )then
+       ioerror_msg=''
+       read(namelist_buffer, nml=disturb_forc_inparm, iostat=nml_error, iomsg=ioerror_msg)        !-zlyu
+       if (nml_error /= 0) then
+          call endrun(msg="ERROR reading disturb_forc_inparm namelist "//errmsg(mod_filename, __LINE__))
+       end if
+    end if
+
+    if (.true.) then
+       write(stdout, *)
+       write(stdout, *) '--------------------'
+       write(stdout, *)
+       write(stdout, *) ' betr disturbance climate forcing :'
+       write(stdout, *)
+       write(stdout, *) ' disturb_forc_inparm namelist settings :'
+       write(stdout, *)
+       write(stdout, disturb_forc_inparm)
+       write(stdout, *)
+       write(stdout, *) '--------------------'
+    endif
+
+    this%forcing_type_name = trim(forcing_type_name)                       ! the same as the orginial forcing file    -zlyu
+    this%forcing_format    = trim(forcing_format)                          ! the same as the original forcing file    -zlyu
+    this%disturb_forc_filename  = trim(disturb_forc_filename)
+  end subroutine ReadDisturbNameList
+  ! end of ReadDisturbanceNamelist         -zlyu
+  !--------------------------------------------------------------------------------------------------------------------------
+  
+  subroutine UpdateForcing(this, grid, bounds, lbj, ubj, numf, filter, ttime, col, pft, &
+       atm2lnd_vars, soilhydrology_vars, soilstate_vars,waterstate_vars,waterflux_vars, &
+       temperature_vars,chemstate_vars, plantMicKinetics_vars, jtops)
+    !
+    ! DESCRIPTIONS
+    ! read environmental forcing to run betr
+    ! for clm forced runs, it will forcing from history files
+    !
+    ! USES
+    use TemperatureType   , only : temperature_type
+    use WaterstateType    , only : waterstate_type
+    use WaterfluxType     , only : waterflux_type
+    use SoilStateType     , only : soilstate_type
+    use ChemStateType     , only : chemstate_type
+    use ColumnType        , only : column_type
+    use PatchType         , only : patch_type
+    use decompMod         , only : bounds_type
+    use SoilHydrologyType , only : soilhydrology_type
+    use atm2lndType       , only : atm2lnd_type
+    use BeTR_TimeMod      , only : betr_time_type
+    use BeTR_GridMod      , only : betr_grid_type
+    use betr_varcon       , only : betr_maxpatch_pft, denh2o=> bdenh2o, denice => bdenice
+    use PlantMicKineticsMod, only : PlantMicKinetics_type
+    use betr_constants    , only : stdout   !-zlyu
+    implicit none
+    !arguments
+    class(ForcingData_type)  , intent(in)    :: this
+    class(betr_grid_type)    , intent(in)    :: grid
+    type(bounds_type)        , intent(in)    :: bounds
+    integer                  , intent(in)    :: numf
+    integer                  , intent(in)    :: filter(:)
+    integer                  , intent(in)    :: lbj, ubj
+    type(betr_time_type)     , intent(in)    :: ttime
+    type(chemstate_type)     , intent(inout) :: chemstate_vars
+    type(atm2lnd_type)       , intent(inout) :: atm2lnd_vars
+    type(soilstate_type)     , intent(inout) :: soilstate_vars
+    type(waterstate_type)    , intent(inout) :: waterstate_vars
+    type(waterflux_type)     , intent(inout) :: waterflux_vars
+    type(temperature_type)   , intent(inout) :: temperature_vars
+    type(column_type)        , intent(inout) :: col
+    type(patch_type)         , intent(in)    :: pft
+    type(soilhydrology_type) , intent(inout) :: soilhydrology_vars
+    type(PlantMicKinetics_type), intent(inout) :: PlantMicKinetics_vars
+    integer                  , intent(inout) :: jtops(bounds%begc:bounds%endc)
+
+    integer            :: j, fc, c, tstep, p, pi, turbyr, lastyr           !add turbyr, lastyr         -zlyu
+    integer            :: tstep_disturb                         !-zlyu
+    character(len=255) :: subname='update_forcing'
+    real(r8)           :: delta_tsoi(15)                        !-zlyu
+    real(r8)           :: delta_h2osoi_vol(15)                  !-zlyu , temporary corrector
+
+    turbyr = 445*365*48        !445            !*48     it is hourly not half hourly?                    ! testing       -zlyu
+    lastyr = 449*365*48+(180*48)        !449    !just output last half a year, to save time     -zlyu
+    !delta_tsoi = (/2.090206_r8, 2.29745_r8, 2.597984_r8, 3.124624_r8, 3.8605_r8, 4._r8, 4._r8, 4._r8, &
+     !    0._r8,0._r8,0._r8,0._r8,0._r8,0._r8,0._r8/)
+    ! warming soil temperature, depth resolved                  !-zlyu
+    !delta_h2osoi_vol = (/0.03997_r8, 0.03997_r8, 0.03997_r8, 0.03997_r8, 0.02909_r8, 0.01864_r8, 0.01950_r8, &
+     !                    0.02695_r8, 0._r8, 0._r8, 0._r8, 0._r8, 0._r8, 0._r8, 0._r8/)
+    
+    !X!write(*, *) 'Updating forcing data'
+    ! print to check variables           -zlyu
+    !write(stdout, *) 'updateforcingdata before if  --> ttime%tstep= ', ttime%tstep, ',    tstep= ', tstep
+    
+    !if (ttime%tstep_continue > lastyr) then           ! it should be 445._r8*365._r8*48._r8+1._r8, shorten to quickly test
+     !  write(stdout, *) '---------------------------------------------'
+      ! write(stdout, *) 'forcingdata in if ttime%tstep= ', ttime%tstep, ',     tstep= ', tstep, ',     tstep_continue=', ttime%tstep_continue
+       !write(stdout, *) 'delta_tsoi(1)= ', delta_tsoi(1), ',    delta_tsoi(2)= ', delta_tsoi(2), ',     delta_tsoi(4)= ', delta_tsoi(4)
+       !write(stdout, *) 'delta_tsoi(7)= ', delta_tsoi(7), ',    delta_tsoi(15)= ', delta_tsoi(15)
+       !write(stdout, *) 'delta_h2osoi(1)= ', delta_h2osoi_vol(1), ',    delta_h2osoi(2)= ', delta_h2osoi_vol(2), ',     delta_h2osoi(4)= ', delta_h2osoi_vol(4)
+       !write(stdout, *) 'delta_h2osoi(7)= ', delta_h2osoi_vol(7), ',    delta_h2osoi(15)= ', delta_h2osoi_vol(15)
+       !write(stdout, *) '---------------------------------------------'
+    !endif
+    ! end of printing and checking       -zlyu
+    
+    if (this%forcing_type == steady_state) then
+       tstep = 1
+    else
+       !tstep = ttime%tstep
+       tstep = ttime%tstep_continue    !Jing Tao
+    end if
+
+    !if (ttime%tstep_continue > turbyr) then           ! add to calculate corresponding index of disturbance foricng data based on step on original forcing   -zlyu
+       tstep_disturb = ttime%tstep_continue-turbyr
+    !end if
+    !write(stdout, *) 'tstep_continue=', ttime%tstep_continue, ',     tstep_disturb=', tstep_disturb        !-zlyu
+    
+    !setup top boundary
+    if (ttime%tstep_continue > turbyr) then
+       do fc = 1, numf
+          c = filter(fc)
+          jtops(c) = 1
+          soilhydrology_vars%zwts_col(c) = 10._r8
+          soilhydrology_vars%qcharge_col(c) = this%discharge_disturb(tstep_disturb)
+          atm2lnd_vars%forc_pbot_downscaled_col(c) = this%pbot_disturb(tstep_disturb)  ! 1 atmos
+          atm2lnd_vars%forc_t_downscaled_col(c)    = this%tbot_disturb(tstep_disturb)  ! 2 atmos temperature
+       enddo
+    else
+       do fc = 1, numf
+          c = filter(fc)
+          jtops(c) = 1
+          soilhydrology_vars%zwts_col(c) = 10._r8
+          soilhydrology_vars%qcharge_col(c) = this%discharge(tstep)
+          atm2lnd_vars%forc_pbot_downscaled_col(c) = this%pbot(tstep)  ! 1 atmos
+          atm2lnd_vars%forc_t_downscaled_col(c)    = this%tbot(tstep)  ! 2 atmos temperature
+       enddo
+    endif
+    !write(stdout, *) '---------------------------------------------'
+    !write(stdout, *) 'check sizes lbj= ',lbj, ',     ubj=', ubj, ',    numf=', numf
+    !write(stdout, *) 'check sizes filter(1)= ',filter(1), ',     filter(numf)=', filter(numf)
+    
+    !set up forcing variables
+    do j = lbj, ubj
+       do fc = 1, numf
+          c = filter(fc)
+          if(j>=jtops(c))then
+             !take the minimum to avoid incompatible combination between uniform steady state forcing with
+             !expoential grid.
+             ! need to change h2osoi_liqvol here to reflect warming     -zlyu
+             ! start here pass on disturbance data from new file to each class         -zlyu
+             if (ttime%tstep_continue > turbyr) then               ! shorten time to quickly test      -zlyu
+                waterstate_vars%h2osoi_liqvol_col(c,j) = min(this%h2osoi_liqvol_disturb(tstep_disturb,j),grid%watsat(j))        ! -delta_h2osoi_vol(j)         !-zlyu
+                waterstate_vars%air_vol_col(c,j)       = grid%watsat(j)-waterstate_vars%h2osoi_liqvol_col(c,j)
+                waterstate_vars%h2osoi_icevol_col(c,j) = this%h2osoi_icevol(tstep_disturb,j)
+                soilstate_vars%eff_porosity_col(c,j)   = grid%watsat(j)-this%h2osoi_icevol_disturb(tstep_disturb,j)           ! disturbance     -zlyu
+                  !if (ttime%tstep_continue > turbyr) then              ! shorten from 445 to 25 for small test        -zlyu
+                   !write(stdout, *) '------------------------------------------------'
+                   !write(stdout, *) 'in loop this%h2osoi_liqvol= ',this%h2osoi_liqvol_disturb(tstep_disturb,j), ',    j=', j            !, ',     delta_h2osoi_vol= ',delta_h2osoi_vol(j)
+                   !write(stdout, *) 'waterstate_vars%h2osoi_liqvol_col =',waterstate_vars%h2osoi_liqvol_col(c,j), ',     tstep_disturb= ', tstep_disturb
+                   !write(stdout, *) 'tstep_continue =',ttime%tstep_continue, ',     tstep=', tstep, ',      control h2osoi_liqvol(tstep,j)=', this%h2osoi_liqvol(tstep,j)
+                   !write(stdout, *) '------------------------------------------------'
+                  !endif       !end of testing    -zlyu
+               else                 
+                waterstate_vars%h2osoi_liqvol_col(c,j) = min(this%h2osoi_liqvol(tstep,j),grid%watsat(j))
+                waterstate_vars%air_vol_col(c,j)       = grid%watsat(j)-waterstate_vars%h2osoi_liqvol_col(c,j)
+                waterstate_vars%h2osoi_icevol_col(c,j) = this%h2osoi_icevol(tstep,j)
+                soilstate_vars%eff_porosity_col(c,j)   = grid%watsat(j)-this%h2osoi_icevol(tstep,j)
+                 !if (ttime%tstep_continue > turbyr-5 .and. ttime%tstep_continue <= turbyr) then              !    -zlyu
+                  ! write(stdout, *) '------------------------------------------------'
+                  ! write(stdout, *) 'control loop  this%h2osoi_liqvol= ',this%h2osoi_liqvol(tstep,j), ',    j=', j
+                  ! write(stdout, *) 'tstep_continue =',ttime%tstep_continue
+                  ! write(stdout, *) 'waterstate_vars%h2osoi_liqvol_col =',waterstate_vars%h2osoi_liqvol_col(c,j), ',     tstep= ', tstep
+                  ! write(stdout, *) '------------------------------------------------'
+                  !endif       !end of testing    -zlyu
+             endif
+
+             if (ttime%tstep_continue > turbyr) then     !shroten from 445 to 25 for quick test    ! only warm up last 5 years    -zlyu
+                temperature_vars%t_soisno_col(c,j)     = this%t_soi_disturb(tstep_disturb,j)         !+delta_tsoi(j)            ! adding warming scenario      -zlyu
+                !if (ttime%tstep_continue > turbyr) then     ! .and. ttime%tstep < 445._r8*365._r8*48._r8+97) then      ! shorten for testing      -zlyu
+                 !  write(stdout, *) '------------------------------------------------'
+                 !  write(stdout, *) 'in loop this%t_soi= ',this%t_soi_disturb(tstep_disturb,j), ',    j=', j                   ! , ',     delta_tsoi= ',delta_tsoi(j)
+                 !  write(stdout, *) 'tstep_continue =',ttime%tstep_continue, ',      tstep=', tstep, ',     control t_soi(tstep,j)=', this%t_soi(tstep,j)
+                 !  write(stdout, *) 'temperature_vars%t_soisno_col =',temperature_vars%t_soisno_col(c,j), ',     tstep_disturb= ', tstep_disturb
+                 !  write(stdout, *) '------------------------------------------------'
+                !endif                           ! end of testing        -zlyu
+             else
+                temperature_vars%t_soisno_col(c,j)     = this%t_soi(tstep,j) !for each step temperature_vars
+                
+                !if (ttime%tstep_continue >turbyr-5 .and. ttime%tstep_continue <= turbyr) then
+                 ! write(stdout, *) '------------------------------------------------'
+                 !  write(stdout, *) 'control loop this%t_soi= ',this%t_soi(tstep,j), ',    j=', j
+                 !  write(stdout, *) 'tstep_continue =',ttime%tstep_continue
+                 ! write(stdout, *) 'ForcingDataType.F90, temperature_vars%t_soisno_col =',tstep, j, temperature_vars%t_soisno_col(c,j)
+                 ! write(stdout, *) '------------------------------------------------'
+                !endif                           ! end of testing        -zlyu
+             endif
+             
+             !not using the following variable, so doesn't matter        -zlyu
+             waterflux_vars%qflx_rootsoi_col(c,j)   = this%qflx_rootsoi(tstep,j)  !water exchange between soil and root, m/H2O/s  
+             do pi = 1, betr_maxpatch_pft
+               if (pi <= col%npfts(c)) then
+                 p = col%pfti(c) + pi - 1
+                 if (pft%active(p)) then
+                   waterflux_vars%qflx_rootsoi_patch(p,j) = waterflux_vars%qflx_rootsoi_col(c,j)
+                 endif
+               endif
+             enddo
+             col%dz(c,j)                            = grid%dzsoi(j)
+             col%zi(c,j)                            = grid%zisoi(j)
+             col%z(c,j)                             = grid%zsoi(j)
+             chemstate_vars%soil_pH(c,j)            = 7._r8
+
+             !set drainage to zero
+             !set surface runoff to zero
+             waterflux_vars%qflx_surf_col(c)        = 0._r8
+             waterflux_vars%qflx_drain_vr_col(c,j)  = 0._r8
+          endif
+       enddo
+    enddo
+    !write(stdout, *) 'ForcingDataType, UpdateForcing, check t_soisno_col =',tstep, temperature_vars%t_soisno_col(1,1)
+     
+    do fc = 1, numf
+       c = filter(fc)
+       waterflux_vars%qflx_totdrain_col(c)        = 0._r8
+       col%zi(c,0)                                = grid%zisoi(0)
+
+       waterflux_vars%qflx_snow2topsoi_col(c)     = 0._r8
+       waterflux_vars%qflx_h2osfc2topsoi_col(c)   = 0._r8
+       waterflux_vars%qflx_gross_infl_soil_col(c) = 0._r8
+       waterflux_vars%qflx_gross_evap_soil_col(c) = 0._r8
+       waterflux_vars%qflx_runoff_betr_col(c) = this%qflx_runoff_col(c)   ! not by time step, so not affected by disturbance      -zlyu
+    enddo
+
+    do j = 1, ubj
+       do fc = 1, numf
+          c = filter(fc)
+          ! need to make change to h2osoi_liq to reflect warming
+          if (ttime%tstep_continue > turbyr) then               ! shorten time to quickly test      -zlyu
+             waterstate_vars%h2osoi_liq_col(c,j) = this%h2osoi_liq_disturb(tstep_disturb,j)              !-(delta_h2osoi_vol(j)*grid%dzsoi(j)*rhoh2o)             !-zlyu
+             waterstate_vars%h2osoi_ice_col(c,j) = this%h2osoi_ice_disturb(tstep_disturb,j)
+             !if (ttime%tstep_continue > turbyr) then             ! .and. ttime%tstep < 445._r8*365._r8*48._r8+97) then              ! shorten from 445 to 25 for small test        -zlyu
+              !     write(stdout, *) '------------------------------------------------'
+              !     write(stdout, *) 'in loop this%h2osoi_liq= ',this%h2osoi_liq_disturb(tstep_disturb,j), ',    j=', j                    !, ',     delta_h2osoi_vol*dz*r= ',(delta_h2osoi_vol(j)*grid%dzsoi(j)*rhoh2o)
+               !    write(stdout, *) 'waterstate_vars%h2osoi_liq_col =',waterstate_vars%h2osoi_liq_col(c,j), ',     tstep_disturb= ', tstep_disturb
+               !    write(stdout, *) 'tstep_continue =',ttime%tstep_continue, ',     tstep=', tstep, ',     control h2osoi_liq(tstep,j)=', this%h2osoi_liq(tstep,j)
+               !    write(stdout, *) '------------------------------------------------'
+             !endif       !end of testing    -zlyu
+             waterstate_vars%h2osoi_vol_col(c,j) = waterstate_vars%h2osoi_liqvol_col(c,j) + &
+                  waterstate_vars%h2osoi_icevol_col(c,j)
+             waterstate_vars%h2osoi_vol_col(c,j) = min(waterstate_vars%h2osoi_vol_col(c,j), grid%watsat(j))
+          else
+             waterstate_vars%h2osoi_liq_col(c,j) = this%h2osoi_liq(tstep,j)
+             waterstate_vars%h2osoi_ice_col(c,j) = this%h2osoi_ice(tstep,j)
+
+             waterstate_vars%h2osoi_vol_col(c,j) = waterstate_vars%h2osoi_liqvol_col(c,j) + &
+                  waterstate_vars%h2osoi_icevol_col(c,j)
+             waterstate_vars%h2osoi_vol_col(c,j) = min(waterstate_vars%h2osoi_vol_col(c,j), grid%watsat(j))
+             !if (ttime%tstep_continue >turbyr-5 .and. ttime%tstep_continue <= turbyr) then
+              !     write(stdout, *) '------------------------------------------------'
+              !     write(stdout, *) 'control loop this%h2osoi_liq= ',this%h2osoi_liq(tstep,j), ',    j=', j
+              !     write(stdout, *) 'waterstate_vars%h2osoi_liq_col =',waterstate_vars%h2osoi_liq_col(c,j), ',     tstep= ', tstep
+              !     write(stdout, *) 'tstep_continue =',ttime%tstep_continue
+              !     write(stdout, *) '------------------------------------------------'
+             !endif                           ! end of testing        -zlyu
+          endif 
+       enddo
+    enddo
+    ! 
+    ! make changes to soil moisture, let's test a shorter verison now and just apply the same set of correction for all        -zlyu
+    !if (ttime%tstep > (445._r8*365._r8*48._r8) .and. ttime%tstep <= (447._r8*365._r8*48._r8)) then  
+    
+    do j = 1, ubj
+      do fc = 1, numf
+        PlantMicKinetics_vars%minsurf_dom_compet_vr_col(c,j)=grid%msurf_OM(j)
+        PlantMicKinetics_vars%km_minsurf_dom_vr_col(c,j)=grid%KM_OM(j)
+      enddo
+    enddo
+  end subroutine UpdateForcing
+
+! ----------------------------------------------------------------------
+  subroutine UpdateCNPForcing(this, lbj, ubj, numf, filter, ttime, &
+    carbonflux_vars, c13_cflx_vars, c14_cflx_vars, nitrogenflux_vars, &
+    phosphorusflux_vars, plantMicKinetics_vars)
+
+    use CNNitrogenFluxType, only : nitrogenflux_type
+    use CNCarbonFluxType  , only : carbonflux_type
+    use PhosphorusFluxType, only : phosphorusflux_type
+    use PlantMicKineticsMod, only : PlantMicKinetics_type
+    use BeTR_TimeMod      , only : betr_time_type
+    use betr_constants    , only : stdout                            !-zlyu
+  implicit none
+  !arguments
+    class(ForcingData_type) , intent(in) :: this
+    integer                  , intent(in)    :: lbj, ubj
+    integer                  , intent(in)    :: numf
+    integer                  , intent(in)    :: filter(:)
+    type(betr_time_type)     , intent(in)    :: ttime
+    type(carbonflux_type)    , intent(inout) :: carbonflux_vars
+    type(carbonflux_type)    , intent(inout) :: c13_cflx_vars
+    type(carbonflux_type)    , intent(inout) :: c14_cflx_vars
+    type(nitrogenflux_type)  , intent(inout) :: nitrogenflux_vars
+    type(phosphorusflux_type), intent(inout) :: phosphorusflux_vars
+    type(PlantMicKinetics_type), intent(inout):: plantMicKinetics_vars
+
+    integer :: c, fc, j, tstep, turbyr, lastyr              !add turbyr, lastyr      -zlyu
+    integer :: tstep_disturb                                !add       -zlyu
+    real(r8):: q_rr(15)                                                   !-zlyu
+    ! bring up root respiration dur to soil warming, depth resolved               -zlyu
+    !q_rr = (/2._r8**(2.090206_r8/10_r8),2._r8**(2.29745_r8/10_r8),2._r8**(2.597984_r8/10_r8),2._r8**(3.124624_r8/10._r8),2._r8**(3.8605_r8/10._r8), &
+     !    2._r8**(4._r8/10._r8),2._r8**(4._r8/10._r8),2._r8**(4._r8/10._r8),1._r8,1._r8,1._r8,1._r8,1._r8,1._r8,1._r8/)
+    turbyr = 445*365*48           !445         !48      it is hourly not half fourly??                 ! testing       -zlyu
+    lastyr = 449*365*48+(180*48)      !449    !just output last half a year, to save time     -zlyu
+
+    tstep = ttime%tstep
+    tstep_disturb = ttime%tstep_continue-turbyr                 ! -zlyu
+    !write(stdout, *) 'Update CNPforcingdata before if  --> ttime%tstep= ', ttime%tstep, ',    tstep= ', tstep
+    !write(stdout, *) 'tstep_disturb= ', tstep_disturb, ',       tstep_continue= ',ttime%tstep_continue            !-zlyu
+    ! print to check variables           -zlyu
+    !if (ttime%tstep_continue > lastyr) then            ! shorten from 445 to 25 to quickly test     -zlyu
+
+    !write(stdout, *) '---------------------------------------------'
+     !  write(stdout, *) 'CNPforcingdata in if ttime%tstep= ', ttime%tstep, ',    tstep= ', tstep
+       !write(stdout, *) 'q_rr(1)= ', q_rr(1), ',    q_rr(2)= ', q_rr(2), ',     q_rr(4)= ', q_rr(4)
+       !write(stdout, *) 'q_rr(7)= ', q_rr(7), ',    q_rr(15)= ', q_rr(15)
+      ! write(stdout, *) 'tstep_continue =',ttime%tstep_continue
+      ! write(stdout, *) '---------------------------------------------'
+    !endif
+    ! end of printing and checking       -zlyu 
+    
+    do j = lbj, ubj
+      do fc = 1, numf
+         c = filter(fc)
+         ! need to case disturbance data here        -zlyu
+         
+        if (ttime%tstep_continue > turbyr) then       ! case to use disturbance forcing data    ! only warm up last 5 years    -zlyu 
+           carbonflux_vars%cflx_input_litr_met_vr_col(c,j) = this%cflx_met_vr_disturb(tstep_disturb,j)
+           carbonflux_vars%cflx_input_litr_cel_vr_col(c,j) = this%cflx_cel_vr_disturb(tstep_disturb,j)
+           carbonflux_vars%cflx_input_litr_lig_vr_col(c,j) = this%cflx_lig_vr_disturb(tstep_disturb,j)
+           carbonflux_vars%cflx_input_litr_cwd_vr_col(c,j) = this%cflx_cwd_vr_disturb(tstep_disturb,j)
+           carbonflux_vars%rr_vr_col(c,j)                  = this%rr_vr_disturb(tstep_disturb,j)                             ! *q_rr(j)            ! adding warming scenario      -zlyu
+           !if (ttime%tstep_continue > turbyr) then           ! .and. ttime%tstep < 445._r8*365._r8*48._r8+97) then          ! shorten from 445 to 25 to test       -zlyu
+            !  write(stdout, *) '---------------------------------------------'
+            !  write(stdout, *) 'in loop this%rr_vr= ', this%rr_vr(tstep_disturb,j), ',    j=', j, ',      control rr_vr(tstep,j)=',this%rr_vr(tstep,j)
+            !  write(stdout, *) 'tstep_continue =',ttime%tstep_continue, ',     tstep_disturb=', tstep_disturb
+            !  write(stdout, *) 'carbonflux_vars%rr_vr_col=',carbonflux_vars%rr_vr_col(c,j), ',     tstep= ', tstep
+            !  write(stdout, *) '---------------------------------------------'
+           !endif                   ! end of testing          -zlyu
+           nitrogenflux_vars%nflx_input_litr_met_vr_col(c,j) = this%nflx_met_vr_disturb(tstep_disturb,j)
+           nitrogenflux_vars%nflx_input_litr_cel_vr_col(c,j) = this%nflx_cel_vr_disturb(tstep_disturb,j)
+           nitrogenflux_vars%nflx_input_litr_lig_vr_col(c,j) = this%nflx_lig_vr_disturb(tstep_disturb,j)
+           nitrogenflux_vars%nflx_input_litr_cwd_vr_col(c,j) = this%nflx_cwd_vr_disturb(tstep_disturb,j)
+
+           phosphorusflux_vars%pflx_input_litr_met_vr_col(c,j) = this%cflx_met_vr_disturb(tstep_disturb,j)/1600._r8
+           phosphorusflux_vars%pflx_input_litr_cel_vr_col(c,j) = this%cflx_cel_vr_disturb(tstep_disturb,j)/2000._r8
+           phosphorusflux_vars%pflx_input_litr_lig_vr_col(c,j) = this%cflx_lig_vr_disturb(tstep_disturb,j)/2500._r8
+           phosphorusflux_vars%pflx_input_litr_cwd_vr_col(c,j) = this%cflx_cwd_vr_disturb(tstep_disturb,j)/4500._r8
+
+           nitrogenflux_vars%nflx_minn_input_nh4_vr_col(c,j) = this%nflx_nh4_vr_disturb(tstep_disturb,j)
+           nitrogenflux_vars%nflx_minn_input_no3_vr_col(c,j) = this%nflx_no3_vr_disturb(tstep_disturb,j)
+           phosphorusflux_vars%pflx_minp_input_po4_vr_col(c,j) = this%pflx_po4_vr_disturb(tstep_disturb,j)
+           
+        else     ! original forcing data case
+           carbonflux_vars%cflx_input_litr_met_vr_col(c,j) = this%cflx_met_vr(tstep,j)
+           carbonflux_vars%cflx_input_litr_cel_vr_col(c,j) = this%cflx_cel_vr(tstep,j)
+           carbonflux_vars%cflx_input_litr_lig_vr_col(c,j) = this%cflx_lig_vr(tstep,j)
+           carbonflux_vars%cflx_input_litr_cwd_vr_col(c,j) = this%cflx_cwd_vr(tstep,j)
+           carbonflux_vars%rr_vr_col(c,j)                  = this%rr_vr(tstep,j)
+      
+           nitrogenflux_vars%nflx_input_litr_met_vr_col(c,j) = this%nflx_met_vr(tstep,j)
+           nitrogenflux_vars%nflx_input_litr_cel_vr_col(c,j) = this%nflx_cel_vr(tstep,j)
+           nitrogenflux_vars%nflx_input_litr_lig_vr_col(c,j) = this%nflx_lig_vr(tstep,j)
+           nitrogenflux_vars%nflx_input_litr_cwd_vr_col(c,j) = this%nflx_cwd_vr(tstep,j)
+
+           phosphorusflux_vars%pflx_input_litr_met_vr_col(c,j) = this%cflx_met_vr(tstep,j)/1600._r8
+           phosphorusflux_vars%pflx_input_litr_cel_vr_col(c,j) = this%cflx_cel_vr(tstep,j)/2000._r8
+           phosphorusflux_vars%pflx_input_litr_lig_vr_col(c,j) = this%cflx_lig_vr(tstep,j)/2500._r8
+           phosphorusflux_vars%pflx_input_litr_cwd_vr_col(c,j) = this%cflx_cwd_vr(tstep,j)/4500._r8
+
+           nitrogenflux_vars%nflx_minn_input_nh4_vr_col(c,j) = this%nflx_nh4_vr(tstep,j)
+           nitrogenflux_vars%nflx_minn_input_no3_vr_col(c,j) = this%nflx_no3_vr(tstep,j)
+           phosphorusflux_vars%pflx_minp_input_po4_vr_col(c,j) = this%pflx_po4_vr(tstep,j)
+           !if (ttime%tstep_continue >turbyr-5 .and. ttime%tstep_continue <= turbyr) then
+            !       write(stdout, *) '------------------------------------------------'
+            !       write(stdout, *) 'control loop this%rr_vr= ',this%rr_vr(tstep,j), ',    j=', j
+            !       write(stdout, *) 'carbonflux_vars%rr_vr_col =',carbonflux_vars%rr_vr_col(c,j), ',     tstep= ', tstep
+            !       write(stdout, *) 'tstep_continue =',ttime%tstep_continue
+            !       write(stdout, *) '------------------------------------------------'
+            ! endif                           ! end of testing        -zlyu                                                             
+           
+        endif
+
+      enddo
+    enddo
+  end subroutine UpdateCNPForcing
+
+  ! ----------------------------------------------------------------------
+
+  function discharge(this, tstep) result(flux)
+   !DESCRIPTION
+   !return discharge at bottom of the soil column
+    implicit none
+    !arguments
+    class(ForcingData_type) , intent(in) :: this
+    integer                 , intent(in) :: tstep
+
+    real(r8) :: flux
+    integer  :: index
+
+    if (this%forcing_type == steady_state) then
+       index = 1
+    else
+       index = tstep
+    end if
+
+    flux = this%qbot(index)
+
+  end function discharge
+
+  ! ----------------------------------------------------------------------
+  ! pass one qbot_disturb               -zlyu
+  function discharge_disturb(this, tstep) result(flux)
+   !DESCRIPTION
+   !return discharge at bottom of the soil column
+    implicit none
+    !arguments
+    class(ForcingData_type) , intent(in) :: this
+    integer                 , intent(in) :: tstep
+
+    real(r8) :: flux
+    integer  :: index
+
+    if (this%forcing_type == steady_state) then
+       index = 1
+    else
+       index = tstep
+    end if
+
+    flux = this%qbot_disturb(index)
+
+  end function discharge_disturb
+
+  ! ----------------------------------------------------------------------
+
+  function infiltration(this, tstep) result(flux)
+   !DESCRIPTION
+   !return infiltration
+   implicit none
+    class(ForcingData_type) , intent(in) :: this
+    integer                 , intent(in) :: tstep
+    !temporary variables
+    real(r8) :: flux
+    integer  :: index
+
+    if (this%forcing_type == steady_state) then
+       index = 1
+    else
+       index = tstep
+    end if
+
+    flux = this%qflx_infl(index)
+
+  end function infiltration
+
+end module ForcingDataType

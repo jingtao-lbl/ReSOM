@@ -1,0 +1,171 @@
+Using base filename for output : mock-ss-uniform-diffusion
+Read 'mock-ss-uniform-diffusion.namelist' until EOF.
+namelist_to_buffer: Read buffer of     602 characters.
+  If it looks like part of the namelist is missing, 
+  compare the number of characters read to the actual 
+  size of your file ($ wc -c mock-ss-uniform-diffusion.namelist) and increase 
+  the buffer size if necessary.
+------------------------------
+&sbetr_driver
+  simulator_name = 'standalone'
+/
+
+&betr_parameters
+  reaction_method = 'mock_run'
+  advection_on = .false.
+  diffusion_on = .true.
+  reaction_on = .false.
+/
+
+&betr_time
+  stop_n = 60
+  stop_option='ndays'
+/
+
+&forcing_inparm
+  forcing_type_name = 'steady state'
+  forcing_format = 'netcdf'
+  forcing_filename = '../../../input_data/uniform_steadystate_forcing.cdl.nc'
+/
+
+&betr_grid
+  grid_data_filename = '../../../input_data/uniform_steadystate_grid.cdl.nc'
+  grid_type_str = 'uniform'
+  delta_z = 0.1
+  nlevgrnd = 15
+/
+
+&regression_test
+  write_regression_output = .true.
+  cells = 5
+/
+
+------------------------------
+ 
+ --------------------
+ 
+  sbetr driver :
+ 
+  sbetr_driver namelist settings :
+ 
+ &SBETR_DRIVER
+ SIMULATOR_NAME  = standalone                                                                                                                                                                                                                                                      ,
+ CONTINUE_RUN    = F,
+ RUN_TYPE        = tracer   ,
+ IS_NITROGEN_ACTIVE      = F,
+ IS_PHOSPHORUS_ACTIVE    = F,
+ CASE_ID =                                                                 ,
+ FREQALL = year  ,
+ FINIT   =                                                                                                                                                                                                                                                                 
+ /
+ 
+ --------------------
+ 
+ --------------------
+ 
+  betr bgc type :
+ 
+  betr_parameters namelist settings :
+ 
+ &BETR_PARAMETERS
+ REACTION_METHOD = mock_run                                                                                                                        ,
+ ADVECTION_ON    = F,
+ DIFFUSION_ON    = T,
+ REACTION_ON     = F,
+ EBULLITION_ON   = T,
+ INPUT_ONLY      = F,
+ ADV_SCALAR      =   1.00000000000000     ,
+ BGC_PARAM_FILE  =                                                                                                                                                                                                                                                                 ,
+ USE_C13_BETR    = F,
+ USE_C14_BETR    = F
+ /
+ 
+ --------------------
+ 
+ --------------------
+ 
+  betr grid :
+ 
+  betr_grid namelist settings :
+ 
+ &BETR_GRID
+ GRID_TYPE_STR   = uniform                                                                                                                         ,
+ GRID_DATA_FILENAME      = ../../../input_data/uniform_steadystate_grid.cdl.nc                                                                                                                                                                                                             ,
+ GRID_DATA_FORMAT        =                                                                                                                                 ,
+ NLEVGRND        =          15,
+ DELTA_Z =  0.100000000000000     
+ /
+ 
+ --------------------
+ CHECK_VAR: variable lithological_class is not on initial dataset
+ 
+ --------------------
+ 
+  betr time :
+ 
+  betr_time namelist settings :
+ 
+ &BETR_TIME
+ DELTA_TIME      =   1800.00000000000     ,
+ STOP_N  =          60,
+ STOP_OPTION     = ndays   ,
+ RESTART_DTIME   =  -1.00000000000000     ,
+ HIST_FREQ       =          -1,
+ HIST_START_YR   =           1
+ /
+ 
+ --------------------
+ 
+ --------------------
+ 
+  betr climate forcing :
+ 
+  forcing_inparm namelist settings :
+ 
+ &FORCING_INPARM
+ FORCING_TYPE_NAME       = steady state                                                                                                                                                                                                                                                    ,
+ FORCING_FILENAME        = ../../../input_data/uniform_steadystate_forcing.cdl.nc                                                                                                                                                                                                          ,
+ FORCING_FORMAT  = netcdf                                                                                                                                                                                                                                                          ,
+ USE_ROOTSOIT    = T,
+ IS_DISTURBANCE  = F
+ /
+ 
+ --------------------
+ 
+ --------------------
+ 
+  betr time :
+ 
+  betr_time namelist settings :
+ 
+ &BETR_TIME
+ DELTA_TIME      =   1800.00000000000     ,
+ STOP_N  =          60,
+ STOP_OPTION     = ndays   ,
+ RESTART_DTIME   =  -1.00000000000000     ,
+ HIST_FREQ       =          -1,
+ HIST_START_YR   =           1
+ /
+ 
+ --------------------
+ 
+ --------------------
+ 
+  betr regression test type :
+ 
+  regression_test namelist settings :
+ 
+ &REGRESSION_TEST
+ CELLS   =           5,
+ WRITE_REGRESSION_OUTPUT = T
+ /
+ 
+ --------------------
+ simulation using standalone-betr
+ open restart file mock-ss-uniform-diffusion.00002880.rst.nc for write
+ creating file succeeded
+ offline restart define
+ offline restart write
+ write restart file
+ exit
+Writing regression output to mock-ss-uniform-diffusion.regression                                                                                                                                                                                                                            

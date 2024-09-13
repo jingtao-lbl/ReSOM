@@ -1,0 +1,169 @@
+BeTR regression tests
+Run time : 2022-12-13_092532
+System information :
+    posix.uname_result(sysname='Linux', nodename='cori08', release='5.3.18-150200.24.129-default', version='#1 SMP Tue Sep 6 13:05:38 UTC 2022 (c4cee83)', machine='x86_64')
+Test directory :
+    /global/u1/j/jingtao/ReSOM/sbetr/regression-tests
+-+- -----------------------------------
+BeTR repository status 
+$ git log -n 1
+    commit c978ddce6071ad6042f485be265d343e74e7302d
+    Author: Zhou Lyu <zlyu@n0001.scs00>
+    Date:   Tue Jun 30 18:22:05 2020 -0700
+    
+    testing forcing
+$ git status
+    On branch zlyu_dist8_memfix_1
+    Your branch is up to date with 'origin/zlyu_dist8_memfix_1'.
+    
+    Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+    modified:   ../src/betr/betr_util/betr_time_mod.F90
+    modified:   ../src/io_util/histMod.F90
+    
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+    ../input_data/e3smcase_tr_20190402.clm2.h1.1860-80.nc
+    tmp-betr-test-info.txt
+    ../src/Applications/soil-farm/SUMMS/summsPara/.ipynb_checkpoints/
+    
+    no changes added to commit (use "git add" and/or "git commit -a")
+-+- -----------------------------------
+Verifying executable:
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr
+Executable exists and is can be run by this user.
+-+- -----------------------------------
+Searching for config files.
+-+- -----------------------------------
+Converting input data from text cdl to binary nc.
+----------------------------------------------------------------------
+Reading configuration file :
+    /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone/standalone.cfg
+Adding test suite from "standalone.cfg"
+  Adding test "mock-adr"
+  Adding test "mock-advection"
+  Adding test "mock-diffusion"
+  Adding test "mock-ss-diffusion"
+  Adding test "mock-ss-uniform-diffusion"
+  Adding test "mock-reaction"
+  Adding test "h2oiso"
+  Adding test "mock-ss-advection"
+  Adding test "mock-ss-uniform-advection"
+----------------------------------------------------------------------
+Reading configuration file :
+    /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/clm/clm.cfg
+Adding test suite from "clm.cfg"
+   WARNING: No tests in suite /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/clm/clm.cfg
+----------------------------------------------------------------------
+Running tests for "standalone"
+-+- -----------------------------------
+Running test "mock-adr"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-adr.namelist
+    mock-adr : run time : 2.51 seconds
+-+- -----------------------------------
+Checking test "mock-adr"
+Reading configuration file :
+    mock-adr.regression.baseline
+Reading configuration file :
+    mock-adr.regression
+  FAILURE : mock-adr : O2_total_aqueous_conc : min : tolerance failure : 9.992007221626409e-14 > 1e-16 [absolute]
+-+- -----------------------------------
+Running test "mock-advection"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-advection.namelist
+    mock-advection : run time : 2.01 seconds
+-+- -----------------------------------
+Checking test "mock-advection"
+Reading configuration file :
+    mock-advection.regression.baseline
+Reading configuration file :
+    mock-advection.regression
+  FAILURE : mock-advection : O2_total_aqueous_conc : cell    5 : tolerance failure : 1.0999231039865442e-16 > 1e-16 [absolute]
+  FAILURE : mock-advection : O2_gas_partial_fraction : cell    5 : tolerance failure : 3.00003077935429e-14 > 2e-14 [absolute]
+  FAILURE : mock-advection : total_gas_pressure : cell    5 : tolerance failure : 9.99733629214461e-12 > 2e-14 [absolute]
+-+- -----------------------------------
+Running test "mock-diffusion"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-diffusion.namelist
+    mock-diffusion : run time : 1.91 seconds
+-+- -----------------------------------
+Checking test "mock-diffusion"
+Reading configuration file :
+    mock-diffusion.regression.baseline
+Reading configuration file :
+    mock-diffusion.regression
+  PASS : mock-diffusion 
+-+- -----------------------------------
+Running test "mock-ss-diffusion"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-ss-diffusion.namelist
+    mock-ss-diffusion : run time : 1.71 seconds
+-+- -----------------------------------
+Checking test "mock-ss-diffusion"
+Reading configuration file :
+    mock-ss-diffusion.regression.baseline
+Reading configuration file :
+    mock-ss-diffusion.regression
+  PASS : mock-ss-diffusion 
+-+- -----------------------------------
+Running test "mock-ss-uniform-diffusion"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-ss-uniform-diffusion.namelist
+    mock-ss-uniform-diffusion : run time : 1.81 seconds
+-+- -----------------------------------
+Checking test "mock-ss-uniform-diffusion"
+Reading configuration file :
+    mock-ss-uniform-diffusion.regression.baseline
+Reading configuration file :
+    mock-ss-uniform-diffusion.regression
+  PASS : mock-ss-uniform-diffusion 
+-+- -----------------------------------
+Running test "mock-reaction"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-reaction.namelist
+    mock-reaction : run time : 1.10 seconds
+-+- -----------------------------------
+Checking test "mock-reaction"
+Reading configuration file :
+    mock-reaction.regression.baseline
+Reading configuration file :
+    mock-reaction.regression
+  PASS : mock-reaction 
+-+- -----------------------------------
+Running test "h2oiso"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr h2oiso.namelist
+    h2oiso : run time : 4.71 seconds
+-+- -----------------------------------
+Checking test "h2oiso"
+Reading configuration file :
+    h2oiso.regression.baseline
+Reading configuration file :
+    h2oiso.regression
+  PASS : h2oiso 
+-+- -----------------------------------
+Running test "mock-ss-advection"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-ss-advection.namelist
+    mock-ss-advection : run time : 2.51 seconds
+-+- -----------------------------------
+Checking test "mock-ss-advection"
+Reading configuration file :
+    mock-ss-advection.regression.baseline
+Reading configuration file :
+    mock-ss-advection.regression
+  FAILURE : mock-ss-advection : AR_gas_partial_fraction : cell    9 : tolerance failure : 9.992007221626409e-15 > 1e-16 [absolute]
+-+- -----------------------------------
+Running test "mock-ss-uniform-advection"
+    cd /global/u1/j/jingtao/ReSOM/sbetr/regression-tests/tests/standalone
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr mock-ss-uniform-advection.namelist
+    mock-ss-uniform-advection : run time : 2.41 seconds
+-+- -----------------------------------
+Checking test "mock-ss-uniform-advection"
+Reading configuration file :
+    mock-ss-uniform-advection.regression.baseline
+Reading configuration file :
+    mock-ss-uniform-advection.regression
+  PASS : mock-ss-uniform-advection 

@@ -1,0 +1,29 @@
+BeTR regression tests
+Run time : 2022-03-10_120352
+System information :
+    ('Linux', 'cori12', '4.12.14-150.75-default', '#1 SMP Thu Jul 15 18:16:55 UTC 2021 (b80825a)', 'x86_64')
+Test directory :
+    /global/u1/j/jingtao/ReSOM/sbetr/regression-tests
+-+- -----------------------------------
+BeTR repository status 
+$ git log -n 1
+    commit c978ddce6071ad6042f485be265d343e74e7302d
+    Author: Zhou Lyu <zlyu@n0001.scs00>
+    Date:   Tue Jun 30 18:22:05 2020 -0700
+    
+    testing forcing
+$ git status
+    On branch zlyu_dist8_memfix_1
+    Your branch is up to date with 'origin/zlyu_dist8_memfix_1'.
+    
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+    tmp-betr-test-info.txt
+    
+    nothing added to commit but untracked files present (use "git add" to track)
+-+- -----------------------------------
+Verifying executable:
+    /global/u1/j/jingtao/ReSOM/sbetr/local/bin/sbetr
+Executable exists and is can be run by this user.
+-+- -----------------------------------
+Searching for config files.
