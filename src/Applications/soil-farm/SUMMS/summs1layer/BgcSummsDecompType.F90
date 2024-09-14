@@ -237,11 +237,7 @@ implicit none
     use_warm              => this%use_warm                &     
   )
 
-    catanf_30 = catanf(30._r8)
-    ! testing only                              -zlyu   
-    
-    !write(stdout, *) '***************************'
-    ! end of the testing
+  catanf_30 = catanf(30._r8)
     
   !warming effect
   if(use_warm)then
@@ -249,17 +245,15 @@ implicit none
   else
     tempbgc = temp
   endif
-  !write(stdout, *) 'inside decompk_scalar no temp rewrite --> tempbgc=', tempbgc, ',     temp=', temp                !-zlyu
-
+  
   !temperature scalar
   this%t_scalar     = 1._r8
-  !use Charlie's Q10 based temperature scalar
+  
   if (tempbgc >= SHR_CONST_TKFRZ) then
     this%t_scalar= (Q10**((tempbgc-(SHR_CONST_TKFRZ+25._r8))/10._r8))
   else
     this%t_scalar= (Q10**(-25._r8/10._r8))*(froz_q10**((tempbgc-SHR_CONST_TKFRZ)/10._r8))
   endif
-  !write(stdout, *) 'inside decompk_scalar after Q10  --> this%t_scalar=', this%t_scalar                !-zlyu
   
   ! scale all decomposition rates by a constant to compensate for offset between original CENTURY temp func and Q10
   normalization_factor = (catanf(normalization_tref)/catanf_30) / (q10**((normalization_tref-25._r8)/10._r8))
@@ -271,86 +265,45 @@ implicit none
   !allocate(temp2(121)) 
   allocate(deltag0(121))                         !
   allocate(t_fact0(121)) 
-      temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
+  temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
 
-    ! testing only, where the run crushed        -zlyu   02/2019
-    !write(stdout, *) '***************************'
-    !write(stdout, *) 'inside decompk_scalar   --> temp0 = ',temp0              !-zlyu
-    !write(stdout, *) '***************************'
-    ! end of the testing
+  ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
+  cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
+  deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
+  t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
+  deltag1 = xpar2-deltas_star*Tref+cp*(Tref-th_star-Tref*log(Tref/ts_star))
+  t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*Tref)))
+
+  !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure 
+
+  tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
+  call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature
+  
+  fref=t_fact*(tempbgc/tref)                                 ! Modifies non-equilibrium enzymatic reactions
+  !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
     
-      ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
-      cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
-      deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
-      t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
-      deltag1 = xpar2-deltas_star*Tref+cp*(Tref-th_star-Tref*log(Tref/ts_star))
-      t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*Tref)))
-
-      !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure           !comment out in rzacplsbetr_cmupdated,   -zlyu
-     
-      tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
-     ! write(stdout, *) 'inside decompk_scalar before interp1  --> t_fact0=', t_fact0               !-zlyu
-     ! write(stdout, *) 'deltag1=', deltag1, ',      cp=', cp, ',     t_fact1=', t_fact1 
-      call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature
-      ! This subroutine should return t_fact
-      
-      fref=t_fact*(tempbgc/tref)                                 ! Modifies non-equilibrium enzymatic reactions
-      !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
-      !write(stdout, *) 'inside decompk_scalar after interp1   --> fref=', fref            !-zlyu
-      !write(stdout, *) 't_fact=', t_fact,',      tref=', tref
-      !write(stdout, *) 'deltag1=', deltag1, ',      cp=', cp, ',     t_fact1=', t_fact1        !-zlyu
-      
   !Update parameters
-    this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
-    this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
-    !this%vmax_enz         = ref_vmax_enz *1._r8*exp(-ea_vmax_enz*tinv)          !-zlyu, testing without active proportion for enz
-    this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
-    this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
-    this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
-    this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
-    !this%kappa_mic        = ref_kappa_mic!*fref*exp(ea_kappa_mic*tinv)               !-original version zlyu_test1 
-    this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
-    this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
-
-    ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '***************************==============================================='
-    !write(stdout, *) 'For active fractio vmax_mic= ',this%vmax_mic,',      this%vmax_enz = ',this%vmax_mic,',      fref= ',fref
-    !write(stdout, *) 'ea_vmax_mic= ',ea_vmax_mic,',     ea_vmax_enz= ',ea_vmax_enz, ',     tinv= ', tinv
-    !write(stdout, *) 'ref_vmax_mic= ',ref_vmax_mic,',      ref_vmax_enz= ',ref_vmax_enz
-    !write(stdout, *) '***************************==============================================='
-    ! end of the testing
+  this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
+  this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
+  !this%vmax_enz         = ref_vmax_enz *1._r8*exp(-ea_vmax_enz*tinv)          !-zlyu, testing without active proportion for enz
+  this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
+  this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
+  this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
+  this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
+  !this%kappa_mic        = ref_kappa_mic!*fref*exp(ea_kappa_mic*tinv)               !-original version zlyu_test1 
+  this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
+  this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
     
-  !h2osoi_liqure scalar, also follows what Charlie has done
   this%w_scalar     = 1._r8
   maxpsi = sucsat * (-9.8e-6_r8)   !kg -> MPa
   psi = min(soilpsi,maxpsi)
 
-    ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    !write(stdout, *) 'w_scalar = ',this%w_scalar,'      sucsat = ',sucsat,'      maxpsi = ',maxpsi
-    !write(stdout, *) 'soilpsi = ',soilpsi,'      psi = ',psi, '     minpsi = ', minpsi
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    ! end of the testing
-
-  ! decomp only if soilpsi is higher than minpsi, some modification is needed for the following
+  ! decomp only if soilpsi is higher than minpsi
   ! double check the paper by Wilson and Griffin, 1975
   if (psi > minpsi) then
-    this%w_scalar = (log(minpsi/psi)/log(minpsi/maxpsi))                         !(maxpsi*0.7_r8)))               ! testing, multiply 0.7 to maxpsi         -zlyu
-    ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    !write(stdout, *) 'inside case psi > minpsi'
-    !write(stdout, *) 'w_scalar = ',this%w_scalar, '    psi = ', psi
-    !write(stdout, *) 'maxpsi = ',maxpsi
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    ! end of the testing
+    this%w_scalar = (log(minpsi/psi)/log(minpsi/maxpsi))
   else
     this%w_scalar = 0._r8
-    ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    !write(stdout, *) 'inside else case where psi < minpsi'
-    !write(stdout, *) 'w_scalar = ',this%w_scalar, '       psi = ',psi
-    !write(stdout, *) '***************************@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    ! end of the testing
   end if
 
   !oxygen scalar, this is different from what CLM4.5bgc does, I use a M-M formulation to indicate O2 stress
@@ -358,22 +311,9 @@ implicit none
   o2w = o2b / o2_w2b
   this%o_scalar = max(o2w/(o2w+k_m_o2),1.e-20_r8)  !the value 0.22 mol O3/m3 is from Arah and Kirk, 2000
   !set o_scalar to 1._r8, because century model already imposes a moisture effect
-  !this%o_scalar = 1._r8
-      ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '****************************################################################'
-    !write(stdout, *) 'just to check o_scalar'
-    !write(stdout, *) 'o_scalar = ',this%o_scalar, '   o2b = ',o2b, '     o2_w2b = ', o2_w2b
-    !write(stdout, *) '****************************################################################'
-    ! end of the testing
   !depth scalar, according to Koven et al. (2013), BG, the depth scalar is needed to resolve the radiocarbon profile
   this%depth_scalar = exp(-depz/decomp_depth_efolding)
-    ! testing only, checking variables              -zlyu   
-    !write(stdout, *) '***************************@***********************************************'
-    !write(stdout, *) 'just to check depth_scalar'
-    !write(stdout, *) 'depth_scalar = ',this%depth_scalar, '    depz = ',depz, '     decomp_depth_efolding = ',decomp_depth_efolding
-    !write(stdout, *) '**************************************************$$$$$$$$$$$$$$$$$$$'
-    ! end of the testing
-
+  
   end associate
   end subroutine set_decompk_scalar
 
