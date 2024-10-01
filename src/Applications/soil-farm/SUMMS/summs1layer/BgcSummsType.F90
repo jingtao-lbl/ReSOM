@@ -116,7 +116,8 @@ contains
 
   end function getvarllen_summs
   !-------------------------------------------------------------------------------
-  subroutine getvarlist_summs(this, nstvars, varnames, varunits, vartypes)   !vartypes is added to be consistent with /soil-farm/bgcfarm_util/BeTRJarModel.F90
+  subroutine getvarlist_summs(this, nstvars, varnames, varunits, vartypes)   
+  !vartypes is added to be consistent with /soil-farm/bgcfarm_util/BeTRJarModel.F90
   implicit none
     class(summsbgceca_type) , intent(inout) :: this
   integer, intent(in) :: nstvars
@@ -179,11 +180,12 @@ contains
   remass_n=emass_n/max(abs(dmass_n),tiny_val)
   remass_p=emass_p/max(abs(dmass_p),tiny_val)
 
-  write(*,'(A)')'------------------------------------------------------------------------------------------------------'
-  write(*,'(A)')'type             beg_mass             end_mass            dmass                inflx            outflx'
-  write(*, '(A,5(X,E20.10))')'c_mass bal=',this%beg_c_mass, c_mass, emass_c, this%c_inflx, c_flx
-  write(*, '(A,5(X,E20.10))')'n_mass bal=',this%beg_n_mass, n_mass, emass_n, this%n_inflx, n_flx
-  write(*, '(A,5(X,E20.10))')'p_mass bal=',this%beg_p_mass, p_mass, emass_p, this%p_inflx, p_flx
+  !write(*,'(A)')'------------------------------------------------------------------------------------------------------'
+  !write(*,'(A)')'type             beg_mass             end_mass            dmass                inflx            outflx'
+  !write(*, '(A,5(X,E20.10))')'c_mass bal=',this%beg_c_mass, c_mass, emass_c, this%c_inflx, c_flx
+  !write(*, '(A,5(X,E20.10))')'n_mass bal=',this%beg_n_mass, n_mass, emass_n, this%n_inflx, n_flx
+  !write(*, '(A,5(X,E20.10))')'p_mass bal=',this%beg_p_mass, p_mass, emass_p, this%p_inflx, p_flx
+
   if(maxval((/abs(remass_c),abs(remass_n),abs(remass_p)/))>1.e-3_r8)stop
   end subroutine end_massbal_check
 
@@ -231,8 +233,10 @@ contains
     return
   end select
   end subroutine UpdateParas_summs
+
   !-------------------------------------------------------------------------------
-  subroutine init_summs(this,  biogeo_con,  batch_mode,bstatus) !add dummy batch_mode to be consistent with subroutine JarModel_init(this,  biogeo_con,  batch_mode, bstatus) in /soil-farm/bgcfarm_util/BeTRJarModel.F90
+  subroutine init_summs(this,  biogeo_con,  batch_mode,bstatus) 
+  !add dummy batch_mode to be consistent with subroutine JarModel_init(this,  biogeo_con,  batch_mode, bstatus) in /soil-farm/bgcfarm_util/BeTRJarModel.F90
   use betr_varcon         , only : betr_maxpatch_pft
   implicit none
   class(summsbgceca_type), intent(inout) :: this
@@ -492,7 +496,8 @@ contains
   end subroutine checksum_cascade
 
   !-------------------------------------------------------------------------------
-  subroutine runbgc_summs(this,  is_surflit, dtime, bgc_forc, nstates, ystates0, ystatesf, bstatus)         !bgc_reaction_summs, add bgc_reaction_summs for using new affinity     -zlyu
+  subroutine runbgc_summs(this,  is_surflit, dtime, bgc_forc, nstates, ystates0, ystatesf, bstatus)         
+  !bgc_reaction_summs, add bgc_reaction_summs for using new affinity     -zlyu
 
   !DESCRIPTION
   !do bgc model integration for one step
@@ -552,65 +557,46 @@ contains
     ystates1 => this%ystates1                         , &
     debug => bgc_forc%debug                             & 
   )
-    !write(stdout, *) '******************************************'       
-    !write(stdout, *) 'Inside BgcSummsType.f90 at beginning'           !-zlyu
-    
-  !if(this%summsbgc_index%debug)print*,'enter runbgc'
+
   if(debug)print*,'enter runbgc_summs'
   this%rt_ar = rt_ar
   frc_c13 = safe_div(rt_ar_c13,rt_ar); frc_c14 = safe_div(rt_ar_c14,rt_ar)
   call bstatus%reset()
 
-  !write(stdout, *) 'Inside BgcSummsType.f90 after reset'           !-zlyu
   !initialize state variables
   call this%init_states(this%summsbgc_index, bgc_forc)
 !  call this%begin_massbal_check()
   ystates0(:) = this%ystates0(:)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after init ystates0'           !-zlyu
 
   !add all external input
   call this%add_ext_input(dtime, this%summsbgc_index, bgc_forc, &
       this%c_inflx, this%n_inflx, this%p_inflx)
 !   call this%end_massbal_check('af add_ext_input')
-  !initialize decomposition scaling factors
-  !write(stdout, *) 'Inside BgcSummsType.f90 after add_ext_input'           !-zlyu
  
-!  if(this%bgc_on)then
   !initialize decomposition scaling factors
     call this%decompkf_eca%set_decompk_scalar(ystates1(lid_o2), bgc_forc)
-    ! testing only, where the run crushed        -zlyu   02/2019
-    !write(stdout, *) '***************************'
-    !write(stdout, *) 'Inside BgcSummsType.f90 after decompk_scalar'           !-zlyu
-    !write(stdout, *) '***************************'
-    ! end of the testing
-    
+
   !initialize all entries to zero
   cascade_matrix(:,:) = 0._r8
 
   !calculate default stoichiometry entries
   call this%calc_cascade_matrix(this%summsbgc_index, cascade_matrix, frc_c13, frc_c14)
   !if(this%summsbgc_index%debug)call this%checksum_cascade(this%summsbgc_index)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after calc_cascade_matrix'           !-zlyu
   
   !run century decomposition, return decay rates, cascade matrix, potential hr
-  call this%sumsom%run_decomp(is_surflit, this%summsbgc_index, dtime, ystates1(1:nom_tot_elms),&          !bgc_reaction_summs, add bgc_reaction_summs,    -zlyu
+  call this%sumsom%run_decomp(is_surflit, this%summsbgc_index, dtime, ystates1(1:nom_tot_elms),&          
       this%decompkf_eca, this%alpha_n, this%alpha_p, &
       cascade_matrix, this%k_decay(1:nom_pools), pot_co2_hr, bstatus)
   !call this%sumsom%run_decomp(is_surf, this%summsbgc_index, dtime, ystates1(1:nom_tot_elms),&
   !    this%decompkf_eca, bgc_forc%pct_sand, bgc_forc%pct_clay, this%alpha_n, this%alpha_p, &
   !    cascade_matrix, this%k_decay(1:nom_pools), pot_co2_hr, spinup_scalar, spinup_flg, bstatus)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after run_decomp'           !-zlyu
   
   if(bstatus%check_status())return
 
   call this%nitden%calc_pot_nitr(ystates1(lid_nh4), bgc_forc, this%decompkf_eca, pot_f_nit_mol_per_sec)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after calc_pot_nitr'           !-zlyu
   
   !calculate potential o2 consumption
   o2_decomp_depth = pot_co2_hr + rt_ar + pot_f_nit_mol_per_sec * this%nitden%get_nit_o2_scef()
-  !write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'        !-zlyu
-  !write(stdout, *) 'In bgcsummstype  pot_co2_hr= ', pot_co2_hr,',     rt_ar= ',rt_ar
-  !write(stdout, *) '##########################################################################'
          
   !take a minimum > 0 to avoid singularity in calculating anaerobic fractions
   o2_decomp_depth = max(o2_decomp_depth,1.e-40_r8)
@@ -619,7 +605,6 @@ contains
   call this%nitden%run_nitden(this%summsbgc_index, bgc_forc, this%decompkf_eca, &
     ystates1(lid_nh4), ystates1(lid_no3), ystates1(lid_o2), o2_decomp_depth, &
     pot_f_nit_mol_per_sec, pot_co2_hr, this%pot_f_nit, this%pot_f_denit, cascade_matrix)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after run_nitden'           !-zlyu
   !---------------------
   !turn off nitrification and denitrification
   !this%pot_f_denit = 0._r8
@@ -633,7 +618,6 @@ contains
   !do the stoichiometric matrix separation
   call pd_decomp(nprimvars, nreactions, cascade_matrix(1:nprimvars, 1:nreactions), &
        cascade_matrixp, cascade_matrixd, bstatus)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after pd_decomp'           !-zlyu
   if(bstatus%check_status())return
   
   time = 0._r8
@@ -644,7 +628,6 @@ contains
 !    print*,'nh4',ystates1(lid_nh4),ystates1(lid_no3)
 !  endif
   !if(this%summsbgc_index%debug)call this%checksum_cascade(this%summsbgc_index)
-  !write(stdout, *) 'Inside BgcSummsType.f90 after ebbks1'           !-zlyu
   
   if(this%use_c14)then
     call this%c14decay(this%summsbgc_index, dtime, ystates1)
@@ -653,9 +636,9 @@ contains
 !  call this%sumsom%stoichiometry_fix(this%summsbgc_index, ystates1)
 
 !  if(this%summsbgc_index%debug)call this%end_massbal_check('bf exit runbgc')
-!  endif
+
   ystatesf(:) = ystates1(:)
-  !write(stdout, *) 'Inside BgcSummsType.f90 at end'           !-zlyu 
+
   end associate
   end subroutine runbgc_summs
   !-------------------------------------------------------------------------------
@@ -879,6 +862,7 @@ contains
 
   end associate
   end subroutine calc_cascade_matrix
+
   !--------------------------------------------------------------------
   subroutine init_states(this, summsbgc_index, bgc_forc)
 
@@ -962,6 +946,7 @@ contains
 
   end associate
   end subroutine init_states
+
   !--------------------------------------------------------------------
   subroutine add_ext_input(this, dtime, summsbgc_index, bgc_forc, c_inf, n_inf, p_inf)
   use BgcSummsIndexType       , only : summsbgc_index_type
@@ -979,6 +964,7 @@ contains
   real(r8):: totp, pmin_frac, pmin_cleave
   real(r8):: totc, totn
   real(r8):: c_inf_loc, n_inf_loc, p_inf_loc
+ 
   associate(                        &
     lit1 =>  summsbgc_index%lit1, &
     lit2 =>  summsbgc_index%lit2, &
@@ -1148,6 +1134,7 @@ contains
     endif
     end associate
     end subroutine add_som_pool
+  
  !----------------------------------------------------------------
     function sum_some(ebeg, eend, nelms, e_loc)result(ans)
     implicit none
@@ -1163,6 +1150,7 @@ contains
     enddo
 
     end function sum_some
+
    !----------------------------------------------------------------
     subroutine somp_decay(ebeg, eend, nelms, p_loc, pmin_frac, pmin_cleave)
     implicit none
@@ -1394,6 +1382,7 @@ contains
     endif
     it = it + 1
   enddo
+
   ! if(this%summsbgc_index%debug)then
   !   do jj = 1, nreactions
   !     print*,'casc jj',jj,rrates(jj),rscal(jj)
@@ -1408,8 +1397,10 @@ contains
   !   write(*,'(A,5(X,E25.15))')'dydt poly',dydt((jj-1)*nelms+c_loc),dydt((jj-1)*nelms+n_loc),dydt((jj-1)*nelms+p_loc),&
   !     dydt((jj-1)*nelms+c_loc)/dydt((jj-1)*nelms+n_loc),dydt((jj-1)*nelms+c_loc)/dydt((jj-1)*nelms+p_loc)
   ! endif
+
   end associate
   end subroutine bgc_integrate
+
   !--------------------------------------------------------------------
   subroutine arenchyma_gas_transport(this, summsbgc_index, dtime)
   use BgcSummsIndexType       , only : summsbgc_index_type

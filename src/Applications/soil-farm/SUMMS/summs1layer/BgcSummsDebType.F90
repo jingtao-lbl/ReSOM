@@ -15,11 +15,11 @@ module BgcSummsDebType
   ! give them meaningful names.
   !
   type, public :: debs
-    real(r8), pointer :: gmax_mic  => null()                 ! Maximum microbial growth rate (1/day)
+    real(r8), pointer :: gmax_mic  => null()               ! Maximum microbial growth rate (1/day)
     real(r8), pointer :: yld_mic   => null()               ! Yield rate of structural biomass from reserve metabolistes (g microbep/g micc)
-    real(r8), pointer :: yld_enz   => null()                  ! Yield rate of enzymes from reserve metabolistes (g enzymes/g micc)
-    real(r8), pointer :: mr_mic   => null()
-    real(r8), pointer :: pmax_enz    => null()                     
+    real(r8), pointer :: yld_enz   => null()               ! Yield rate of enzymes from reserve metabolistes (g enzymes/g micc)
+    real(r8), pointer :: mr_mic   => null()                ! Microbial maintenance rate
+    real(r8), pointer :: pmax_enz    => null()             ! Maximum enzyme production rate        
     real(r8), pointer :: je         => null()                   
     real(r8), pointer :: ec     => null()
     real(r8), pointer :: gB      => null()

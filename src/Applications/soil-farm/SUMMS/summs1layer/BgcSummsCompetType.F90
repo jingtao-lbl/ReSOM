@@ -85,7 +85,6 @@ contains
   allocate(this%plant_froot_np(betr_maxpatch_pft));
   allocate(this%plant_eff_frootc_patch(betr_maxpatch_pft))
   end subroutine InitAllocate
-
   !-------------------------------------------------------------------------------
 
   subroutine run_compet_nitrogen(this, non_limit, smin_nh4, smin_no3,  &

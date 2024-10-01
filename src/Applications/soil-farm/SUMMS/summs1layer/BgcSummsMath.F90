@@ -21,35 +21,14 @@ contains
     integer :: dataIndex, minXdata, maxXdata, xRange
     real(r8) :: weight
 
-    ! Possible checks on inputs could go here
-    ! Things you may want to check:
-    !   monotonically increasing xData
-    !   size(xData) == size(yData)
-    !   size(xVal) == size(yVal)
-        ! testing only, where the run crushed        -zlyu   02/2019
-    !write(stdout, *) '***************************'
-    !write(stdout, *) 'inside interp1 start'
-    !write(stdout, *) 'xData = ', xData, '                 yData = ', yData
-    !write(stdout, *) 'xVal = ',xVal, '                 yVal = ', yVal
-    !write(stdout, *) '***************************'
-    ! end of the testing
-    
-
     minXdata = xData(1)
     maxXdata = xData(size(xData))
     xRange = maxXdata - minXdata
 
-        dataIndex = floor(xVal) - minXdata
+    dataIndex = floor(xVal) - minXdata
 
-        weight = (xVal - xData(dataIndex))/(xData(dataIndex+1)-xData(dataIndex))
-        yVal = (1.0-weight)*yData(dataIndex) + weight*yData(dataIndex+1)
-    ! testing only, where the run crushed        -zlyu   02/2019
-    !write(stdout, *) '***************************'
-    !write(stdout, *) 'inside decompk_scalar end'
-    !write(stdout, *) 'xRange = ', xRange, '                 dataIndex = ', dataIndex
-    !write(stdout, *) 'weight = ',weight, '                 yVal = ', yVal
-    !write(stdout, *) '***************************'
-    ! end of the testing
+    weight = (xVal - xData(dataIndex))/(xData(dataIndex+1)-xData(dataIndex))
+    yVal = (1.0-weight)*yData(dataIndex) + weight*yData(dataIndex+1)
     
   end subroutine interp1
 
@@ -91,7 +70,7 @@ contains
 
     ! !CALLED FROM:
     ! whenever it is needed
-    integer, parameter :: ITMAX = 50!40            !maximum number of iterations
+    integer, parameter :: ITMAX = 50            !maximum number of iterations
     integer, parameter :: iulog = 6
     integer :: iter
     real(r8)  :: a,b,c,d,e,fa,fb,fc,p,q,r,s,xm,tol1

@@ -790,7 +790,7 @@ contains
 
 
 
-    !-----NO-----!!!
+    !-----Jing Tao: Do not use this-----!!!
     !version of reaction 8 that enz comes from res pool instead of from reaction 6 from mic pool            -zlyu
     !cascade_matrix((mic-1)*nelms+c_loc   ,reac) = part_mic 
     !cascade_matrix((mic-1)*nelms+n_loc   ,reac) = part_mic*this%icn_ratios(mic)
@@ -1333,6 +1333,10 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   k_decay(lit2) = k_decay(lit2) * t_scalar *  w_scalar * o_scalar * depth_scalar
   k_decay(lit3) = k_decay(lit3) * t_scalar *  w_scalar * o_scalar * depth_scalar
 
+  k_decay(cwd)  = k_decay(cwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
+  k_decay(lwd)  = k_decay(lwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
+  k_decay(fwd)  = k_decay(fwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
+
   !if (w_scalar==1._r8) then
   !     k_decay(mic)  = k_decay(mic)   * o_scalar * 0.000000001                !zlyu for w_scalar
   !     k_decay(res)  = k_decay(res)   * o_scalar * 0.000000001                 ! zlyu for w_scalar
@@ -1350,10 +1354,6 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   k_decay(res)  = k_decay(res)   * o_scalar * w_scalar  
   k_decay(enz)  = k_decay(enz)   * w_scalar            
   k_decay(mono) = k_decay(mono)  * o_scalar * w_scalar 
-
-  k_decay(cwd)  = k_decay(cwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
-  k_decay(lwd)  = k_decay(lwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
-  k_decay(fwd)  = k_decay(fwd)   * t_scalar *  w_scalar * o_scalar * depth_scalar
 
   !impose the ligin effect - what is this? fraction of ligin out of the decayed pools?
   k_decay(cwd)  = k_decay(cwd) * exp(-3._r8*this%cwd_flig)
@@ -1552,8 +1552,7 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
                 ! Population growth        
                 actgB=gB*gmax_mic   !deb%gB
                 ! Enzyme production        
-                actpE=pE*pmax_enz   !deb%pE !-zlyu ---USE THIS!
-                !actpE=pE*gmax_mic   !deb%pE
+                actpE=pE*pmax_enz   !deb%pE 
                 ! Maintenance
                 actmr=mr_mic                      
 

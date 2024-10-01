@@ -78,6 +78,7 @@ implicit none
   call this%InitCold ()
 
  end subroutine Init
+
  !------------------------------------------------------------------------
  subroutine InitAllocate(this)
    !
@@ -148,6 +149,7 @@ implicit none
     this%use_warm = biogeo_con%use_warm
 
   end subroutine UpdateParas
+
   !-----------------------------------------------------------------------
   subroutine set_decompk_scalar(this, o2b, bgc_forc)
 
@@ -183,15 +185,15 @@ implicit none
         real(r8), dimension(:), allocatable :: t_fact0 ! Fraction of active enzymes over temperature range
         integer :: ii                                  ! Array constructor index
         integer :: dimtemp0                            ! Length of temperature range temp0
-        real(r8) :: xpar1 = 249.544170969785_r8           ! Number of amino acid residues per enzyme
-        real(r8) :: xpar2 = 5341.422691388677_r8          ! Enthalpy change at convergence temperature for enthalpy (J/mol)
-        real(r8) :: xpar3 = 5.617549086429_r8             ! Average number of non-polar hydrogen atoms per amino acid residue in enzyme
+        real(r8) :: xpar1 = 249.544170969785_r8        ! Number of amino acid residues per enzyme
+        real(r8) :: xpar2 = 5341.422691388677_r8       ! Enthalpy change at convergence temperature for enthalpy (J/mol)
+        real(r8) :: xpar3 = 5.617549086429_r8          ! Average number of non-polar hydrogen atoms per amino acid residue in enzyme
         real(r8) :: cp                                 ! Heat capacity
         real(r8) :: deltag1                            ! Change in Gibbs free energy for enzymes at reference temperature
         real(r8) :: t_fact1                            ! Fraction of active enzymes at reference temperature
-        real(r8) :: deltas_star = 18.1_r8                 ! Entropy change at the convergence temperature for entropy (J/K/mol)
-        real(r8) :: ts_star = 385.2_r8                    ! Convergence temperature for entropy (K)
-        real(r8) :: th_star = 373.6_r8                    ! Convergence temperature for enthalpy (K)
+        real(r8) :: deltas_star = 18.1_r8              ! Entropy change at the convergence temperature for entropy (J/K/mol)
+        real(r8) :: ts_star = 385.2_r8                 ! Convergence temperature for entropy (K)
+        real(r8) :: th_star = 373.6_r8                 ! Convergence temperature for enthalpy (K)
         real(r8) :: t_fact                             ! Active enzyme fraction at given temperatur
         ! Set up parameters to estimate the change in activity at the current temperature
         real(r8) :: fref0                              ! Modifies non-enzyme and non-equilibrium reactions
@@ -237,7 +239,7 @@ implicit none
     use_warm              => this%use_warm                &     
   )
 
-  catanf_30 = catanf(30._r8)
+    catanf_30 = catanf(30._r8)
     
   !warming effect
   if(use_warm)then
@@ -245,10 +247,9 @@ implicit none
   else
     tempbgc = temp
   endif
-  
+
   !temperature scalar
   this%t_scalar     = 1._r8
-  
   if (tempbgc >= SHR_CONST_TKFRZ) then
     this%t_scalar= (Q10**((tempbgc-(SHR_CONST_TKFRZ+25._r8))/10._r8))
   else
@@ -260,60 +261,58 @@ implicit none
   this%t_scalar = this%t_scalar * normalization_factor
 
   !Update temperature parameters
-  !allocate(temp0(220:340))                           !add the allocate    -zlyu
   allocate(temp0(121))
   !allocate(temp2(121)) 
   allocate(deltag0(121))                         !
   allocate(t_fact0(121)) 
-  temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
+      temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
 
-  ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
-  cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
-  deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
-  t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
-  deltag1 = xpar2-deltas_star*Tref+cp*(Tref-th_star-Tref*log(Tref/ts_star))
-  t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*Tref)))
+      ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
+      cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
+      deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
+      t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
+      deltag1 = xpar2-deltas_star*tref+cp*(tref-th_star-tref*log(tref/ts_star))
+      t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*tref)))
 
-  !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure 
-
-  tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
-  call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature
-  
-  fref=t_fact*(tempbgc/tref)                                 ! Modifies non-equilibrium enzymatic reactions
-  !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
-    
+      !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure           !comment out in rzacplsbetr_cmupdated,   -zlyu
+     
+      tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
+      call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature, t_fact
+      
+      fref=t_fact*(tempbgc/tref)                                 !Modifies non-equilibrium enzymatic reactions
+      !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
+      
   !Update parameters
-  this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
-  this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
-  !this%vmax_enz         = ref_vmax_enz *1._r8*exp(-ea_vmax_enz*tinv)          !-zlyu, testing without active proportion for enz
-  this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
-  this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
-  this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
-  this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
-  !this%kappa_mic        = ref_kappa_mic!*fref*exp(ea_kappa_mic*tinv)               !-original version zlyu_test1 
-  this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
-  this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
+    this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
+    this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
+    this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
+    this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
+    this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
+    this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
+    this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
+    this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
     
+  !h2osoi_liqure scalar, also follows what Charlie has done
   this%w_scalar     = 1._r8
   maxpsi = sucsat * (-9.8e-6_r8)   !kg -> MPa
   psi = min(soilpsi,maxpsi)
 
-  ! decomp only if soilpsi is higher than minpsi
+  ! decomp only if soilpsi is higher than minpsi, some modification is needed for the following
   ! double check the paper by Wilson and Griffin, 1975
   if (psi > minpsi) then
-    this%w_scalar = (log(minpsi/psi)/log(minpsi/maxpsi))
+    this%w_scalar = (log(minpsi/psi)/log(minpsi/maxpsi)) 
   else
-    this%w_scalar = 0._r8
+    this%w_scalar = 0.02_r8
   end if
 
   !oxygen scalar, this is different from what CLM4.5bgc does, I use a M-M formulation to indicate O2 stress
   !and the O2 budget is done on the fly
   o2w = o2b / o2_w2b
   this%o_scalar = max(o2w/(o2w+k_m_o2),1.e-20_r8)  !the value 0.22 mol O3/m3 is from Arah and Kirk, 2000
-  !set o_scalar to 1._r8, because century model already imposes a moisture effect
-  !depth scalar, according to Koven et al. (2013), BG, the depth scalar is needed to resolve the radiocarbon profile
+
+  !depth scalar to resolve the radiocarbon profile (Koven et al., 2013)
   this%depth_scalar = exp(-depz/decomp_depth_efolding)
-  
+
   end associate
   end subroutine set_decompk_scalar
 

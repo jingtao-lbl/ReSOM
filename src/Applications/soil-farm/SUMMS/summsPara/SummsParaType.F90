@@ -50,7 +50,7 @@ implicit none
     real(r8) :: ref_kaff_mono_mic_sc
     real(r8) :: minsite_sc
     !real(r8) :: k_decay_lit_sc
-    real(r8) :: rf_lit_bgc_sc                      ! use this for k_decay_lit actually
+    real(r8) :: rf_lit_bgc_sc           ! use this for k_decay_lit actually
     ! end of scaling scalars 
 
     ! microbial parameters for moisture effect on mono uptake     -zlyu
@@ -411,7 +411,6 @@ contains
   this%vmax_nit = 0.67_r8/86400._r8     ! 1/s
   end subroutine set_defpar_default
 
-
   !--------------------------------------------------------------------
   subroutine apply_spinup_factor(this)
   use betr_ctrl, only : betr_spinup_state
@@ -464,8 +463,8 @@ contains
   call this%readPars_bgc(ncid, bstatus)
   if(bstatus%check_status())return
 
-  write(*,*) 'Start reading in ReSOM parameters:'
-  write(*,*) '-------Microbe traits--------'
+  !write(*,*) 'Start reading in ReSOM parameters:'
+  !write(*,*) '-------Microbe traits--------'
 
   !-------Microbe traits--------
   tString='decay_mic0'
@@ -534,7 +533,7 @@ contains
   if(bstatus%check_status())return
   this%mic_transp = tempr(1) ! Scaling factor between transporter and microbial structural biomass
 
-  write(*,*) '-------Enzyme--------'
+  !write(*,*) '-------Enzyme--------'
   !-------Enzyme--------
 
   tString='decay_enz'
@@ -555,7 +554,7 @@ contains
   if(bstatus%check_status())return
   this%fenz2poly = tempr(1)   ! Fraction of decayed extracellular enzymes contributing to the polymer pool
 
-  write(*,*) '-------Affinity--------'
+  !write(*,*) '-------Affinity--------'
   !-------Affinity--------
 
   tString='ref_kaff_enz_poly'
@@ -601,12 +600,6 @@ contains
   !this%k_decay_lit1(1:2)  = this%k_decay_lit1(1:2) * this%rf_lit_bgc_sc
   !this%k_decay_lit2(1:2)  = this%k_decay_lit2(1:2) * this%rf_lit_bgc_sc
   !this%k_decay_lit3(1:2)  = this%k_decay_lit3(1:2) * this%rf_lit_bgc_sc
-
-  !write(stdout, *) 'decay_mic_sc=', this%decay_mic_sc,',    gmax_mic_sc= ', this%gmax_mic_sc, ',      pmax_enz_sc=', this%pmax_enz_sc
-  !write(stdout, *) 'ref_vmax_mic_sc=', this%ref_vmax_mic_sc,',       reg_vmax_enz_sc=', this%ref_vmax_enz_sc, ',       minsite=', this%minsite_sc
-  !write(stdout, *) 'ref_kaff_enz_poly_sc=', this%ref_kaff_enz_poly_sc,',     ref_kaff_enz_msurf_sc=', this%ref_kaff_enz_msurf_sc,',     rf_lit_bgc_sc=', this%rf_lit_bgc_sc
-  !write(stdout, *) '=============================================='  
-  ! end of adding                      -zlyu
   
   tString='surface_tension_water'
   call ncd_io(trim(tString),tempr, 'read', ncid, readvar=readv)

@@ -120,6 +120,7 @@ module PlantSoilBgcSummsType
   allocate(this%plant_minn_active_yield_flx_col(begc:endc))
   allocate(this%plant_minp_active_yield_flx_col(begc:endc))
   end subroutine InitAllocate
+
   !----------------------------------------------------------------------
   subroutine plant_soilbgc_summary(this, bounds, lbj, ubj, pft, numf, &
        filter, dtime, dz, betrtracer_vars, tracerflux_vars,biogeo_flux, betr_status)
@@ -183,11 +184,6 @@ module PlantSoilBgcSummsType
     biogeo_flux%p31flux_vars%sminp_to_plant_patch(p) = biogeo_flux%p31flux_vars%sminp_to_plant_patch(p)/pft%wtcol(p)
 
     if(betrtracer_vars%debug)then
-!      write(*,'(A,X,I2,4(X,E20.12))')'vtraflx c pft',p, &
-!         tracerflux_vars%tracer_flx_vtrans_col(c, id_trc_nh3x)* natomw, &
-!         tracer_flx_vtrans_patch(p, id_trc_nh3x)* natomw, &
-!         tracerflux_vars%tracer_flx_vtrans_col(c, id_trc_no3x)* natomw, &
-!         tracer_flx_vtrans_patch(p, id_trc_no3x) * natomw
        print*,'plant minp ac',p,biogeo_flux%p31flux_vars%sminp_to_plant_patch(p)
     endif
   enddo
@@ -295,13 +291,7 @@ module PlantSoilBgcSummsType
     this%rt_vr_col(:,j) = 0._r8
     do p = 1, betr_pft%npfts
       c = betr_pft%column(p)
-      this%rt_vr_col(c,j)  = this%rt_vr_col(c,j) + biogeo_forc%rr_patch(p,j) * betr_pft%wtcol(p) !gC/m2/s
-      !if(j<=3)then 
-       !  write(stdout, *) '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~***************'        !-zlyu
-        ! write(stdout, *) 'In plantsoilbgcsummstype j= ', j, '     this%rt_vr_col = ', this%rt_vr_col(c,j),',     this%rt_vr_col= ',this%rt_vr_col(c,j)
-         !write(stdout, *) 'biogeo_forc%rr_patch = ', biogeo_forc%rr_patch(p,j), '     betr_pft%wtcol= ', betr_pft%wtcol(p)
-         !write(stdout, *) '##########################################################################***************'
-       !endif  
+      this%rt_vr_col(c,j)  = this%rt_vr_col(c,j) + biogeo_forc%rr_patch(p,j) * betr_pft%wtcol(p) !gC/m2/s 
     enddo
   enddo
 
