@@ -1,58 +1,58 @@
 --------------------
 ./configure --prefix=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release --static
-Mon Sep 30 22:11:18 PDT 2024
-=== ztest3677320.c ===
+Wed Oct  2 06:43:32 PDT 2024
+=== ztest3833240.c ===
 extern int getchar();
 int hello() {return getchar();}
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 ... using gcc
 
 Checking for obsessive-compulsive compiler options...
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 int foo() { return 0; }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 
 Building static library libz.a version 1.2.8 with /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <sys/types.h>
 off64_t dummy = 0;
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for off64_t... Yes.
 Checking for fseeko... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <string.h>
 #include <errno.h>
 int main() { return strlen(strerror(errno)); }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 -o ztest3677320 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 -o ztest3833240 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for strerror... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <unistd.h>
 int main() { return 0; }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for unistd.h... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <stdarg.h>
 int main() { return 0; }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for stdarg.h... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <stdio.h>
 #include <stdarg.h>
 #include "zconf.h"
@@ -64,11 +64,11 @@ int main()
   return 0;
 }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <stdio.h>
 #include <stdarg.h>
 int mytest(const char *fmt, ...)
@@ -85,11 +85,11 @@ int main()
   return (mytest("Hello%d\n", 1));
 }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 -o ztest3677320 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 -o ztest3833240 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for vsnprintf() in stdio.h... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #include <stdio.h>
 #include <stdarg.h>
 int mytest(const char *fmt, ...)
@@ -107,11 +107,11 @@ int main()
   return (mytest("Hello%d\n", 1));
 }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.
 Checking for return value of vsnprintf()... Yes.
 
-=== ztest3677320.c ===
+=== ztest3833240.c ===
 #define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
 int ZLIB_INTERNAL foo;
 int main()
@@ -119,7 +119,7 @@ int main()
   return 0;
 }
 ===
-/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3677320.c
+/global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc -c -std=c99 -Wall -D_LARGEFILE64_SOURCE=1 ztest3833240.c
 icc: remark #10441: The Intel(R) C++ Compiler Classic (ICC) is deprecated and will be removed from product release in the second half of 2023. The Intel(R) oneAPI DPC++/C++ Compiler (ICX) is the recommended compiler moving forward. Please transition to use this compiler. Use '-diag-disable=10441' to disable this message.Checking for attribute(visibility) support... No.
 
 ALL = static all64

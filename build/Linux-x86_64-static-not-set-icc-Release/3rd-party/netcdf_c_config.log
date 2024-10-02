@@ -191,6 +191,6 @@
 -- CFLAGS  -O3 -DNDEBUG
 -- CPPFLAGS  
 -- LDFLAGS   -v
--- Configuring done (23.5s)
--- Generating done (0.5s)
+-- Configuring done (20.6s)
+-- Generating done (0.4s)
 -- Build files have been written to: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-c

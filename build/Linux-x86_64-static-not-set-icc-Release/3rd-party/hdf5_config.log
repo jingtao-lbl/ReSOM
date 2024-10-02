@@ -312,6 +312,6 @@
 -- Checking IF correctly converting (unsigned) long long to long double values... yes
 -- Checking IF alignment restrictions are strictly enforced... yes
 -- LDFLAGS 
--- Configuring done (47.8s)
+-- Configuring done (46.3s)
 -- Generating done (0.5s)
 -- Build files have been written to: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5

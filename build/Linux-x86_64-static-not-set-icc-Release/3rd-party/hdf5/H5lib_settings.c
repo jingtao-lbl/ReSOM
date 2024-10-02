@@ -17,7 +17,7 @@
  * access to either file, you may request a copy from help@hdfgroup.org.     *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
- * Created:		Sep 30, 2024
+ * Created:		Oct  2, 2024
  *			Jing Tao <jingtao@n0000.scs00>
  *
  * Purpose:		This machine-generated source code contains
@@ -38,7 +38,7 @@ char H5libhdf5_settings[]=
 	"General Information:\n"
 	"-------------------\n"
 	"                   HDF5 Version: 1.8.16\n"
-	"                  Configured on: 2024-09-30\n"
+	"                  Configured on: 2024-10-02\n"
 	"                  Configured by: Unix Makefiles\n"
 	"                 Configure mode: CMAKE 3.27.7\n"
 	"                    Host system: Linux-4.18.0-477.27.1.el8_8.x86_64\n"

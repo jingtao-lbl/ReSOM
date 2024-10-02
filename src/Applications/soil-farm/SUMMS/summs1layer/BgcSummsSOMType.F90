@@ -1584,11 +1584,12 @@ subroutine calc_som_decay_r(this, summsbgc_index, dtime, om_k_decay, om_pools, o
   !old version as comparison test                            -zlyu
   !tester_k_decay_mono  = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+mic_transp*y_mic+minsite*safe_div( kaff_mono_mic ,&
   !     kaff_mono_msurf ))                                   !-zlyu
-  !k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp ,kaff_mono_mic_sm+y_mono+ mic_transp*y_mic +minsite*safe_div( kaff_mono_mic_sm, kaff_mono_msurf ))*phys_hydr
-  ! use new affinity parameter and hydraulic equation for aqueous diffusivity of mono uptaken by microbes               -zlyu
-
-    ! Rose's:  
-   k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+ mic_transp*y_mic+minsite*safe_div( kaff_mono_mic, kaff_mono_msurf ))
+  
+  ! Version 3: use new affinity parameter and hydraulic equation for aqueous diffusivity of mono uptaken by microbes               -zlyu
+  k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp ,kaff_mono_mic_sm+y_mono+ mic_transp*y_mic +minsite*safe_div( kaff_mono_mic_sm, kaff_mono_msurf ))*phys_hydr
+  
+   ! Used in version 2
+   !k_decay(mono) = safe_div( y_mic*vmax_mic*mic_transp, kaff_mono_mic+y_mono+ mic_transp*y_mic+minsite*safe_div( kaff_mono_mic, kaff_mono_msurf ))
   
   k_decay(mic) = decay_mic-actgB
   k_decay(res) = kappa_mic-actgB+decay_mic
