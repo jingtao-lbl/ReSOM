@@ -415,7 +415,7 @@ contains
       do j2 = 1, this%num_levels
          do j1 = 1, this%num_time
            !this%rr_vr(j1, j2) = data_2d(this%num_columns, j2, j1)* 0.25_r8              ! cut lit input    -zlyu
-           this%rr_vr(j1, j2) = data_2d(this%num_columns, j2, j1)*0.25     !Jing Tao 
+           this%rr_vr(j1, j2) = data_2d(this%num_columns, j2, j1)    !Jing Tao 
          enddo
       enddo
     endif

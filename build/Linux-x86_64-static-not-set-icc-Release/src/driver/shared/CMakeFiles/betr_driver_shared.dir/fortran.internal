@@ -1,0 +1,7 @@
+# The fortran modules provided by this target.
+provides
+ betrsimulation.mod
+ betrstatussimtype.mod
+ betrtype.mod
+ bhistfilemod.mod
+ bncdio_pio.mod

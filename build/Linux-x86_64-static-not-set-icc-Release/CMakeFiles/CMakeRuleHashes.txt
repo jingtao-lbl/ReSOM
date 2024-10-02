@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+8d37686243e2eaa1d21bdc074f1e219b src/betr/betr_math/tests/test_betr_mathfunc.F90
+d9c57e9403ba34a8f922a242b3f1465c src/betr/betr_transport/tests/test_betr_transport.F90
+ce39ab5ef286b759a101e8b3fd17dee4 src/betr/betr_util/tests/test_betr_utils.F90
