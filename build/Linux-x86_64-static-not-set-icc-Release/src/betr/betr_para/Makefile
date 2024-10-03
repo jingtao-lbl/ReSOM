@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_para//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_para//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/betr/betr_para/CMakeFiles/betr_para.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/CMakeFiles/betr_para.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_para/CMakeFiles/betr_para.dir/rule
 .PHONY : src/betr/betr_para/CMakeFiles/betr_para.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ betr_para: src/betr/betr_para/CMakeFiles/betr_para.dir/rule
 
 # fast build rule for target.
 betr_para/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/build
 .PHONY : betr_para/fast
 
 TracerParamSetMod.o: TracerParamSetMod.F90.o
@@ -190,7 +190,7 @@ TracerParamSetMod.o: TracerParamSetMod.F90.o
 
 # target to build an object file
 TracerParamSetMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.o
 .PHONY : TracerParamSetMod.F90.o
 
 TracerParamSetMod.i: TracerParamSetMod.F90.i
@@ -198,7 +198,7 @@ TracerParamSetMod.i: TracerParamSetMod.F90.i
 
 # target to preprocess a source file
 TracerParamSetMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.i
 .PHONY : TracerParamSetMod.F90.i
 
 TracerParamSetMod.s: TracerParamSetMod.F90.s
@@ -206,7 +206,7 @@ TracerParamSetMod.s: TracerParamSetMod.F90.s
 
 # target to generate assembly for a file
 TracerParamSetMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetMod.F90.s
 .PHONY : TracerParamSetMod.F90.s
 
 TracerParamSetWatIsoMod.o: TracerParamSetWatIsoMod.F90.o
@@ -214,7 +214,7 @@ TracerParamSetWatIsoMod.o: TracerParamSetWatIsoMod.F90.o
 
 # target to build an object file
 TracerParamSetWatIsoMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.o
 .PHONY : TracerParamSetWatIsoMod.F90.o
 
 TracerParamSetWatIsoMod.i: TracerParamSetWatIsoMod.F90.i
@@ -222,7 +222,7 @@ TracerParamSetWatIsoMod.i: TracerParamSetWatIsoMod.F90.i
 
 # target to preprocess a source file
 TracerParamSetWatIsoMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.i
 .PHONY : TracerParamSetWatIsoMod.F90.i
 
 TracerParamSetWatIsoMod.s: TracerParamSetWatIsoMod.F90.s
@@ -230,7 +230,7 @@ TracerParamSetWatIsoMod.s: TracerParamSetWatIsoMod.F90.s
 
 # target to generate assembly for a file
 TracerParamSetWatIsoMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamSetWatIsoMod.F90.s
 .PHONY : TracerParamSetWatIsoMod.F90.s
 
 TracerParamsMod.o: TracerParamsMod.F90.o
@@ -238,7 +238,7 @@ TracerParamsMod.o: TracerParamsMod.F90.o
 
 # target to build an object file
 TracerParamsMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.o
 .PHONY : TracerParamsMod.F90.o
 
 TracerParamsMod.i: TracerParamsMod.F90.i
@@ -246,7 +246,7 @@ TracerParamsMod.i: TracerParamsMod.F90.i
 
 # target to preprocess a source file
 TracerParamsMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.i
 .PHONY : TracerParamsMod.F90.i
 
 TracerParamsMod.s: TracerParamsMod.F90.s
@@ -254,7 +254,7 @@ TracerParamsMod.s: TracerParamsMod.F90.s
 
 # target to generate assembly for a file
 TracerParamsMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_para/CMakeFiles/betr_para.dir/build.make src/betr/betr_para/CMakeFiles/betr_para.dir/TracerParamsMod.F90.s
 .PHONY : TracerParamsMod.F90.s
 
 # Help Target
@@ -291,6 +291,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

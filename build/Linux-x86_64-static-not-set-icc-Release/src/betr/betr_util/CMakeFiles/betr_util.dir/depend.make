@@ -87,7 +87,7 @@ src/betr/betr_util/CMakeFiles/betr_util.dir/betr_varcon.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/betr/betr_util/CMakeFiles/betr_util.dir/betr_varcon.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/build: src/betr/betr_util/CMakeFiles/betr_util.dir/betr_varcon.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_assert_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_assert_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/betrstatustype.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_assert_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_assert_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp
@@ -107,7 +107,7 @@ src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_const_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_const_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/build: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_const_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.F90.o.provides.build: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.mod.stamp: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_infnan_mod.F90.o
@@ -129,7 +129,7 @@ src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_log_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_log_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/build: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_log_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_mpi_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bmpif.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bmpif.h
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_mpi_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_mpi_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_log_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_mpi_mod.F90.o.provides.build: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_mpi_mod.mod.stamp
@@ -146,7 +146,7 @@ src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_nl_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_nl_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/build: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_nl_mod.F90.o.provides.build
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_string_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assert.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assert.h
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_string_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/betrstatustype.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_string_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_assert_mod.mod.stamp
 src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_string_mod.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp

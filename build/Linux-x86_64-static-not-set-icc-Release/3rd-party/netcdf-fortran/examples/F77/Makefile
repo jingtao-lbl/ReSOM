@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/rule
 
 # Convenience name for target.
@@ -182,12 +182,12 @@ F77_tests_simple_xy_wr: examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/rule
 
 # fast build rule for target.
 F77_tests_simple_xy_wr/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build
 .PHONY : F77_tests_simple_xy_wr/fast
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/rule
 
 # Convenience name for target.
@@ -196,12 +196,12 @@ F77_tests_simple_xy_rd: examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/rule
 
 # fast build rule for target.
 F77_tests_simple_xy_rd/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build
 .PHONY : F77_tests_simple_xy_rd/fast
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/rule
 
 # Convenience name for target.
@@ -210,12 +210,12 @@ F77_tests_sfc_pres_temp_wr: examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.d
 
 # fast build rule for target.
 F77_tests_sfc_pres_temp_wr/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build
 .PHONY : F77_tests_sfc_pres_temp_wr/fast
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/rule
 
 # Convenience name for target.
@@ -224,12 +224,12 @@ F77_tests_sfc_pres_temp_rd: examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.d
 
 # fast build rule for target.
 F77_tests_sfc_pres_temp_rd/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build
 .PHONY : F77_tests_sfc_pres_temp_rd/fast
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/rule
 
 # Convenience name for target.
@@ -238,12 +238,12 @@ F77_tests_pres_temp_4D_wr: examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir
 
 # fast build rule for target.
 F77_tests_pres_temp_4D_wr/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build
 .PHONY : F77_tests_pres_temp_4D_wr/fast
 
 # Convenience name for target.
 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/rule
 .PHONY : examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/rule
 
 # Convenience name for target.
@@ -252,7 +252,7 @@ F77_tests_pres_temp_4D_rd: examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir
 
 # fast build rule for target.
 F77_tests_pres_temp_4D_rd/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build
 .PHONY : F77_tests_pres_temp_4D_rd/fast
 
 pres_temp_4D_rd.o: pres_temp_4D_rd.f.o
@@ -260,7 +260,7 @@ pres_temp_4D_rd.o: pres_temp_4D_rd.f.o
 
 # target to build an object file
 pres_temp_4D_rd.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.o
 .PHONY : pres_temp_4D_rd.f.o
 
 pres_temp_4D_rd.i: pres_temp_4D_rd.f.i
@@ -268,7 +268,7 @@ pres_temp_4D_rd.i: pres_temp_4D_rd.f.i
 
 # target to preprocess a source file
 pres_temp_4D_rd.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.i
 .PHONY : pres_temp_4D_rd.f.i
 
 pres_temp_4D_rd.s: pres_temp_4D_rd.f.s
@@ -276,7 +276,7 @@ pres_temp_4D_rd.s: pres_temp_4D_rd.f.s
 
 # target to generate assembly for a file
 pres_temp_4D_rd.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_rd.dir/pres_temp_4D_rd.f.s
 .PHONY : pres_temp_4D_rd.f.s
 
 pres_temp_4D_wr.o: pres_temp_4D_wr.f.o
@@ -284,7 +284,7 @@ pres_temp_4D_wr.o: pres_temp_4D_wr.f.o
 
 # target to build an object file
 pres_temp_4D_wr.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.o
 .PHONY : pres_temp_4D_wr.f.o
 
 pres_temp_4D_wr.i: pres_temp_4D_wr.f.i
@@ -292,7 +292,7 @@ pres_temp_4D_wr.i: pres_temp_4D_wr.f.i
 
 # target to preprocess a source file
 pres_temp_4D_wr.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.i
 .PHONY : pres_temp_4D_wr.f.i
 
 pres_temp_4D_wr.s: pres_temp_4D_wr.f.s
@@ -300,7 +300,7 @@ pres_temp_4D_wr.s: pres_temp_4D_wr.f.s
 
 # target to generate assembly for a file
 pres_temp_4D_wr.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_pres_temp_4D_wr.dir/pres_temp_4D_wr.f.s
 .PHONY : pres_temp_4D_wr.f.s
 
 sfc_pres_temp_rd.o: sfc_pres_temp_rd.f.o
@@ -308,7 +308,7 @@ sfc_pres_temp_rd.o: sfc_pres_temp_rd.f.o
 
 # target to build an object file
 sfc_pres_temp_rd.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.o
 .PHONY : sfc_pres_temp_rd.f.o
 
 sfc_pres_temp_rd.i: sfc_pres_temp_rd.f.i
@@ -316,7 +316,7 @@ sfc_pres_temp_rd.i: sfc_pres_temp_rd.f.i
 
 # target to preprocess a source file
 sfc_pres_temp_rd.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.i
 .PHONY : sfc_pres_temp_rd.f.i
 
 sfc_pres_temp_rd.s: sfc_pres_temp_rd.f.s
@@ -324,7 +324,7 @@ sfc_pres_temp_rd.s: sfc_pres_temp_rd.f.s
 
 # target to generate assembly for a file
 sfc_pres_temp_rd.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_rd.dir/sfc_pres_temp_rd.f.s
 .PHONY : sfc_pres_temp_rd.f.s
 
 sfc_pres_temp_wr.o: sfc_pres_temp_wr.f.o
@@ -332,7 +332,7 @@ sfc_pres_temp_wr.o: sfc_pres_temp_wr.f.o
 
 # target to build an object file
 sfc_pres_temp_wr.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.o
 .PHONY : sfc_pres_temp_wr.f.o
 
 sfc_pres_temp_wr.i: sfc_pres_temp_wr.f.i
@@ -340,7 +340,7 @@ sfc_pres_temp_wr.i: sfc_pres_temp_wr.f.i
 
 # target to preprocess a source file
 sfc_pres_temp_wr.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.i
 .PHONY : sfc_pres_temp_wr.f.i
 
 sfc_pres_temp_wr.s: sfc_pres_temp_wr.f.s
@@ -348,7 +348,7 @@ sfc_pres_temp_wr.s: sfc_pres_temp_wr.f.s
 
 # target to generate assembly for a file
 sfc_pres_temp_wr.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_sfc_pres_temp_wr.dir/sfc_pres_temp_wr.f.s
 .PHONY : sfc_pres_temp_wr.f.s
 
 simple_xy_rd.o: simple_xy_rd.f.o
@@ -356,7 +356,7 @@ simple_xy_rd.o: simple_xy_rd.f.o
 
 # target to build an object file
 simple_xy_rd.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o
 .PHONY : simple_xy_rd.f.o
 
 simple_xy_rd.i: simple_xy_rd.f.i
@@ -364,7 +364,7 @@ simple_xy_rd.i: simple_xy_rd.f.i
 
 # target to preprocess a source file
 simple_xy_rd.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i
 .PHONY : simple_xy_rd.f.i
 
 simple_xy_rd.s: simple_xy_rd.f.s
@@ -372,7 +372,7 @@ simple_xy_rd.s: simple_xy_rd.f.s
 
 # target to generate assembly for a file
 simple_xy_rd.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s
 .PHONY : simple_xy_rd.f.s
 
 simple_xy_wr.o: simple_xy_wr.f.o
@@ -380,7 +380,7 @@ simple_xy_wr.o: simple_xy_wr.f.o
 
 # target to build an object file
 simple_xy_wr.f.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.o
 .PHONY : simple_xy_wr.f.o
 
 simple_xy_wr.i: simple_xy_wr.f.i
@@ -388,7 +388,7 @@ simple_xy_wr.i: simple_xy_wr.f.i
 
 # target to preprocess a source file
 simple_xy_wr.f.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.i
 .PHONY : simple_xy_wr.f.i
 
 simple_xy_wr.s: simple_xy_wr.f.s
@@ -396,7 +396,7 @@ simple_xy_wr.s: simple_xy_wr.f.s
 
 # target to generate assembly for a file
 simple_xy_wr.f.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/build.make examples/F77/CMakeFiles/F77_tests_simple_xy_wr.dir/simple_xy_wr.f.s
 .PHONY : simple_xy_wr.f.s
 
 # Help Target
@@ -447,6 +447,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

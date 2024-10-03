@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,17 +44,17 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "toolsheaders" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5trav.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_dump.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_utils.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_str.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_ref.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5diff.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5trav.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_dump.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_utils.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_str.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5tools_ref.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/lib/h5diff.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "toolslibraries" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/bin/libhdf5_tools.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/bin/libhdf5_tools.a")
 endif()
 

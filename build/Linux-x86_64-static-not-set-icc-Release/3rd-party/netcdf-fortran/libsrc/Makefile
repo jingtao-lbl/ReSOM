@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/libsrc//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/libsrc//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libsrc/CMakeFiles/ncfortran.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/CMakeFiles/ncfortran.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libsrc/CMakeFiles/ncfortran.dir/rule
 .PHONY : libsrc/CMakeFiles/ncfortran.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ ncfortran: libsrc/CMakeFiles/ncfortran.dir/rule
 
 # fast build rule for target.
 ncfortran/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/build
 .PHONY : ncfortran/fast
 
 fort-attio.o: fort-attio.c.o
@@ -190,7 +190,7 @@ fort-attio.o: fort-attio.c.o
 
 # target to build an object file
 fort-attio.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.o
 .PHONY : fort-attio.c.o
 
 fort-attio.i: fort-attio.c.i
@@ -198,7 +198,7 @@ fort-attio.i: fort-attio.c.i
 
 # target to preprocess a source file
 fort-attio.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.i
 .PHONY : fort-attio.c.i
 
 fort-attio.s: fort-attio.c.s
@@ -206,7 +206,7 @@ fort-attio.s: fort-attio.c.s
 
 # target to generate assembly for a file
 fort-attio.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-attio.c.s
 .PHONY : fort-attio.c.s
 
 fort-control.o: fort-control.c.o
@@ -214,7 +214,7 @@ fort-control.o: fort-control.c.o
 
 # target to build an object file
 fort-control.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.o
 .PHONY : fort-control.c.o
 
 fort-control.i: fort-control.c.i
@@ -222,7 +222,7 @@ fort-control.i: fort-control.c.i
 
 # target to preprocess a source file
 fort-control.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.i
 .PHONY : fort-control.c.i
 
 fort-control.s: fort-control.c.s
@@ -230,7 +230,7 @@ fort-control.s: fort-control.c.s
 
 # target to generate assembly for a file
 fort-control.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-control.c.s
 .PHONY : fort-control.c.s
 
 fort-dim.o: fort-dim.c.o
@@ -238,7 +238,7 @@ fort-dim.o: fort-dim.c.o
 
 # target to build an object file
 fort-dim.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.o
 .PHONY : fort-dim.c.o
 
 fort-dim.i: fort-dim.c.i
@@ -246,7 +246,7 @@ fort-dim.i: fort-dim.c.i
 
 # target to preprocess a source file
 fort-dim.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.i
 .PHONY : fort-dim.c.i
 
 fort-dim.s: fort-dim.c.s
@@ -254,7 +254,7 @@ fort-dim.s: fort-dim.c.s
 
 # target to generate assembly for a file
 fort-dim.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-dim.c.s
 .PHONY : fort-dim.c.s
 
 fort-genatt.o: fort-genatt.c.o
@@ -262,7 +262,7 @@ fort-genatt.o: fort-genatt.c.o
 
 # target to build an object file
 fort-genatt.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.o
 .PHONY : fort-genatt.c.o
 
 fort-genatt.i: fort-genatt.c.i
@@ -270,7 +270,7 @@ fort-genatt.i: fort-genatt.c.i
 
 # target to preprocess a source file
 fort-genatt.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.i
 .PHONY : fort-genatt.c.i
 
 fort-genatt.s: fort-genatt.c.s
@@ -278,7 +278,7 @@ fort-genatt.s: fort-genatt.c.s
 
 # target to generate assembly for a file
 fort-genatt.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genatt.c.s
 .PHONY : fort-genatt.c.s
 
 fort-geninq.o: fort-geninq.c.o
@@ -286,7 +286,7 @@ fort-geninq.o: fort-geninq.c.o
 
 # target to build an object file
 fort-geninq.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.o
 .PHONY : fort-geninq.c.o
 
 fort-geninq.i: fort-geninq.c.i
@@ -294,7 +294,7 @@ fort-geninq.i: fort-geninq.c.i
 
 # target to preprocess a source file
 fort-geninq.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.i
 .PHONY : fort-geninq.c.i
 
 fort-geninq.s: fort-geninq.c.s
@@ -302,7 +302,7 @@ fort-geninq.s: fort-geninq.c.s
 
 # target to generate assembly for a file
 fort-geninq.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-geninq.c.s
 .PHONY : fort-geninq.c.s
 
 fort-genvar.o: fort-genvar.c.o
@@ -310,7 +310,7 @@ fort-genvar.o: fort-genvar.c.o
 
 # target to build an object file
 fort-genvar.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.o
 .PHONY : fort-genvar.c.o
 
 fort-genvar.i: fort-genvar.c.i
@@ -318,7 +318,7 @@ fort-genvar.i: fort-genvar.c.i
 
 # target to preprocess a source file
 fort-genvar.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.i
 .PHONY : fort-genvar.c.i
 
 fort-genvar.s: fort-genvar.c.s
@@ -326,7 +326,7 @@ fort-genvar.s: fort-genvar.c.s
 
 # target to generate assembly for a file
 fort-genvar.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-genvar.c.s
 .PHONY : fort-genvar.c.s
 
 fort-lib.o: fort-lib.c.o
@@ -334,7 +334,7 @@ fort-lib.o: fort-lib.c.o
 
 # target to build an object file
 fort-lib.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.o
 .PHONY : fort-lib.c.o
 
 fort-lib.i: fort-lib.c.i
@@ -342,7 +342,7 @@ fort-lib.i: fort-lib.c.i
 
 # target to preprocess a source file
 fort-lib.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.i
 .PHONY : fort-lib.c.i
 
 fort-lib.s: fort-lib.c.s
@@ -350,7 +350,7 @@ fort-lib.s: fort-lib.c.s
 
 # target to generate assembly for a file
 fort-lib.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-lib.c.s
 .PHONY : fort-lib.c.s
 
 fort-misc.o: fort-misc.c.o
@@ -358,7 +358,7 @@ fort-misc.o: fort-misc.c.o
 
 # target to build an object file
 fort-misc.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.o
 .PHONY : fort-misc.c.o
 
 fort-misc.i: fort-misc.c.i
@@ -366,7 +366,7 @@ fort-misc.i: fort-misc.c.i
 
 # target to preprocess a source file
 fort-misc.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.i
 .PHONY : fort-misc.c.i
 
 fort-misc.s: fort-misc.c.s
@@ -374,7 +374,7 @@ fort-misc.s: fort-misc.c.s
 
 # target to generate assembly for a file
 fort-misc.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-misc.c.s
 .PHONY : fort-misc.c.s
 
 fort-v2compat.o: fort-v2compat.c.o
@@ -382,7 +382,7 @@ fort-v2compat.o: fort-v2compat.c.o
 
 # target to build an object file
 fort-v2compat.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.o
 .PHONY : fort-v2compat.c.o
 
 fort-v2compat.i: fort-v2compat.c.i
@@ -390,7 +390,7 @@ fort-v2compat.i: fort-v2compat.c.i
 
 # target to preprocess a source file
 fort-v2compat.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.i
 .PHONY : fort-v2compat.c.i
 
 fort-v2compat.s: fort-v2compat.c.s
@@ -398,7 +398,7 @@ fort-v2compat.s: fort-v2compat.c.s
 
 # target to generate assembly for a file
 fort-v2compat.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-v2compat.c.s
 .PHONY : fort-v2compat.c.s
 
 fort-var1io.o: fort-var1io.c.o
@@ -406,7 +406,7 @@ fort-var1io.o: fort-var1io.c.o
 
 # target to build an object file
 fort-var1io.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.o
 .PHONY : fort-var1io.c.o
 
 fort-var1io.i: fort-var1io.c.i
@@ -414,7 +414,7 @@ fort-var1io.i: fort-var1io.c.i
 
 # target to preprocess a source file
 fort-var1io.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.i
 .PHONY : fort-var1io.c.i
 
 fort-var1io.s: fort-var1io.c.s
@@ -422,7 +422,7 @@ fort-var1io.s: fort-var1io.c.s
 
 # target to generate assembly for a file
 fort-var1io.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-var1io.c.s
 .PHONY : fort-var1io.c.s
 
 fort-varaio.o: fort-varaio.c.o
@@ -430,7 +430,7 @@ fort-varaio.o: fort-varaio.c.o
 
 # target to build an object file
 fort-varaio.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.o
 .PHONY : fort-varaio.c.o
 
 fort-varaio.i: fort-varaio.c.i
@@ -438,7 +438,7 @@ fort-varaio.i: fort-varaio.c.i
 
 # target to preprocess a source file
 fort-varaio.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.i
 .PHONY : fort-varaio.c.i
 
 fort-varaio.s: fort-varaio.c.s
@@ -446,7 +446,7 @@ fort-varaio.s: fort-varaio.c.s
 
 # target to generate assembly for a file
 fort-varaio.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varaio.c.s
 .PHONY : fort-varaio.c.s
 
 fort-vario.o: fort-vario.c.o
@@ -454,7 +454,7 @@ fort-vario.o: fort-vario.c.o
 
 # target to build an object file
 fort-vario.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.o
 .PHONY : fort-vario.c.o
 
 fort-vario.i: fort-vario.c.i
@@ -462,7 +462,7 @@ fort-vario.i: fort-vario.c.i
 
 # target to preprocess a source file
 fort-vario.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.i
 .PHONY : fort-vario.c.i
 
 fort-vario.s: fort-vario.c.s
@@ -470,7 +470,7 @@ fort-vario.s: fort-vario.c.s
 
 # target to generate assembly for a file
 fort-vario.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-vario.c.s
 .PHONY : fort-vario.c.s
 
 fort-varmio.o: fort-varmio.c.o
@@ -478,7 +478,7 @@ fort-varmio.o: fort-varmio.c.o
 
 # target to build an object file
 fort-varmio.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.o
 .PHONY : fort-varmio.c.o
 
 fort-varmio.i: fort-varmio.c.i
@@ -486,7 +486,7 @@ fort-varmio.i: fort-varmio.c.i
 
 # target to preprocess a source file
 fort-varmio.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.i
 .PHONY : fort-varmio.c.i
 
 fort-varmio.s: fort-varmio.c.s
@@ -494,7 +494,7 @@ fort-varmio.s: fort-varmio.c.s
 
 # target to generate assembly for a file
 fort-varmio.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varmio.c.s
 .PHONY : fort-varmio.c.s
 
 fort-varsio.o: fort-varsio.c.o
@@ -502,7 +502,7 @@ fort-varsio.o: fort-varsio.c.o
 
 # target to build an object file
 fort-varsio.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.o
 .PHONY : fort-varsio.c.o
 
 fort-varsio.i: fort-varsio.c.i
@@ -510,7 +510,7 @@ fort-varsio.i: fort-varsio.c.i
 
 # target to preprocess a source file
 fort-varsio.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.i
 .PHONY : fort-varsio.c.i
 
 fort-varsio.s: fort-varsio.c.s
@@ -518,7 +518,7 @@ fort-varsio.s: fort-varsio.c.s
 
 # target to generate assembly for a file
 fort-varsio.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/ncfortran.dir/build.make libsrc/CMakeFiles/ncfortran.dir/fort-varsio.c.s
 .PHONY : fort-varsio.c.s
 
 # Help Target
@@ -588,6 +588,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

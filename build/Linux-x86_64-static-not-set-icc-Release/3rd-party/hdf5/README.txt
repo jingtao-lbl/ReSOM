@@ -36,7 +36,7 @@ To test the installation with the examples;
     Copy HDF518_Examples.cmake to this directory.
     The default source folder is defined as "HDF5Examples". It can be changed
         with the CTEST_SOURCE_NAME script option.
-    The default installation folder is defined as "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release".
+    The default installation folder is defined as "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release".
         It can be changed with the INSTALLDIR script option.
     The default ctest configuration is defined as "Release". It can be changed
         with the CTEST_BUILD_CONFIGURATION script option. Note that this must

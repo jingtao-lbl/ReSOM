@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/src/Applications/soil-farm
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/src/Applications/soil-farm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/local")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,14 +44,14 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/bgcfarm_util/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/ecacnp/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/cdom/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/simic/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/keca/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/ch4soil/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/SUMMS/cmake_install.cmake")
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/v1eca/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/bgcfarm_util/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/ecacnp/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/cdom/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/simic/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/keca/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/ch4soil/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/SUMMS/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/v1eca/cmake_install.cmake")
 
 endif()
 

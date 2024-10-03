@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,21 +44,21 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/GNU.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/IBM.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/INTEL.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/NAG.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/PGI.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/extensions.mk"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/driver.F90"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/GNU.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/IBM.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/INTEL.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/NAG.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/PGI.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/extensions.mk"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/driver.F90"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "base.mk" FILES "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/base-install.mk")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE RENAME "base.mk" FILES "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/include/base-install.mk")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/pfunit/include/configuration.mk")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/pfunit/include/configuration.mk")
 endif()
 

@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 # Include any dependencies generated for this target.
 include src/driver/alm/CMakeFiles/betr_driver_alm.dir/depend.make
@@ -70,43 +70,43 @@ include src/driver/alm/CMakeFiles/betr_driver_alm.dir/progress.make
 include src/driver/alm/CMakeFiles/betr_driver_alm.dir/flags.make
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o: src/driver/alm/CMakeFiles/betr_driver_alm.dir/flags.make
-src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 -o CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o
+src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 -o CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.o
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 > CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 > CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.i
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 -o CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/ALMbetrNLMod.F90 -o CMakeFiles/betr_driver_alm.dir/ALMbetrNLMod.F90.s
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o: src/driver/alm/CMakeFiles/betr_driver_alm.dir/flags.make
-src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 -o CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o
+src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 -o CMakeFiles/betr_driver_alm.dir/calibrationType.F90.o
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/betr_driver_alm.dir/calibrationType.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 > CMakeFiles/betr_driver_alm.dir/calibrationType.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 > CMakeFiles/betr_driver_alm.dir/calibrationType.F90.i
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/calibrationType.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/betr_driver_alm.dir/calibrationType.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 -o CMakeFiles/betr_driver_alm.dir/calibrationType.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/calibrationType.F90 -o CMakeFiles/betr_driver_alm.dir/calibrationType.F90.s
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o: src/driver/alm/CMakeFiles/betr_driver_alm.dir/flags.make
-src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 -o CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o
+src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 -o CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 > CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 > CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.i
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 -o CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm/BeTRSimulationALM.F90 -o CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.s
 
 # Object files for target betr_driver_alm
 betr_driver_alm_OBJECTS = \
@@ -122,19 +122,19 @@ src/driver/alm/libbetr_driver_alm.a: src/driver/alm/CMakeFiles/betr_driver_alm.d
 src/driver/alm/libbetr_driver_alm.a: src/driver/alm/CMakeFiles/betr_driver_alm.dir/BeTRSimulationALM.F90.o
 src/driver/alm/libbetr_driver_alm.a: src/driver/alm/CMakeFiles/betr_driver_alm.dir/build.make
 src/driver/alm/libbetr_driver_alm.a: src/driver/alm/CMakeFiles/betr_driver_alm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking Fortran static library libbetr_driver_alm.a"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -P CMakeFiles/betr_driver_alm.dir/cmake_clean_target.cmake
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/betr_driver_alm.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking Fortran static library libbetr_driver_alm.a"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -P CMakeFiles/betr_driver_alm.dir/cmake_clean_target.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/betr_driver_alm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/build: src/driver/alm/libbetr_driver_alm.a
 .PHONY : src/driver/alm/CMakeFiles/betr_driver_alm.dir/build
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -P CMakeFiles/betr_driver_alm.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm && $(CMAKE_COMMAND) -P CMakeFiles/betr_driver_alm.dir/cmake_clean.cmake
 .PHONY : src/driver/alm/CMakeFiles/betr_driver_alm.dir/clean
 
 src/driver/alm/CMakeFiles/betr_driver_alm.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/alm /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm/CMakeFiles/betr_driver_alm.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr /global/home/users/jingtao/ReSOM/sbetr/src/driver/alm /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/alm/CMakeFiles/betr_driver_alm.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/driver/alm/CMakeFiles/betr_driver_alm.dir/depend
 

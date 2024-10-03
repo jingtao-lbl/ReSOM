@@ -138,6 +138,7 @@ contains
   enddo
 
   end subroutine UpdateParas
+
   !-------------------------------------------------------------------------------
   subroutine init_boundary_condition_type(this, bounds, betrtracer_vars, tracerboundarycond_vars )
     !
@@ -339,6 +340,7 @@ if(exit_spinup)then
     end associate
     end subroutine rescale_tracer_group
   end subroutine set_bgc_spinup
+
  !----------------------------------------------------------------------
   subroutine init_iP_prof(this, bounds, lbj, ubj, biophysforc, tracers, tracerstate_vars)
   !
@@ -1799,40 +1801,41 @@ if(exit_spinup)then
   integer :: j, fc, c
   integer :: k1, k2
   real(r8), parameter :: tiny_cval =1.e-16_r8
-  ! starting adding constant parameters                 -zlyu
+
+  !Parameters on moisture effect on monomer uptake
   real(r8) :: rgas = 8.31446_r8 ! Universal gas constant (J/K/mol)
   real(r8) :: pi = 3.1415926_r8
   real(r8) :: micb_rc2rp
   real(r8) :: micb_k2f1
   real(r8) :: micb_k2f2
-  real(r8) :: chb(10)                         !shape parameter in clapp-hornberg equation   -zlyu
-  real(r8) :: watsat(10)                      !saturated water content, vol/vol                  -zlyu
-  real(r8) :: psisat(10)                      !soil matric potential, mm           -zlyu
-  real(r8) :: soim0(10)                       !relative saturation           -zlyu
+  real(r8) :: chb(10)                         !shape parameter in clapp-hornberg equation
+  real(r8) :: watsat(10)                      !saturated water content, vol/vol 
+  real(r8) :: psisat(10)                      !soil matric potential, mm
+  real(r8) :: soim0(10)                       !relative saturation
   real(r8) :: theta(10)                       !water filled content
-  real(r8) :: tauw(10)                        !turtosity                 -zlyu
-  real(r8) :: grav_sm = 9.8_r8                   !gravity constant             -zlyu
+  real(r8) :: tauw(10)                        !turtosity
+  real(r8) :: grav_sm = 9.8_r8                   !gravity constant
   real(r8) :: NA = 6.02e23_r8                    !Avogadro's number
   integer  :: T0 = 298                           !reference temp0
-  real(r8) :: psi_monoup(10)                     !psi for moisture effect on mono uptake      -zlyu
+  real(r8) :: psi_monoup(10)                     !psi for moisture effect on mono uptake
   real(r8) :: filmthkw(10)                       !water film thickness
-  real(r8) :: difo2w(10)                         !aqueous diffusivity for O2            -zlyu
-  real(r8) :: vsoim(10)                          !water filled volumn       -zlyu
+  real(r8) :: difo2w(10)                         !aqueous diffusivity for O2
+  real(r8) :: vsoim(10)                          !water filled volumn
   real(r8) :: difDW(10), difDbw(10)              !diffusivity and bulk diffusivity
-  real(r8) :: Delta_S_s=17._r8                   ! entropy change at T_s
-  real(r8) :: T_Hs=375.5_r8                      ! the convergence temperature for enthalpy, [K]
-  real(r8) :: T_s=390.9_r8                       ! the convergence temperature of entropy, [K]
-  real(r8) :: Delta_H_s=4874._r8                 ! J/mol amino acid residue
-  integer  :: mic_N_CH=6                         ! number of non-polar hydrogen atmos per amino acids
-  integer  :: mic_n=270                          !number of amino acids                   -zlyu
+  real(r8) :: Delta_S_s=17._r8                   !entropy change at T_s
+  real(r8) :: T_Hs=375.5_r8                      !the convergence temperature for enthalpy, [K]
+  real(r8) :: T_s=390.9_r8                       !the convergence temperature of entropy, [K]
+  real(r8) :: Delta_H_s=4874._r8                 !J/mol amino acid residue
+  integer  :: mic_N_CH=6                         !number of non-polar hydrogen atmos per amino acids
+  integer  :: mic_n=270                          !number of amino acids
   real(r8) :: Delta_Cp                           !heat capacity
   real(r8) :: Delta_G_E(10)
-  real(r8) :: fact_mic(10)                       !-zlyu
+  real(r8) :: fact_mic(10)                       !
   real(r8) :: fint(10)                           !intermediate
   real(r8) :: ko2_1wdNA(10), gamma_D(10), fT(10), K0_DB(10)
-  real(r8) :: w_scalar_rr                        ! constrain root respiration       -zlyu
-  real(r8) :: psi, minpsi, maxpsi                ! constrain root respiration       -zlyu
-  ! end of adding paras on moisture effect calculation for mono uptake         -zlyu
+  real(r8) :: w_scalar_rr                        !soil moisture scalar
+  real(r8) :: psi, minpsi, maxpsi                !soil matric potential
+  
   associate( &
      litr_beg =>  this%summsbgc_index%litr_beg  , &
      litr_end =>  this%summsbgc_index%litr_end  , &
@@ -1975,15 +1978,15 @@ if(exit_spinup)then
       this%summsforc(c,j)%cellorg = biophysforc%cellorg_col(c,j)
       this%summsforc(c,j)%pH = biophysforc%soil_pH(c,j)
       
-      !moisture effect on mono uptake by microbes                                                  -zlyu
+      !moisture effect on mono uptake by microbes - zlyu
       micb_rc2rp = summs_para%micb_radc/summs_para%micb_radp
       micb_k2f1 = pi*summs_para%micb_vdpmaxr*micb_rc2rp
       micb_k2f2 = summs_para%micb_vdpmaxr*summs_para%micb_Nports
       chb(j) = 2.91_r8+0.195_r8*summs_para%pct_clay(j)
       watsat(j) =0.489_r8-0.00126_r8*summs_para%pct_sand(j)
       psisat(j) =-10.0_r8**(1.88_r8-0.0131_r8*summs_para%pct_sand(j))
-      soim0(j) = max(biophysforc%h2osoi_vol_col(c,j)/watsat(j), 0.01_r8)                           !relative saturation            -zlyu
-      theta(j) = watsat(j)*soim0(j)                                                                !water filled content
+      soim0(j) = max(biophysforc%h2osoi_vol_col(c,j)/watsat(j), 0.01_r8)    !relative saturation
+      theta(j) = watsat(j)*soim0(j)                                         !water filled content
       tauw(j) = theta(j)*(soim0(j)+1.0e-10_r8)**(chb(j)/3-1)
       psi_monoup(j) = max(psisat(j)*(soim0(j)+1.0e-20_r8)**(-chb(j)),-1.0e8_r8)*grav_sm
       filmthkw(j) = max(exp(-13.65_r8-0.857_r8*log(-psi_monoup(j)*1.0e-6_r8)),1.0e-8_r8)
@@ -1991,7 +1994,7 @@ if(exit_spinup)then
       difo2w(j) = 2.4e-9_r8*biophysforc%t_soisno_col(c,j)/298.0
       vsoim(j) = watsat(j)*soim0(j)
       difDbw(j) = difDw(j)*vsoim(j)*tauw(j)
-      Delta_Cp = -46.0_r8+30*(1-1.54_r8*mic_n**(-0.268_r8))*mic_N_CH                               !heat capacity
+      Delta_Cp = -46.0_r8+30*(1-1.54_r8*mic_n**(-0.268_r8))*mic_N_CH         !heat capacity
       Delta_G_E(j) = Delta_H_s-biophysforc%t_soisno_col(c,j)*Delta_S_s+Delta_Cp*((biophysforc%t_soisno_col(c,j)-T_Hs)-&
                      biophysforc%t_soisno_col(c,j)*log(biophysforc%t_soisno_col(c,j)/T_s))
       fact_mic(j) = 1/(1+exp(-mic_n*Delta_G_E(j)/(rgas*biophysforc%t_soisno_col(c,j))))
@@ -2003,15 +2006,14 @@ if(exit_spinup)then
       fT(j) = exp(-summs_para%ea_kaff_mono_mic/rgas*(1.0_r8/biophysforc%t_soisno_col(c,j)-1.0_r8/T0))*biophysforc%t_soisno_col(c,j)/T0
       !arrhenius function --> k=Ae^(-Ea/RT), temperature dependence of reaction rate
       K0_DB(j) = (micb_k2f1*fact_mic(j)+micb_k2f2)*fT(j)/(4*pi*difDw(j)*summs_para%micb_radc*NA)
-      this%kaff_mono_mic_sm(j) = K0_DB(j)*gamma_D(j)*12_r8                                         ! unit conversion, from mol/m3 to g/m3              -zlyu
-      this%phys_hydr(j) = soim0(j)**(1._r8/5.52_r8)                                                !normalized length analogous to the aqueous cluster size inWang and Or (2012)          -zlyu
+      this%kaff_mono_mic_sm(j) = K0_DB(j)*gamma_D(j)*12_r8         !unit conversion, from mol/m3 to g/m3              -zlyu
+      this%phys_hydr(j) = soim0(j)**(1._r8/5.52_r8)                !normalized length analogous to the aqueous cluster size in Wang and Or (2012)          -zlyu
       !this%phys_hydr(j) = soim0(j)**(1._r8/2.52_r8)    
-      !pass on data                                                        -zlyu
-      !this%summseca(c,j)%kaff_mono_mic_sm = 1
+      
       this%summseca(c,j)%sumsom%kaff_mono_mic_sm = this%kaff_mono_mic_sm(j)        !-zlyu
       this%summseca(c,j)%sumsom%phys_hydr = this%phys_hydr(j)                      !-zlyu
       this%summseca(c,j)%sumsom%record = this%record                               !-zlyu
-      !end of moisture effect on mono uptake by microbes          -zlyu
+      !end of moisture effect on mono uptake by microbes
       
       !conductivity for plant-aided gas transport
       this%summsforc(c,j)%aren_cond_n2 = &
@@ -2042,6 +2044,7 @@ if(exit_spinup)then
       this%summsforc(c,j)%aren_cond_ch4 = &
           tracercoeff_vars%aere_cond_col(c,betrtracer_vars%volatilegroupid(betrtracer_vars%id_trc_ch4)) * &
           tracercoeff_vars%scal_aere_cond_col(c,betrtracer_vars%volatilegroupid(betrtracer_vars%id_trc_ch4))
+
       !phase conversion parameter
       this%summsforc(c,j)%ch4_g2b = &
           tracercoeff_vars%gas2bulkcef_mobile_col(c,j,betrtracer_vars%volatilegroupid(betrtracer_vars%id_trc_ch4))
@@ -2088,7 +2091,7 @@ if(exit_spinup)then
   do j = lbj, ubj
      do fc = 1, num_soilc
        c = filter_soilc(fc)
-       this%summsforc(c,j)%rt_ar  = biophysforc%c12flx%rt_vr_col(c,j)             ! pass on to rt_ar       -zlyu
+       this%summsforc(c,j)%rt_ar  = biophysforc%c12flx%rt_vr_col(c,j) 
 
       ! add soil moisture limitation to root respiration        -zlyu
       w_scalar_rr = 1._r8              ! initial as 1      -zlyu
@@ -2714,14 +2717,14 @@ if(exit_spinup)then
    use tracerstatetype          , only : tracerstate_type
    use BeTR_biogeoStateType     , only : betr_biogeo_state_type
    use BeTR_decompMod           , only : betr_bounds_type
-   use betr_constants           , only : stdout                                ! added
+   use betr_constants           , only : stdout
    implicit none
    class(bgc_reaction_summs_type) , intent(inout)    :: this
-   type(betr_bounds_type)               , intent(in)  :: bounds                      ! bounds
+   type(betr_bounds_type)               , intent(in)  :: bounds
    integer                              , intent(in) :: lbj, ubj
    integer                              , intent(in) :: jtops(bounds%begc: )
-   integer                              , intent(in)    :: num_soilc                   ! number of columns in column filter
-   integer                              , intent(in)    :: filter_soilc(:)             ! column filter
+   integer                              , intent(in)    :: num_soilc                  ! number of columns in column filter
+   integer                              , intent(in)    :: filter_soilc(:)            ! column filter
    type(betrtracer_type)                , intent(in) :: betrtracer_vars               ! betr configuration information
    type(tracerstate_type)               , intent(inout) :: tracerstate_vars
    type(betr_biogeo_state_type)         , intent(inout) :: biogeo_state
@@ -2735,7 +2738,6 @@ if(exit_spinup)then
     call betr_status%reset()
     SHR_ASSERT_ALL((ubound(jtops) == (/bounds%endc/)), errMsg(mod_filename,__LINE__),betr_status)
  
-    
     if(betr_status%check_status())return
 
     c_loc=this%summsbgc_index%c_loc
@@ -2794,6 +2796,7 @@ if(exit_spinup)then
               c14atomw * tracerstate_vars%tracer_conc_mobile_col(c, j, kk-1+c14_loc)
           endif
         enddo
+
         !DOM
         call sum_totsom(c, j, betrtracer_vars%id_trc_beg_dom, betrtracer_vars%id_trc_end_dom, nelm)
         do kk = betrtracer_vars%id_trc_beg_dom, betrtracer_vars%id_trc_end_dom, nelm
@@ -2928,7 +2931,7 @@ if(exit_spinup)then
        use BeTR_biogeophysInputType , only : betr_biogeophys_input_type
        use BetrStatusType           , only : betr_status_type
        use betr_columnType          , only : betr_column_type
-       use tracer_varcon, only : catomw, natomw, patomw, c13atomw, c14atomw            !-zlyu   added
+       use tracer_varcon, only : catomw, natomw, patomw, c13atomw, c14atomw
 
        ! !ARGUMENTS:
      implicit none
@@ -2944,7 +2947,7 @@ if(exit_spinup)then
        type(betr_status_type)           , intent(out)   :: betr_status
 
        integer :: fc, c, j, kk, kc, kn, kp
-       integer :: c_loc, n_loc, p_loc, nelm           !-zlyu    added
+       integer :: c_loc, n_loc, p_loc, nelm
 
    associate(                                &
     c13_loc=>  this%summsbgc_index%c13_loc, &

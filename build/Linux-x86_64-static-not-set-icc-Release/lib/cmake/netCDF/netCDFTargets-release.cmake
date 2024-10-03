@@ -9,7 +9,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set_property(TARGET netcdf APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(netcdf PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a;/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a;/usr/lib64/libdl.so;/usr/lib64/libm.so;/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a"
+  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a;/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a;/usr/lib64/libdl.so;/usr/lib64/libm.so;/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a"
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libnetcdf.a"
   )
 

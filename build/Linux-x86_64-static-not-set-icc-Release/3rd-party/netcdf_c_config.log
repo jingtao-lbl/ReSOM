@@ -5,24 +5,24 @@
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- now start the hdf5 section
--- USE HDF5 OR ENABLE NETCDF_4 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/include
+-- USE HDF5 OR ENABLE NETCDF_4 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/include
 -- HDF5 WAS ALREADY SETUP
--- Using HDF5 C Library: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
--- Using HDF5 HL LIbrary: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
+-- Using HDF5 C Library: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+-- Using HDF5 HL LIbrary: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
 -- HDF5_LIBRARY CHECK finished
 -- Looking for H5Pget_fapl_mpiposix in hdf5
 -- Looking for H5Pget_fapl_mpiposix in hdf5 - not found
 -- Looking for H5Pget_fapl_mpio in hdf5
 -- Looking for H5Pget_fapl_mpio in hdf5 - not found
--- HDF5_C_LIBRARAY /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
--- Looking for H5free_memory in /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
--- Looking for H5free_memory in /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a - found
+-- HDF5_C_LIBRARAY /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+-- Looking for H5free_memory in /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+-- Looking for H5free_memory in /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a - found
 -- Found libdl: /usr/lib64/libdl.so
--- Looking for H5Z_SZIP in /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
--- Looking for H5Z_SZIP in /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a - not found
+-- Looking for H5Z_SZIP in /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+-- Looking for H5Z_SZIP in /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a - not found
 -- USE_SZIP 
 -- szip_include_dir 
--- zlib_include_dirs /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/include
+-- zlib_include_dirs /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/include
 -- Found Math library: /usr/lib64/libm.so
 -- Performing Test __CHAR_UNSIGNED__
 -- Performing Test __CHAR_UNSIGNED__ - Failed
@@ -170,15 +170,15 @@
 -- Looking for _filelengthi64 - not found
 -- ALL_TLL_LIBS 
 -- Found bash: /usr/bin/bash
--- HAVE_LIBM /usr/lib64/libm.so ZLIB_LIBRARY /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+-- HAVE_LIBM /usr/lib64/libm.so ZLIB_LIBRARY /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 -- EXTRA_DEPS  HAVE_LIBDL ON /usr/lib64/libdl.so
 -- USE_HDF5 ON MSVC 
 -- HDF5_HL_LIBRARIES 
--- HDF5_C_LIBRARIES /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
--- TLL_LIBS  /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a 
--- TLL_LIBS /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+-- HDF5_C_LIBRARIES /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+-- TLL_LIBS  /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a 
+-- TLL_LIBS /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 -- liblib ALL_TLL_LIBS 
--- TLL_LIBS /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+-- TLL_LIBS /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 -- Building Shared Libraries:     OFF
 -- Building netCDF-4:             ON
 -- Building DAP Support:          OFF
@@ -187,10 +187,10 @@
 -- CMAKE_C_COMPILER:     /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc
 -- CMAKE_C_FLAGS:        
 -- CMAKE_C_FLAGS_RELEASE:   -O3 -DNDEBUG
--- Linking against:      /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+-- Linking against:      /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a/usr/lib64/libdl.so/usr/lib64/libm.so/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 -- CFLAGS  -O3 -DNDEBUG
 -- CPPFLAGS  
 -- LDFLAGS   -v
--- Configuring done (20.6s)
--- Generating done (0.4s)
--- Build files have been written to: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-c
+-- Configuring done (31.9s)
+-- Generating done (1.3s)
+-- Build files have been written to: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-c

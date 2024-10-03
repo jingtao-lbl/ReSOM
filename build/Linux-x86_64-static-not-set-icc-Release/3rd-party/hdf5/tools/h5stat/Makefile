@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackConfig.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackSourceConfig.cmake /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CPackSourceConfig.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackSourceConfig.cmake /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5stat//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5stat//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tools/h5stat/CMakeFiles/h5stat.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/CMakeFiles/h5stat.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5stat/CMakeFiles/h5stat.dir/rule
 .PHONY : tools/h5stat/CMakeFiles/h5stat.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ h5stat: tools/h5stat/CMakeFiles/h5stat.dir/rule
 
 # fast build rule for target.
 h5stat/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/build
 .PHONY : h5stat/fast
 
 h5stat.o: h5stat.c.o
@@ -200,7 +200,7 @@ h5stat.o: h5stat.c.o
 
 # target to build an object file
 h5stat.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.o
 .PHONY : h5stat.c.o
 
 h5stat.i: h5stat.c.i
@@ -208,7 +208,7 @@ h5stat.i: h5stat.c.i
 
 # target to preprocess a source file
 h5stat.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.i
 .PHONY : h5stat.c.i
 
 h5stat.s: h5stat.c.s
@@ -216,7 +216,7 @@ h5stat.s: h5stat.c.s
 
 # target to generate assembly for a file
 h5stat.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5stat/CMakeFiles/h5stat.dir/build.make tools/h5stat/CMakeFiles/h5stat.dir/h5stat.c.s
 .PHONY : h5stat.c.s
 
 # Help Target
@@ -248,6 +248,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

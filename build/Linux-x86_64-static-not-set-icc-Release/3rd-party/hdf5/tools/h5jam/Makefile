@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackConfig.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackSourceConfig.cmake /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CPackSourceConfig.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.27.7-h5hb42qy37ql6aibfu62fhewslp56lms/bin/cpack --config ./CPackSourceConfig.cmake /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5jam//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5jam//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tools/h5jam/CMakeFiles/h5jam.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/h5jam.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/h5jam.dir/rule
 .PHONY : tools/h5jam/CMakeFiles/h5jam.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ h5jam: tools/h5jam/CMakeFiles/h5jam.dir/rule
 
 # fast build rule for target.
 h5jam/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/build
 .PHONY : h5jam/fast
 
 # Convenience name for target.
 tools/h5jam/CMakeFiles/getub.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/getub.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/getub.dir/rule
 .PHONY : tools/h5jam/CMakeFiles/getub.dir/rule
 
 # Convenience name for target.
@@ -206,12 +206,12 @@ getub: tools/h5jam/CMakeFiles/getub.dir/rule
 
 # fast build rule for target.
 getub/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/build
 .PHONY : getub/fast
 
 # Convenience name for target.
 tools/h5jam/CMakeFiles/tellub.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/tellub.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/tellub.dir/rule
 .PHONY : tools/h5jam/CMakeFiles/tellub.dir/rule
 
 # Convenience name for target.
@@ -220,12 +220,12 @@ tellub: tools/h5jam/CMakeFiles/tellub.dir/rule
 
 # fast build rule for target.
 tellub/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/build
 .PHONY : tellub/fast
 
 # Convenience name for target.
 tools/h5jam/CMakeFiles/h5unjam.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/h5unjam.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/h5jam/CMakeFiles/h5unjam.dir/rule
 .PHONY : tools/h5jam/CMakeFiles/h5unjam.dir/rule
 
 # Convenience name for target.
@@ -234,7 +234,7 @@ h5unjam: tools/h5jam/CMakeFiles/h5unjam.dir/rule
 
 # fast build rule for target.
 h5unjam/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/build
 .PHONY : h5unjam/fast
 
 getub.o: getub.c.o
@@ -242,7 +242,7 @@ getub.o: getub.c.o
 
 # target to build an object file
 getub.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.o
 .PHONY : getub.c.o
 
 getub.i: getub.c.i
@@ -250,7 +250,7 @@ getub.i: getub.c.i
 
 # target to preprocess a source file
 getub.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.i
 .PHONY : getub.c.i
 
 getub.s: getub.c.s
@@ -258,7 +258,7 @@ getub.s: getub.c.s
 
 # target to generate assembly for a file
 getub.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/getub.dir/build.make tools/h5jam/CMakeFiles/getub.dir/getub.c.s
 .PHONY : getub.c.s
 
 h5jam.o: h5jam.c.o
@@ -266,7 +266,7 @@ h5jam.o: h5jam.c.o
 
 # target to build an object file
 h5jam.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.o
 .PHONY : h5jam.c.o
 
 h5jam.i: h5jam.c.i
@@ -274,7 +274,7 @@ h5jam.i: h5jam.c.i
 
 # target to preprocess a source file
 h5jam.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.i
 .PHONY : h5jam.c.i
 
 h5jam.s: h5jam.c.s
@@ -282,7 +282,7 @@ h5jam.s: h5jam.c.s
 
 # target to generate assembly for a file
 h5jam.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5jam.dir/build.make tools/h5jam/CMakeFiles/h5jam.dir/h5jam.c.s
 .PHONY : h5jam.c.s
 
 h5unjam.o: h5unjam.c.o
@@ -290,7 +290,7 @@ h5unjam.o: h5unjam.c.o
 
 # target to build an object file
 h5unjam.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.o
 .PHONY : h5unjam.c.o
 
 h5unjam.i: h5unjam.c.i
@@ -298,7 +298,7 @@ h5unjam.i: h5unjam.c.i
 
 # target to preprocess a source file
 h5unjam.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.i
 .PHONY : h5unjam.c.i
 
 h5unjam.s: h5unjam.c.s
@@ -306,7 +306,7 @@ h5unjam.s: h5unjam.c.s
 
 # target to generate assembly for a file
 h5unjam.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/h5unjam.dir/build.make tools/h5jam/CMakeFiles/h5unjam.dir/h5unjam.c.s
 .PHONY : h5unjam.c.s
 
 tellub.o: tellub.c.o
@@ -314,7 +314,7 @@ tellub.o: tellub.c.o
 
 # target to build an object file
 tellub.c.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.o
 .PHONY : tellub.c.o
 
 tellub.i: tellub.c.i
@@ -322,7 +322,7 @@ tellub.i: tellub.c.i
 
 # target to preprocess a source file
 tellub.c.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.i
 .PHONY : tellub.c.i
 
 tellub.s: tellub.c.s
@@ -330,7 +330,7 @@ tellub.s: tellub.c.s
 
 # target to generate assembly for a file
 tellub.c.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(MAKE) $(MAKESILENT) -f tools/h5jam/CMakeFiles/tellub.dir/build.make tools/h5jam/CMakeFiles/tellub.dir/tellub.c.s
 .PHONY : tellub.c.s
 
 # Help Target
@@ -374,6 +374,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,5 +1,5 @@
 src/CMakeFiles/H5make_libsettings.dir/H5make_libsettings.c.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5make_libsettings.c \
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5make_libsettings.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
@@ -19,10 +19,10 @@ src/CMakeFiles/H5make_libsettings.dir/H5make_libsettings.c.o: \
  /usr/include/bits/types/struct_timespec.h /usr/include/bits/types/clockid_t.h \
  /usr/include/bits/types/timer_t.h /usr/include/bits/types/struct_itimerspec.h \
  /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5private.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5public.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/H5pubconf.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5version.h \
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5private.h \
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5public.h \
+ /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/H5pubconf.h \
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5version.h \
  /usr/include/sys/types.h /usr/include/bits/stdint-intn.h /usr/include/endian.h \
  /usr/include/bits/endian.h /usr/include/bits/byteswap.h \
  /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
@@ -38,7 +38,7 @@ src/CMakeFiles/H5make_libsettings.dir/H5make_libsettings.c.o: \
  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h /usr/include/stdint.h \
  /usr/include/bits/wchar.h /usr/include/bits/stdint-uintn.h \
  /usr/include/inttypes.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5api_adpt.h \
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5api_adpt.h \
  /usr/include/assert.h /usr/include/ctype.h /usr/include/errno.h \
  /usr/include/bits/errno.h /usr/include/linux/errno.h /usr/include/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
@@ -90,4 +90,4 @@ src/CMakeFiles/H5make_libsettings.dir/H5make_libsettings.c.o: \
  /usr/include/bits/ioctl-types.h /usr/include/sys/ttydefaults.h \
  /usr/include/dlfcn.h /usr/include/bits/dlfcn.h /usr/include/dirent.h \
  /usr/include/bits/dirent.h \
- /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5win32defs.h
+ /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5win32defs.h

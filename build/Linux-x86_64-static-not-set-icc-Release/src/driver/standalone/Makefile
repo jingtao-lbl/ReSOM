@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/standalone//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/standalone//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/rule
 .PHONY : src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ betr_driver_standalone: src/driver/standalone/CMakeFiles/betr_driver_standalone.
 
 # fast build rule for target.
 betr_driver_standalone/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build
 .PHONY : betr_driver_standalone/fast
 
 BeTRSimulationStandalone.o: BeTRSimulationStandalone.F90.o
@@ -190,7 +190,7 @@ BeTRSimulationStandalone.o: BeTRSimulationStandalone.F90.o
 
 # target to build an object file
 BeTRSimulationStandalone.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.o
 .PHONY : BeTRSimulationStandalone.F90.o
 
 BeTRSimulationStandalone.i: BeTRSimulationStandalone.F90.i
@@ -198,7 +198,7 @@ BeTRSimulationStandalone.i: BeTRSimulationStandalone.F90.i
 
 # target to preprocess a source file
 BeTRSimulationStandalone.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.i
 .PHONY : BeTRSimulationStandalone.F90.i
 
 BeTRSimulationStandalone.s: BeTRSimulationStandalone.F90.s
@@ -206,7 +206,7 @@ BeTRSimulationStandalone.s: BeTRSimulationStandalone.F90.s
 
 # target to generate assembly for a file
 BeTRSimulationStandalone.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/BeTRSimulationStandalone.F90.s
 .PHONY : BeTRSimulationStandalone.F90.s
 
 ForcingDataType.o: ForcingDataType.F90.o
@@ -214,7 +214,7 @@ ForcingDataType.o: ForcingDataType.F90.o
 
 # target to build an object file
 ForcingDataType.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.o
 .PHONY : ForcingDataType.F90.o
 
 ForcingDataType.i: ForcingDataType.F90.i
@@ -222,7 +222,7 @@ ForcingDataType.i: ForcingDataType.F90.i
 
 # target to preprocess a source file
 ForcingDataType.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.i
 .PHONY : ForcingDataType.F90.i
 
 ForcingDataType.s: ForcingDataType.F90.s
@@ -230,7 +230,7 @@ ForcingDataType.s: ForcingDataType.F90.s
 
 # target to generate assembly for a file
 ForcingDataType.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/ForcingDataType.F90.s
 .PHONY : ForcingDataType.F90.s
 
 GridMod.o: GridMod.F90.o
@@ -238,7 +238,7 @@ GridMod.o: GridMod.F90.o
 
 # target to build an object file
 GridMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.o
 .PHONY : GridMod.F90.o
 
 GridMod.i: GridMod.F90.i
@@ -246,7 +246,7 @@ GridMod.i: GridMod.F90.i
 
 # target to preprocess a source file
 GridMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.i
 .PHONY : GridMod.F90.i
 
 GridMod.s: GridMod.F90.s
@@ -254,7 +254,7 @@ GridMod.s: GridMod.F90.s
 
 # target to generate assembly for a file
 GridMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/build.make src/driver/standalone/CMakeFiles/betr_driver_standalone.dir/GridMod.F90.s
 .PHONY : GridMod.F90.s
 
 # Help Target
@@ -291,6 +291,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

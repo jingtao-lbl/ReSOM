@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 # Include any dependencies generated for this target.
 include src/io_util/CMakeFiles/betr_io_util.dir/depend.make
@@ -70,30 +70,30 @@ include src/io_util/CMakeFiles/betr_io_util.dir/progress.make
 include src/io_util/CMakeFiles/betr_io_util.dir/flags.make
 
 src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o: src/io_util/CMakeFiles/betr_io_util.dir/flags.make
-src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 -o CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o
+src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 -o CMakeFiles/betr_io_util.dir/ncdio_pio.F90.o
 
 src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/betr_io_util.dir/ncdio_pio.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 > CMakeFiles/betr_io_util.dir/ncdio_pio.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 > CMakeFiles/betr_io_util.dir/ncdio_pio.F90.i
 
 src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/betr_io_util.dir/ncdio_pio.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 -o CMakeFiles/betr_io_util.dir/ncdio_pio.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/io_util/ncdio_pio.F90 -o CMakeFiles/betr_io_util.dir/ncdio_pio.F90.s
 
 src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o: src/io_util/CMakeFiles/betr_io_util.dir/flags.make
-src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 -o CMakeFiles/betr_io_util.dir/histMod.F90.o
+src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 -o CMakeFiles/betr_io_util.dir/histMod.F90.o
 
 src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/betr_io_util.dir/histMod.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 > CMakeFiles/betr_io_util.dir/histMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 > CMakeFiles/betr_io_util.dir/histMod.F90.i
 
 src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/betr_io_util.dir/histMod.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 -o CMakeFiles/betr_io_util.dir/histMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/io_util/histMod.F90 -o CMakeFiles/betr_io_util.dir/histMod.F90.s
 
 # Object files for target betr_io_util
 betr_io_util_OBJECTS = \
@@ -107,19 +107,19 @@ src/io_util/libbetr_io_util.a: src/io_util/CMakeFiles/betr_io_util.dir/ncdio_pio
 src/io_util/libbetr_io_util.a: src/io_util/CMakeFiles/betr_io_util.dir/histMod.F90.o
 src/io_util/libbetr_io_util.a: src/io_util/CMakeFiles/betr_io_util.dir/build.make
 src/io_util/libbetr_io_util.a: src/io_util/CMakeFiles/betr_io_util.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking Fortran static library libbetr_io_util.a"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -P CMakeFiles/betr_io_util.dir/cmake_clean_target.cmake
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/betr_io_util.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking Fortran static library libbetr_io_util.a"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -P CMakeFiles/betr_io_util.dir/cmake_clean_target.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/betr_io_util.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/io_util/CMakeFiles/betr_io_util.dir/build: src/io_util/libbetr_io_util.a
 .PHONY : src/io_util/CMakeFiles/betr_io_util.dir/build
 
 src/io_util/CMakeFiles/betr_io_util.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -P CMakeFiles/betr_io_util.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util && $(CMAKE_COMMAND) -P CMakeFiles/betr_io_util.dir/cmake_clean.cmake
 .PHONY : src/io_util/CMakeFiles/betr_io_util.dir/clean
 
 src/io_util/CMakeFiles/betr_io_util.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr /global/scratch/users/jingtao/ReSOM/sbetr/src/io_util /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util/CMakeFiles/betr_io_util.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr /global/home/users/jingtao/ReSOM/sbetr/src/io_util /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/io_util/CMakeFiles/betr_io_util.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/io_util/CMakeFiles/betr_io_util.dir/depend
 

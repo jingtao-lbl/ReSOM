@@ -9,7 +9,7 @@ src/shr/CMakeFiles/betr_shr.dir/abortutils.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/shr/CMakeFiles/betr_shr.dir/abortutils.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/build: src/shr/CMakeFiles/betr_shr.dir/abortutils.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/shr_assert_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h
 src/shr/CMakeFiles/betr_shr.dir/shr_assert_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_assert_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_kind_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_assert_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.mod.stamp
@@ -37,7 +37,7 @@ src/shr/CMakeFiles/betr_shr.dir/shr_file_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/shr/CMakeFiles/betr_shr.dir/shr_file_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/build: src/shr/CMakeFiles/betr_shr.dir/shr_file_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h
 src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_kind_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.F90.o.provides.build: src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.mod.stamp: src/shr/CMakeFiles/betr_shr.dir/shr_infnan_mod.F90.o
@@ -59,7 +59,7 @@ src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/build: src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/shr_mpi_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/shr/mpif.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/shr/mpif.h
 src/shr/CMakeFiles/betr_shr.dir/shr_mpi_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_kind_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_mpi_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_mpi_mod.F90.o.provides.build: src/shr/CMakeFiles/betr_shr.dir/shr_mpi_mod.mod.stamp
@@ -76,7 +76,7 @@ src/shr/CMakeFiles/betr_shr.dir/shr_nl_mod.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E touch src/shr/CMakeFiles/betr_shr.dir/shr_nl_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/build: src/shr/CMakeFiles/betr_shr.dir/shr_nl_mod.F90.o.provides.build
 src/shr/CMakeFiles/betr_shr.dir/shr_string_mod.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/shr/shr_assert.h
+ /global/home/users/jingtao/ReSOM/sbetr/src/shr/shr_assert.h
 src/shr/CMakeFiles/betr_shr.dir/shr_string_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_assert_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_string_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_kind_mod.mod.stamp
 src/shr/CMakeFiles/betr_shr.dir/shr_string_mod.F90.o: src/shr/CMakeFiles/betr_shr.dir/shr_log_mod.mod.stamp

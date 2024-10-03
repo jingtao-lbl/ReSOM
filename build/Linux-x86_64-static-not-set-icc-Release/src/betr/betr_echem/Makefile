@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_echem//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_echem//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/betr/betr_echem/CMakeFiles/betr_echem.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/CMakeFiles/betr_echem.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/betr/betr_echem/CMakeFiles/betr_echem.dir/rule
 .PHONY : src/betr/betr_echem/CMakeFiles/betr_echem.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ betr_echem: src/betr/betr_echem/CMakeFiles/betr_echem.dir/rule
 
 # fast build rule for target.
 betr_echem/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/build
 .PHONY : betr_echem/fast
 
 eChemConstMod.o: eChemConstMod.F90.o
@@ -190,7 +190,7 @@ eChemConstMod.o: eChemConstMod.F90.o
 
 # target to build an object file
 eChemConstMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.o
 .PHONY : eChemConstMod.F90.o
 
 eChemConstMod.i: eChemConstMod.F90.i
@@ -198,7 +198,7 @@ eChemConstMod.i: eChemConstMod.F90.i
 
 # target to preprocess a source file
 eChemConstMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.i
 .PHONY : eChemConstMod.F90.i
 
 eChemConstMod.s: eChemConstMod.F90.s
@@ -206,7 +206,7 @@ eChemConstMod.s: eChemConstMod.F90.s
 
 # target to generate assembly for a file
 eChemConstMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemConstMod.F90.s
 .PHONY : eChemConstMod.F90.s
 
 eChemMod.o: eChemMod.F90.o
@@ -214,7 +214,7 @@ eChemMod.o: eChemMod.F90.o
 
 # target to build an object file
 eChemMod.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.o
 .PHONY : eChemMod.F90.o
 
 eChemMod.i: eChemMod.F90.i
@@ -222,7 +222,7 @@ eChemMod.i: eChemMod.F90.i
 
 # target to preprocess a source file
 eChemMod.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.i
 .PHONY : eChemMod.F90.i
 
 eChemMod.s: eChemMod.F90.s
@@ -230,7 +230,7 @@ eChemMod.s: eChemMod.F90.s
 
 # target to generate assembly for a file
 eChemMod.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/betr/betr_echem/CMakeFiles/betr_echem.dir/build.make src/betr/betr_echem/CMakeFiles/betr_echem.dir/eChemMod.F90.s
 .PHONY : eChemMod.F90.s
 
 # Help Target
@@ -264,6 +264,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

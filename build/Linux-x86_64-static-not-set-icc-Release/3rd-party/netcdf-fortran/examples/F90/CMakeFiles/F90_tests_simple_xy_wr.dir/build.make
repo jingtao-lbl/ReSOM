@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # Include any dependencies generated for this target.
 include examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/depend.make
@@ -71,16 +71,16 @@ include examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/flags.make
 
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o: examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/flags.make
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o: examples/F90/simple_xy_wr.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 -o CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 -o CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o
 
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 > CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 > CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.i
 
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 -o CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/simple_xy_wr.f90 -o CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.s
 
 # Object files for target F90_tests_simple_xy_wr
 F90_tests_simple_xy_wr_OBJECTS = \
@@ -92,25 +92,25 @@ F90_tests_simple_xy_wr_EXTERNAL_OBJECTS =
 examples/F90/F90_tests_simple_xy_wr: examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/simple_xy_wr.f90.o
 examples/F90/F90_tests_simple_xy_wr: examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/build.make
 examples/F90/F90_tests_simple_xy_wr: fortran/libnetcdff.a
-examples/F90/F90_tests_simple_xy_wr: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libnetcdf.a
-examples/F90/F90_tests_simple_xy_wr: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
-examples/F90/F90_tests_simple_xy_wr: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+examples/F90/F90_tests_simple_xy_wr: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libnetcdf.a
+examples/F90/F90_tests_simple_xy_wr: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
+examples/F90/F90_tests_simple_xy_wr: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
 examples/F90/F90_tests_simple_xy_wr: /usr/lib64/libdl.so
 examples/F90/F90_tests_simple_xy_wr: /usr/lib64/libm.so
-examples/F90/F90_tests_simple_xy_wr: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+examples/F90/F90_tests_simple_xy_wr: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 examples/F90/F90_tests_simple_xy_wr: examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable F90_tests_simple_xy_wr"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/F90_tests_simple_xy_wr.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable F90_tests_simple_xy_wr"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/F90_tests_simple_xy_wr.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/build: examples/F90/F90_tests_simple_xy_wr
 .PHONY : examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/build
 
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && $(CMAKE_COMMAND) -P CMakeFiles/F90_tests_simple_xy_wr.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 && $(CMAKE_COMMAND) -P CMakeFiles/F90_tests_simple_xy_wr.dir/cmake_clean.cmake
 .PHONY : examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/clean
 
 examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : examples/F90/CMakeFiles/F90_tests_simple_xy_wr.dir/depend
 

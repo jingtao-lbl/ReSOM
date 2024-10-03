@@ -24,6 +24,6 @@
 -- 	Building DAP Support:		OFF
 -- 	Using Parallel IO:		OFF
 -- 	Linking against:		netcdf
--- Configuring done (2.7s)
--- Generating done (0.4s)
--- Build files have been written to: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+-- Configuring done (3.8s)
+-- Generating done (1.3s)
+-- Build files have been written to: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran

@@ -441,13 +441,15 @@ contains
   !--------------------------------------------------------------------
 
   subroutine summspara_readPars(this, ncid, bstatus)
+
   use bshr_log_mod    , only : errMsg => shr_log_errMsg
   use ncdio_pio       , only : file_desc_t, ncd_io
   use BetrStatusType  , only : betr_status_type
   use betr_ctrl       , only : betr_spinup_state
   use bshr_const_mod  , only : year_sec=>SHR_CONST_YEARSECS
   use tracer_varcon   , only : natomw,patomw
-  use betr_constants  , only : stdout                      !-zlyu, check output
+  use betr_constants  , only : stdout
+
   implicit none
   class(SummsPara_type), intent(inout) :: this
   type(file_desc_t)    , intent(inout)  :: ncid  ! pio netCDF file id
@@ -458,13 +460,11 @@ contains
   real(r8)           :: tempr(1) ! temporary to read in constant
   real(r8)           :: temparr(1:2,1:1)
   character(len=100) :: tString ! temp. var for reading
+
   call bstatus%reset()
-  !return                                   ! comment out  -zlyu
+  
   call this%readPars_bgc(ncid, bstatus)
   if(bstatus%check_status())return
-
-  !write(*,*) 'Start reading in ReSOM parameters:'
-  !write(*,*) '-------Microbe traits--------'
 
   !-------Microbe traits--------
   tString='decay_mic0'
@@ -533,7 +533,6 @@ contains
   if(bstatus%check_status())return
   this%mic_transp = tempr(1) ! Scaling factor between transporter and microbial structural biomass
 
-  !write(*,*) '-------Enzyme--------'
   !-------Enzyme--------
 
   tString='decay_enz'
@@ -554,7 +553,6 @@ contains
   if(bstatus%check_status())return
   this%fenz2poly = tempr(1)   ! Fraction of decayed extracellular enzymes contributing to the polymer pool
 
-  !write(*,*) '-------Affinity--------'
   !-------Affinity--------
 
   tString='ref_kaff_enz_poly'

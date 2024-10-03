@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/H5detect.dir/depend.make
@@ -70,18 +70,18 @@ include src/CMakeFiles/H5detect.dir/progress.make
 include src/CMakeFiles/H5detect.dir/flags.make
 
 src/CMakeFiles/H5detect.dir/H5detect.c.o: src/CMakeFiles/H5detect.dir/flags.make
-src/CMakeFiles/H5detect.dir/H5detect.c.o: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c
+src/CMakeFiles/H5detect.dir/H5detect.c.o: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c
 src/CMakeFiles/H5detect.dir/H5detect.c.o: src/CMakeFiles/H5detect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/H5detect.dir/H5detect.c.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/H5detect.dir/H5detect.c.o -MF CMakeFiles/H5detect.dir/H5detect.c.o.d -o CMakeFiles/H5detect.dir/H5detect.c.o -c /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/H5detect.dir/H5detect.c.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/H5detect.dir/H5detect.c.o -MF CMakeFiles/H5detect.dir/H5detect.c.o.d -o CMakeFiles/H5detect.dir/H5detect.c.o -c /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c
 
 src/CMakeFiles/H5detect.dir/H5detect.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/H5detect.dir/H5detect.c.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c > CMakeFiles/H5detect.dir/H5detect.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c > CMakeFiles/H5detect.dir/H5detect.c.i
 
 src/CMakeFiles/H5detect.dir/H5detect.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/H5detect.dir/H5detect.c.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c -o CMakeFiles/H5detect.dir/H5detect.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src/H5detect.c -o CMakeFiles/H5detect.dir/H5detect.c.s
 
 # Object files for target H5detect
 H5detect_OBJECTS = \
@@ -93,18 +93,18 @@ H5detect_EXTERNAL_OBJECTS =
 bin/H5detect: src/CMakeFiles/H5detect.dir/H5detect.c.o
 bin/H5detect: src/CMakeFiles/H5detect.dir/build.make
 bin/H5detect: src/CMakeFiles/H5detect.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../bin/H5detect"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/H5detect.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../bin/H5detect"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/H5detect.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/H5detect.dir/build: bin/H5detect
 .PHONY : src/CMakeFiles/H5detect.dir/build
 
 src/CMakeFiles/H5detect.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && $(CMAKE_COMMAND) -P CMakeFiles/H5detect.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src && $(CMAKE_COMMAND) -P CMakeFiles/H5detect.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/H5detect.dir/clean
 
 src/CMakeFiles/H5detect.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5 /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src/CMakeFiles/H5detect.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5 /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/src /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/src/CMakeFiles/H5detect.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/CMakeFiles/H5detect.dir/depend
 

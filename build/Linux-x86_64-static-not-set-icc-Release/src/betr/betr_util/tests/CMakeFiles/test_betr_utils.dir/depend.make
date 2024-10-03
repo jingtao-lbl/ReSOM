@@ -6,7 +6,7 @@ src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/driver.F90.o: \
  src/betr/betr_util/tests/testSuites.inc
 src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/driver.F90.o: mod/pfunit_mod.mod
 src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/test_betr_utils.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit
 src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/test_betr_utils.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/betr_constants.mod.stamp
 src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/test_betr_utils.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/betr_utils.mod.stamp
 src/betr/betr_util/tests/CMakeFiles/test_betr_utils.dir/test_betr_utils.F90.o: mod/pfunit_mod.mod

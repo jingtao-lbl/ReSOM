@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_Fortran
-  "/global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/test/iotest.F90" "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/iotest.F90.o"
-  "/global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/test/readparatest.F90" "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/readparatest.F90.o"
-  "/global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/test/timertest.F90" "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/timertest.F90.o"
+  "/global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/test/iotest.F90" "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/iotest.F90.o"
+  "/global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/test/readparatest.F90" "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/readparatest.F90.o"
+  "/global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/test/timertest.F90" "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/test/CMakeFiles/jarmodel_test.dir/timertest.F90.o"
   )
 set(CMAKE_Fortran_COMPILER_ID "Intel")
 set(CMAKE_Fortran_SUBMODULE_SEP "@")
@@ -20,7 +20,7 @@ set(CMAKE_Fortran_SUBMODULE_EXT ".smod")
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH
   "."
   "include"
-  "/global/scratch/users/jingtao/ReSOM/sbetr"
+  "/global/home/users/jingtao/ReSOM/sbetr"
   "src/shr"
   "src/betr/betr_util"
   "src/io_util"

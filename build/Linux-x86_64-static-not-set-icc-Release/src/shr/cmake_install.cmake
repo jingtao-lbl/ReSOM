@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/src/shr
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/src/shr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/local")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,14 +43,14 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/shr/libbetr_shr.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/shr/libbetr_shr.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/betr/shr" TYPE FILE FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/shr/mpif.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/shr/shr_assert.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/shr/dtypes.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/shr/mpif.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/shr/shr_assert.h"
     )
 endif()
 

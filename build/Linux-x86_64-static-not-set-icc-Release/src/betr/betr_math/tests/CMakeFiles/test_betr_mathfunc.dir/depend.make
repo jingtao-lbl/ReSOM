@@ -6,7 +6,7 @@ src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/driver.F90.o: \
  src/betr/betr_math/tests/testSuites.inc
 src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/driver.F90.o: mod/pfunit_mod.mod
 src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/test_betr_mathfunc.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_math/tests/test_betr_mathfunc.pfunit
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_math/tests/test_betr_mathfunc.pfunit
 src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/test_betr_mathfunc.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp
 src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/test_betr_mathfunc.F90.o: src/betr/betr_math/CMakeFiles/betr_math.dir/findrootmod.mod.stamp
 src/betr/betr_math/tests/CMakeFiles/test_betr_mathfunc.dir/test_betr_mathfunc.F90.o: src/betr/betr_math/CMakeFiles/betr_math.dir/interpolationmod.mod.stamp

@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,8 +44,8 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE PROGRAM FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin/pFUnitParser.py"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin/parseDirectiveArgs.py"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin/pFUnitParser.py"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/pfunit/bin/parseDirectiveArgs.py"
     )
 endif()
 

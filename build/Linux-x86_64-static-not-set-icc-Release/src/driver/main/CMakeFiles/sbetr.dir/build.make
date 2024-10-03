@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 # Include any dependencies generated for this target.
 include src/driver/main/CMakeFiles/sbetr.dir/depend.make
@@ -70,17 +70,17 @@ include src/driver/main/CMakeFiles/sbetr.dir/progress.make
 include src/driver/main/CMakeFiles/sbetr.dir/flags.make
 
 src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.o: src/driver/main/CMakeFiles/sbetr.dir/flags.make
-src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 -o CMakeFiles/sbetr.dir/sbetr.F90.o
+src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 -o CMakeFiles/sbetr.dir/sbetr.F90.o
 
 src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/sbetr.dir/sbetr.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 > CMakeFiles/sbetr.dir/sbetr.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 > CMakeFiles/sbetr.dir/sbetr.F90.i
 
 src/driver/main/CMakeFiles/sbetr.dir/sbetr.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/sbetr.dir/sbetr.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 -o CMakeFiles/sbetr.dir/sbetr.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/driver/main/sbetr.F90 -o CMakeFiles/sbetr.dir/sbetr.F90.s
 
 # Object files for target sbetr
 sbetr_OBJECTS = \
@@ -238,18 +238,18 @@ src/driver/main/sbetr: src/betr/betr_util/libbetr_util.a
 src/driver/main/sbetr: src/esmf_wrf_timemgr/libbetr_esmf.a
 src/driver/main/sbetr: src/shr/libbetr_shr.a
 src/driver/main/sbetr: src/driver/main/CMakeFiles/sbetr.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable sbetr"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sbetr.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable sbetr"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sbetr.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/driver/main/CMakeFiles/sbetr.dir/build: src/driver/main/sbetr
 .PHONY : src/driver/main/CMakeFiles/sbetr.dir/build
 
 src/driver/main/CMakeFiles/sbetr.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && $(CMAKE_COMMAND) -P CMakeFiles/sbetr.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main && $(CMAKE_COMMAND) -P CMakeFiles/sbetr.dir/cmake_clean.cmake
 .PHONY : src/driver/main/CMakeFiles/sbetr.dir/clean
 
 src/driver/main/CMakeFiles/sbetr.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr /global/scratch/users/jingtao/ReSOM/sbetr/src/driver/main /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main/CMakeFiles/sbetr.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr /global/home/users/jingtao/ReSOM/sbetr/src/driver/main /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/driver/main/CMakeFiles/sbetr.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/driver/main/CMakeFiles/sbetr.dir/depend
 

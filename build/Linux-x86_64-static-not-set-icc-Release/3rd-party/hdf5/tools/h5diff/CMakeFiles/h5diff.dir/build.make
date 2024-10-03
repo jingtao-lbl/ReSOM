@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5
 
 # Include any dependencies generated for this target.
 include tools/h5diff/CMakeFiles/h5diff.dir/depend.make
@@ -70,32 +70,32 @@ include tools/h5diff/CMakeFiles/h5diff.dir/progress.make
 include tools/h5diff/CMakeFiles/h5diff.dir/flags.make
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o: tools/h5diff/CMakeFiles/h5diff.dir/flags.make
-tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c
+tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o: tools/h5diff/CMakeFiles/h5diff.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o -MF CMakeFiles/h5diff.dir/h5diff_common.c.o.d -o CMakeFiles/h5diff.dir/h5diff_common.c.o -c /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.o -MF CMakeFiles/h5diff.dir/h5diff_common.c.o.d -o CMakeFiles/h5diff.dir/h5diff_common.c.o -c /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/h5diff.dir/h5diff_common.c.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c > CMakeFiles/h5diff.dir/h5diff_common.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c > CMakeFiles/h5diff.dir/h5diff_common.c.i
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/h5diff.dir/h5diff_common.c.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c -o CMakeFiles/h5diff.dir/h5diff_common.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_common.c -o CMakeFiles/h5diff.dir/h5diff_common.c.s
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o: tools/h5diff/CMakeFiles/h5diff.dir/flags.make
-tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c
+tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o: tools/h5diff/CMakeFiles/h5diff.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o -MF CMakeFiles/h5diff.dir/h5diff_main.c.o.d -o CMakeFiles/h5diff.dir/h5diff_main.c.o -c /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.o -MF CMakeFiles/h5diff.dir/h5diff_main.c.o.d -o CMakeFiles/h5diff.dir/h5diff_main.c.o -c /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/h5diff.dir/h5diff_main.c.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c > CMakeFiles/h5diff.dir/h5diff_main.c.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c > CMakeFiles/h5diff.dir/h5diff_main.c.i
 
 tools/h5diff/CMakeFiles/h5diff.dir/h5diff_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/h5diff.dir/h5diff_main.c.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c -o CMakeFiles/h5diff.dir/h5diff_main.c.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/icc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff/h5diff_main.c -o CMakeFiles/h5diff.dir/h5diff_main.c.s
 
 # Object files for target h5diff
 h5diff_OBJECTS = \
@@ -111,18 +111,18 @@ bin/h5diff: tools/h5diff/CMakeFiles/h5diff.dir/build.make
 bin/h5diff: bin/libhdf5_tools.a
 bin/h5diff: bin/libhdf5.a
 bin/h5diff: tools/h5diff/CMakeFiles/h5diff.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ../../bin/h5diff"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/h5diff.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ../../bin/h5diff"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/h5diff.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tools/h5diff/CMakeFiles/h5diff.dir/build: bin/h5diff
 .PHONY : tools/h5diff/CMakeFiles/h5diff.dir/build
 
 tools/h5diff/CMakeFiles/h5diff.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && $(CMAKE_COMMAND) -P CMakeFiles/h5diff.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff && $(CMAKE_COMMAND) -P CMakeFiles/h5diff.dir/cmake_clean.cmake
 .PHONY : tools/h5diff/CMakeFiles/h5diff.dir/clean
 
 tools/h5diff/CMakeFiles/h5diff.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5 /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff/CMakeFiles/h5diff.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5 /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5diff /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/tools/h5diff/CMakeFiles/h5diff.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : tools/h5diff/CMakeFiles/h5diff.dir/depend
 

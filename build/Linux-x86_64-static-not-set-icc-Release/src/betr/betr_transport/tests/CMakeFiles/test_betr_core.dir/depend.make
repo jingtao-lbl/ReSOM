@@ -6,7 +6,7 @@ src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/driver.F90.o: \
  src/betr/betr_transport/tests/testSuites.inc
 src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/driver.F90.o: mod/pfunit_mod.mod
 src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/test_betr_transport.F90.o: \
- /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_transport/tests/test_betr_transport.pfunit
+ /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_transport/tests/test_betr_transport.pfunit
 src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/test_betr_transport.F90.o: src/betr/betr_util/CMakeFiles/betr_util.dir/bshr_kind_mod.mod.stamp
 src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/test_betr_transport.F90.o: mod/pfunit_mod.mod
 src/betr/betr_transport/tests/CMakeFiles/test_betr_core.dir/test_betr_transport.F90.o: src/betr/betr_transport/CMakeFiles/betr_transport.dir/transportmod.mod.stamp

@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 # Include any dependencies generated for this target.
 include src/jarmodel/driver/CMakeFiles/jarmodel.dir/depend.make
@@ -70,17 +70,17 @@ include src/jarmodel/driver/CMakeFiles/jarmodel.dir/progress.make
 include src/jarmodel/driver/CMakeFiles/jarmodel.dir/flags.make
 
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.o: src/jarmodel/driver/CMakeFiles/jarmodel.dir/flags.make
-src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.o: /global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 -o CMakeFiles/jarmodel.dir/jarmodel.F90.o
+src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.o: /global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 -o CMakeFiles/jarmodel.dir/jarmodel.F90.o
 
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/jarmodel.dir/jarmodel.F90.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 > CMakeFiles/jarmodel.dir/jarmodel.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 > CMakeFiles/jarmodel.dir/jarmodel.F90.i
 
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/jarmodel.F90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/jarmodel.dir/jarmodel.F90.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 -o CMakeFiles/jarmodel.dir/jarmodel.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/driver/jarmodel.F90 -o CMakeFiles/jarmodel.dir/jarmodel.F90.s
 
 # Object files for target jarmodel
 jarmodel_OBJECTS = \
@@ -236,18 +236,18 @@ src/jarmodel/driver/jarmodel: src/betr/betr_util/libbetr_util.a
 src/jarmodel/driver/jarmodel: src/esmf_wrf_timemgr/libbetr_esmf.a
 src/jarmodel/driver/jarmodel: src/shr/libbetr_shr.a
 src/jarmodel/driver/jarmodel: src/jarmodel/driver/CMakeFiles/jarmodel.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable jarmodel"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/jarmodel.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable jarmodel"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/jarmodel.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/build: src/jarmodel/driver/jarmodel
 .PHONY : src/jarmodel/driver/CMakeFiles/jarmodel.dir/build
 
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && $(CMAKE_COMMAND) -P CMakeFiles/jarmodel.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver && $(CMAKE_COMMAND) -P CMakeFiles/jarmodel.dir/cmake_clean.cmake
 .PHONY : src/jarmodel/driver/CMakeFiles/jarmodel.dir/clean
 
 src/jarmodel/driver/CMakeFiles/jarmodel.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr /global/scratch/users/jingtao/ReSOM/sbetr/src/jarmodel/driver /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver/CMakeFiles/jarmodel.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr /global/home/users/jingtao/ReSOM/sbetr/src/jarmodel/driver /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/jarmodel/driver/CMakeFiles/jarmodel.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/jarmodel/driver/CMakeFiles/jarmodel.dir/depend
 

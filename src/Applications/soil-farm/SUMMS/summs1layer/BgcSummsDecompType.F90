@@ -156,7 +156,7 @@ implicit none
   use JarBgcForcType , only : JarBGC_forc_type
   use bshr_const_mod     , only : SHR_CONST_TKFRZ
   use BgcSummsMath     , only : interp1
-  use betr_constants           , only : stdout                              ! added!
+  use betr_constants           , only : stdout
   !use InterpolationMod , only : mono_Linear_interp
   implicit none
   ! !ARGUMENTS:
@@ -199,9 +199,9 @@ implicit none
         real(r8) :: fref0                              ! Modifies non-enzyme and non-equilibrium reactions
         real(r8) :: tinv                               ! Modifies activation energy
         real(r8) :: fref                               ! Modifies non-equilibrium enzymatic reactions
-        real(r8) :: tempbgc                               ! Current temperature for biogeochemistry
+        real(r8) :: tempbgc                            ! Current temperature for biogeochemistry
 
-  associate(                                       &
+  associate(                                     &
     temp          => bgc_forc%temp    ,          &
     depz          => bgc_forc%depz    ,          &
     o2_w2b        => bgc_forc%o2_w2b  ,          &

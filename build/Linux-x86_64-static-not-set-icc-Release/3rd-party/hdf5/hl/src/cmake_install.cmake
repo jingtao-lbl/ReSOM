@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,18 +44,18 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "hlheaders" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5DOpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5DSpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5IMpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5LTparse.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5LTpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5PTpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5TBpublic.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/hdf5_hl.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5DOpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5DSpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5IMpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5LTparse.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5LTpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5PTpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/H5TBpublic.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/hl/src/hdf5_hl.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "hllibraries" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/bin/libhdf5_hl.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/hdf5/bin/libhdf5_hl.a")
 endif()
 

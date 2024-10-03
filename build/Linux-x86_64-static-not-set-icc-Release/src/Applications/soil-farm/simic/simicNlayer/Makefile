@@ -57,10 +57,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/simic/simicNlayer//CMakeFiles/progress.marks
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/Applications/soil-farm/simic/simicNlayer//CMakeFiles/progress.marks
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/clean
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/preinstall
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/rule:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/rule
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/rule
 .PHONY : src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ simicNlayer: src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer
 
 # fast build rule for target.
 simicNlayer/fast:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build
 .PHONY : simicNlayer/fast
 
 simicBGCReactionsType.o: simicBGCReactionsType.F90.o
@@ -190,7 +190,7 @@ simicBGCReactionsType.o: simicBGCReactionsType.F90.o
 
 # target to build an object file
 simicBGCReactionsType.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.o
 .PHONY : simicBGCReactionsType.F90.o
 
 simicBGCReactionsType.i: simicBGCReactionsType.F90.i
@@ -198,7 +198,7 @@ simicBGCReactionsType.i: simicBGCReactionsType.F90.i
 
 # target to preprocess a source file
 simicBGCReactionsType.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.i
 .PHONY : simicBGCReactionsType.F90.i
 
 simicBGCReactionsType.s: simicBGCReactionsType.F90.s
@@ -206,7 +206,7 @@ simicBGCReactionsType.s: simicBGCReactionsType.F90.s
 
 # target to generate assembly for a file
 simicBGCReactionsType.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicBGCReactionsType.F90.s
 .PHONY : simicBGCReactionsType.F90.s
 
 simicPlantSoilBGCType.o: simicPlantSoilBGCType.F90.o
@@ -214,7 +214,7 @@ simicPlantSoilBGCType.o: simicPlantSoilBGCType.F90.o
 
 # target to build an object file
 simicPlantSoilBGCType.F90.o:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.o
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.o
 .PHONY : simicPlantSoilBGCType.F90.o
 
 simicPlantSoilBGCType.i: simicPlantSoilBGCType.F90.i
@@ -222,7 +222,7 @@ simicPlantSoilBGCType.i: simicPlantSoilBGCType.F90.i
 
 # target to preprocess a source file
 simicPlantSoilBGCType.F90.i:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.i
 .PHONY : simicPlantSoilBGCType.F90.i
 
 simicPlantSoilBGCType.s: simicPlantSoilBGCType.F90.s
@@ -230,7 +230,7 @@ simicPlantSoilBGCType.s: simicPlantSoilBGCType.F90.s
 
 # target to generate assembly for a file
 simicPlantSoilBGCType.F90.s:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(MAKE) $(MAKESILENT) -f src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/build.make src/Applications/soil-farm/simic/simicNlayer/CMakeFiles/simicNlayer.dir/simicPlantSoilBGCType.F90.s
 .PHONY : simicPlantSoilBGCType.F90.s
 
 # Help Target
@@ -264,6 +264,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

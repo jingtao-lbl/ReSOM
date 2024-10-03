@@ -11,7 +11,7 @@ General Information:
               Uname information: Linux
                        Byte sex: little-endian
                       Libraries: 
-             Installation point: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
+             Installation point: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release
 
 Compiling Options:
 ------------------

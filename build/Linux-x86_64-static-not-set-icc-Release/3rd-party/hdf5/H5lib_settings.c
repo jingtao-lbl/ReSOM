@@ -45,7 +45,7 @@ char H5libhdf5_settings[]=
 	"              Uname information: Linux\n"
 	"                       Byte sex: little-endian\n"
 	"                      Libraries: \n"
-	"             Installation point: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release\n"
+	"             Installation point: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release\n"
 	"\n"
 	"Compiling Options:\n"
 	"------------------\n"

@@ -53,10 +53,10 @@ RM = /global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/cmake-3.2
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_SOURCE_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
+CMAKE_BINARY_DIR = /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran
 
 # Include any dependencies generated for this target.
 include examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/depend.make
@@ -71,16 +71,16 @@ include examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/flags.make
 
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o: examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/flags.make
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o: examples/F77/simple_xy_rd.f
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f -o CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f -o CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o
 
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f > CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f > CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.i
 
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f -o CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && /global/software/rocky-8.x86_64/intel/linux-rocky8-x86_64/gcc-8.5.0/intel-oneapi-compilers-2023.1.0-r4a6uortiv3h72lh7qjnr4yiuc7vyyut/compiler/2023.1.0/linux/bin/intel64/ifort $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/simple_xy_rd.f -o CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.s
 
 # Object files for target F77_tests_simple_xy_rd
 F77_tests_simple_xy_rd_OBJECTS = \
@@ -92,25 +92,25 @@ F77_tests_simple_xy_rd_EXTERNAL_OBJECTS =
 examples/F77/F77_tests_simple_xy_rd: examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/simple_xy_rd.f.o
 examples/F77/F77_tests_simple_xy_rd: examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build.make
 examples/F77/F77_tests_simple_xy_rd: fortran/libnetcdff.a
-examples/F77/F77_tests_simple_xy_rd: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libnetcdf.a
-examples/F77/F77_tests_simple_xy_rd: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
-examples/F77/F77_tests_simple_xy_rd: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
+examples/F77/F77_tests_simple_xy_rd: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libnetcdf.a
+examples/F77/F77_tests_simple_xy_rd: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5_hl.a
+examples/F77/F77_tests_simple_xy_rd: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libhdf5.a
 examples/F77/F77_tests_simple_xy_rd: /usr/lib64/libdl.so
 examples/F77/F77_tests_simple_xy_rd: /usr/lib64/libm.so
-examples/F77/F77_tests_simple_xy_rd: /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
+examples/F77/F77_tests_simple_xy_rd: /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/lib/libz.a
 examples/F77/F77_tests_simple_xy_rd: examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable F77_tests_simple_xy_rd"
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/F77_tests_simple_xy_rd.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable F77_tests_simple_xy_rd"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/F77_tests_simple_xy_rd.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build: examples/F77/F77_tests_simple_xy_rd
 .PHONY : examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/build
 
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/clean:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && $(CMAKE_COMMAND) -P CMakeFiles/F77_tests_simple_xy_rd.dir/cmake_clean.cmake
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 && $(CMAKE_COMMAND) -P CMakeFiles/F77_tests_simple_xy_rd.dir/cmake_clean.cmake
 .PHONY : examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/clean
 
 examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/depend:
-	cd /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 /global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77 /global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/3rd-party/netcdf-fortran/examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : examples/F77/CMakeFiles/F77_tests_simple_xy_rd.dir/depend
 

@@ -23,13 +23,13 @@ contains
     expected = 'simple'
     basename = remove_filename_extension(filename)
     
-#line 26 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 26 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
   call assertEqual(expected, basename, &
  & location=SourceLocation( &
  & 'test_betr_utils.pfunit', &
  & 26) )
   if (anyExceptions()) return
-#line 27 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 27 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
 
   end subroutine test_remove_filename_extension_simple
 
@@ -49,13 +49,13 @@ contains
     expected = 'simple_filename'
     basename = remove_filename_extension(filename)
     
-#line 46 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 46 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
   call assertEqual(expected, basename, &
  & location=SourceLocation( &
  & 'test_betr_utils.pfunit', &
  & 46) )
   if (anyExceptions()) return
-#line 47 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 47 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
 
   end subroutine test_remove_filename_extension_none
   
@@ -75,13 +75,13 @@ contains
     expected = 'simple.filename'
     basename = remove_filename_extension(filename)
     
-#line 66 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 66 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
   call assertEqual(expected, basename, &
  & location=SourceLocation( &
  & 'test_betr_utils.pfunit', &
  & 66) )
   if (anyExceptions()) return
-#line 67 "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
+#line 67 "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/tests/test_betr_utils.pfunit"
 
   end subroutine test_remove_filename_extension_multi
   

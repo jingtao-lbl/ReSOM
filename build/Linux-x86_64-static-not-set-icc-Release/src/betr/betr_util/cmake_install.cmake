@@ -1,8 +1,8 @@
-# Install script for directory: /global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util
+# Install script for directory: /global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/global/scratch/users/jingtao/ReSOM/sbetr/local")
+  set(CMAKE_INSTALL_PREFIX "/global/home/users/jingtao/ReSOM/sbetr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,22 +43,22 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_util/libbetr_util.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_util/libbetr_util.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/betr/util" TYPE FILE FILES
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bmpif.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_alloc.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assert.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assign.h"
-    "/global/scratch/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bmpif.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_alloc.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assert.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/bshr_assign.h"
+    "/global/home/users/jingtao/ReSOM/sbetr/src/betr/betr_util/dtypes.h"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/global/scratch/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_util/tests/cmake_install.cmake")
+  include("/global/home/users/jingtao/ReSOM/sbetr/build/Linux-x86_64-static-not-set-icc-Release/src/betr/betr_util/tests/cmake_install.cmake")
 
 endif()
 

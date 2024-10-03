@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/global/scratch/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5copy/h5copy.c" "tools/h5copy/CMakeFiles/h5copy.dir/h5copy.c.o" "gcc" "tools/h5copy/CMakeFiles/h5copy.dir/h5copy.c.o.d"
+  "/global/home/users/jingtao/ReSOM/sbetr/3rd-party/hdf5/tools/h5copy/h5copy.c" "tools/h5copy/CMakeFiles/h5copy.dir/h5copy.c.o" "gcc" "tools/h5copy/CMakeFiles/h5copy.dir/h5copy.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
