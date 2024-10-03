@@ -262,36 +262,39 @@ implicit none
 
   !Update temperature parameters
   allocate(temp0(121))
-  !allocate(temp2(121)) 
-  allocate(deltag0(121))                         !
+  allocate(deltag0(121))
   allocate(t_fact0(121)) 
-      temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
+  temp0 = (/ (ii, ii=trangebot,trangetop) /) ! Generate sequence of temperatures
 
-      ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
-      cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
-      deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
-      t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
-      deltag1 = xpar2-deltas_star*tref+cp*(tref-th_star-tref*log(tref/ts_star))
-      t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*tref)))
+  ! Fraction of active enzymes using Murphy et al. 1990, see Tang & Riely 2015 Eq.46-48, also see Ratkowsky2005JTB
+  cp = -46._r8+30._r8*(1._r8-1.54_r8*(xpar1**(-0.268_r8)))*xpar3 
+  deltag0 = xpar2-deltas_star*temp0+cp*(temp0-th_star-temp0*log(temp0/ts_star))
+  t_fact0 = 1._r8/(1._r8+exp(-xpar1*deltag0/(rgas*temp0)))   
+  deltag1 = xpar2-deltas_star*tref+cp*(tref-th_star-tref*log(tref/ts_star))
+  t_fact1  = 1._r8/(1._r8+exp(-xpar1*deltag1/(rgas*tref)))
 
-      !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure           !comment out in rzacplsbetr_cmupdated,   -zlyu
-     
-      tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
-      call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature, t_fact
+  !t_fact0=t_fact0/t_fact1 ! Active enzyme fraction in total enzyme vs temperaure           !comment out in rzacplsbetr_cmupdated,   -zlyu
+  
+  tinv=1._r8/tempbgc-1._r8/tref ! Modifies activation energy
+  call interp1(temp0, t_fact0, tempbgc, t_fact) ! Interpolate to find fraction of active enzymes at current temperature, t_fact
+  
+  fref=t_fact*(tempbgc/tref)                                 !Modifies non-equilibrium enzymatic reactions
+  !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
       
-      fref=t_fact*(tempbgc/tref)                                 !Modifies non-equilibrium enzymatic reactions
-      !fref=t_fact/t_fact1*(tempbgc/tref)                        !change from zacplsbetr_cmupdated,   -zlyu        
-      
-  !Update parameters
-    this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
-    this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
-    this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
-    this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
-    this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
-    this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
-    this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
-    this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
-    
+  !Update parameters - accounting for temperature influences on non-equilibrium (forward or irreversible) reactions, 
+  !including enzymatic degradation, microbial assimilation of monomers, and reserve pool turnover, 
+  !which are all considered as enzyme-mediated reactions in ReSOM.
+  this%vmax_enz         = ref_vmax_enz *fref*exp(-ea_vmax_enz*tinv)
+  this%vmax_mic         = ref_vmax_mic *fref*exp(-ea_vmax_mic*tinv)
+  this%kappa_mic        = ref_kappa_mic*fref*exp(ea_kappa_mic*tinv)
+  !Update parameters - accounting for temperature influences on equilibrium (reversible) reactions,
+  !including mineral-enzyme binding, mineral-monomer binding, enzyme-polymer binding, microbe-monomer binding, and microbial maintenance
+  this%kaff_enz_msurf   = ref_kaff_enz_msurf*exp(-ea_kaff_enz_msurf*tinv)
+  this%kaff_mono_msurf  = ref_kaff_mono_msurf*exp(-ea_kaff_mono_msurf*tinv)   
+  this%kaff_enz_poly    = ref_kaff_enz_poly *exp(-ea_kaff_enz_poly*tinv)
+  this%kaff_mono_mic    = ref_kaff_mono_mic *exp(-ea_kaff_mono_mic*tinv)
+  this%mr_mic           = ref_mr_mic        *exp(-ea_mr_mic*tinv)
+  
   !h2osoi_liqure scalar, also follows what Charlie has done
   this%w_scalar     = 1._r8
   maxpsi = sucsat * (-9.8e-6_r8)   !kg -> MPa
